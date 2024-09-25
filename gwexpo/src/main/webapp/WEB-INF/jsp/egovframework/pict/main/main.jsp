@@ -6,156 +6,228 @@
 
 <!DOCTYPE html>
 <html lang="ko">
-	<c:import url="../main/header.jsp">
-    	<c:param name="pageTitle" value="2023 메타버스·XR 전문인력 양성 교육"/>
+	<c:import url="./include/head.jsp">
+    	<c:param name="pageTitle" value="2024강원바이오엑스포&제2회창업엑스포"/>
     </c:import>
     <body>
-    	<div class="wrapper">
-   			<%@include file="./navigation.jsp" %>
-	        <main class="container">
-        		<section class="main-box recruit" id="main-recruit">
-        			<div class="main-container">
-        				<h2 class="main-title">
-	        				<span class="desc">2023 메타버스·XR 전문인력 양성 교육</span>
-	        				모집안내
-	        			</h2>
-	        			<div class="main-item">
-	        				<div class="main-recruit">
-	        					<div class="main-recruit-item img">
-	        						<a href="javascript:void(0);" class="main-poster-lnk" title="포스터 크게보기" onclick="poster('open');">
-	        							<img src="../../../../../images/pict/main-poster2.png" alt="">
-	        						</a>
-	        						<a href="https://docs.google.com/forms/d/e/1FAIpQLSfWCMoYCyk1KDMsvNR6P_3czHs4gIEAsGVH2RhJK-qqOCifRw/viewform" target="_blank" title="새창이동" class="recruit-btn mobile">신청하러가기&nbsp;&nbsp;&nbsp;+</a>
-	        					</div>
-	        					<div class="main-recruit-item desc">
-	        						<h3 class="recruit-title">
-	        							모션디자인부터 메타버스제작까지
-	        							<strong class="strong">하나의 교육에서 여러가지 커리큘럼으로</strong>
-        							</h3>
-        							<div class="recruit-desc">
-        								<div></div>
-        								<a href="https://docs.google.com/forms/d/e/1FAIpQLSfWCMoYCyk1KDMsvNR6P_3czHs4gIEAsGVH2RhJK-qqOCifRw/viewform" target="_blank" title="새창이동" class="recruit-btn">신청하러가기&nbsp;&nbsp;&nbsp;+</a>
-        							</div>
-        							
-        							<ul class="recruit-list">
-        								<li>도내 메타버스 기업에서 근무하고 있는 강사진들에게 실무에 바로 투입 될 수 있는 프로그램들을 배워보세요!</li>
-        								<li>또한 우수 교육생에게는 200만원 상당의 취/창업 지원금까지 제공! 강원자치도내 메타버스 기업 모의면접 기회 제공까지!</li>
-        								<li>교육부터 취/창업까지 One-Stop!</li>
-        								<li>지금 바로 신청하세요.</li>
-        								
-        								
-        								<!-- 
-        								<li>
-        									<h3 class="title">교육일정</h3>
-        									<div class="desc">2022.06.21 - 2022.11.18</div>
-        								</li>
-        								<li>
-        									<h3 class="title">교육장소</h3>
-        									<div class="desc">강원정보문화산업진흥원</div>
-        								</li>
-        								<li>
-        									<h3 class="title">교육혜택</h3>
-        									<div class="desc">교육지원금 월 150만 원 * 5개월 (PBL교육생의 경우 지급)</div>
-        								</li>
-        								<li>
-        									<h3 class="title">문의처</h3>
-        									<div class="desc">edu@pict.kr / 1644-4845</div>
-        								</li>
-        								<li>
-        									<h3 class="title">커리큘럼</h3>
-        									<div class="desc">콘텐츠 기획 과정, 2D 디자인 과정, 메타버스 과정, 인터랙션 IT 개발 과정</div>
-        								</li>
-        								-->
-        							</ul>
-        							 
-	        					</div>
-	        				</div>
-	        			</div>
-        			</div>
-        		</section>
-        		<section class="main-box program" id="main-program">
-        			<div class="main-container">
-        				<h2 class="main-title">
-	        				<span class="desc">2023 메타버스·XR 전문인력 양성 교육</span>
-	        				프로그램안내
-	        			</h2>
-	        			<div class="main-item" style="text-align:center;">
-	        				<img src="../../../../../images/pict/main-program.jpg" alt="" style="max-width:1000px; width:100%;">
-	        			</div>
-        			</div>
-        		</section>
-				<div class="main-poster-layer">
-					<div class="main-poster-layer-box">
-						<div class="main-poster-layer-item">
-							<img src="../../../../../images/pict/main-poster2.png" alt="">
-						</div>
-					</div>
-					<button type="button" title="팝업 닫기" class="main-poster-close" onclick="poster('close');"><i class="fa-solid fa-xmark"></i></button>
-				</div>
-				<!-- 
-        		<section class="main-box promote">
-        			<div class="main-container">
-        				<h2 class="main-title">
-	        				<span class="desc">2023 메타버스·XR 전문인력 양성 교육</span>
-	        				홍보영상
-	        			</h2>
-	        			<div class="main-item">
-	        				<video controls autoplay muted class="main-video">
-							    <source src="../../../../../images/pict/main-promote.mp4" type="video/mp4">
-							</video>				
-	        			</div>
-        			</div>
-        		</section>
-        		 -->
-        		<section class="main-box ask" id="main-ask">
-        			<div class="main-container">
-        				<h2 class="main-title">
-	        				<span class="desc">2023 강원 메타버스 · XR 전문인력</span>
-	        				문의하기
-	        			</h2>
-	        			<div class="main-item">
-	        				<div class="ask-box">
-	        					<div class="ask-item">
-	        						<h3 class="title">Call</h3>
-	        						<div class="desc"><a href="tel:1644-4845" title="전화걸기">1644-4845</a></div>
-	        					</div>
-	        					<div class="ask-item">
-	        						<h3 class="title">E-mail</h3>
-	        						<div class="desc"><a href="mailto:edu@pict.kr" title="이메일 보내기">edu@pict.kr</a></div>
-	        					</div>
-	        				</div>		
-	        			</div>
-        			</div>
-        		</section>
-        		<!-- 
-        		<section class="main-box related">
-        			<div class="main-container">
-        				<div class="main-item">
-        					<ul class="related-list">
-        						<li><a href="https://www.kocca.kr/" target="_blank" title="새창이동"><img src="../../../../../images/pict/related-content.png" alt="한국콘텐츠진흥원"></a></li>
-        						<li><a href="https://www.gica.or.kr/Home/intro" target="_blank" title="새창이동"><img src="../../../../../images/pict/related-gica.png" alt="강원정보문화산업진흥원"></a></li>
-        						<li><a href="https://thepict.co.kr/" target="_blank" title="새창이동"><img src="../../../../../images/pict/related-pict.png" alt="pict"></a></li>
-        					</ul>
-        				</div>
-        			</div>
-        		</section>
-        		 -->
-	        </main>
-	        <script>
-	        	// poster open/close
-	        	function poster(type) {
-	        		const $popup = $(".main-poster-layer");
-	        		const $body = $("body");
-	        		if(type === "open") {
-	        			$popup.addClass("active");
-	        			$body.addClass("layer-open");
-	        		} else {
-	        			$popup.removeClass("active");
-	        			$body.removeClass("layer-open");
-	        		}
-	        	}
-	        </script>
-	        <%@include file="./footer.jsp" %>
-        </div>
+        <div class="appIntroContainer">
+	        <div class="appIntroInner">
+	            <h1></h1>
+	            <button type="button" class="openApply">참가기업사전등록<img src="/user_img/arr-wt.png" alt=""></button>
+	        </div>
+	    </div>
+	    <div class="applyWrapper">
+	        <div class="applyContainer">
+	            <div class="appTop">
+	                <p>참가기업 사전등록</p>
+	                <button type="button"><img src="/user_img/close-wt.png" alt=""></button>
+	            </div>
+	            <form action="" class="appBottom">
+	                <div class="wholeInputsWrapper">
+	                    <h3 class="appTitle">기업 정보</h3>
+	                    <div class="inputContainer">
+	                        <div class="flexInputs">
+	                            <div class="inputBox lg">
+	                                <p class="inputCaption">기업명</p>
+	                                <input type="text" name="company_name" id="company_name" placeholder="기업명을 입력하세요">
+	                            </div>
+	                            <div class="inputBox lg">
+	                                <p class="inputCaption">기업 설립일자</p>
+	                                <input type="date" name="company_date" id="company_date" max="9999-12-31">
+	                            </div>
+	                        </div>
+	                        <div class="flexInputs">
+	                            <div class="inputBox lg">
+	                                <p class="inputCaption">사업자등록번호</p>
+	                                <input type="text" name="company_number" id="company_number" placeholder="사업자등록번호를 입력하세요">
+	                            </div>
+	                            <div class="inputBox lg">
+	                                <p class="inputCaption">대표자명</p>
+	                                <input type="text" name="ceo_name" id="ceo_name" placeholder="대표자명을 입력하세요">
+	                            </div>
+	                        </div>
+	                        <div class="flexInputs">
+	                            <p class="inputCaption">사업장주소</p>
+	                            <div class="addInputs">
+	                                <input type="text" name="address" id="address" readonly placeholder="주소를 입력하세요">
+	                                <a href="#lnk" id="search_add">주소검색</a>
+	                            </div>
+	                            <p class="fileSub add"><span>•</span>춘천 소재 기업만 신청이 가능합니다.</p>
+	                        </div>
+	                        <div class="inputBox">
+	                            <p class="inputCaption">증빙서류 첨부</p>
+	                            <div class="addInputs file">
+	                                <p class="fileName"></p>
+	                                <label for="file" id="attach_file">파일추가</label>
+	                                <input type="file" id="file" style="display: none;">
+	                                <button type="button" id="deleteButton" style="display: none;"><img src="/user_img/del-file.png" alt=""></button>
+	                            </div>
+	                            <p class="fileSub"><span>•</span>JPG, PDF로 업로드 해주세요.</p>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="wholeInputsWrapper">
+	                    <h3 class="appTitle">담당자 정보</h3>
+	                    <div class="inputContainer">
+	                        <div class="flexInputs">
+	                            <div class="inputBox lg">
+	                                <p class="inputCaption">담당자명</p>
+	                                <input type="text" name="person_name" id="person_name" placeholder="담당자명을 입력하세요">
+	                            </div>
+	                            <div class="inputBox lg">
+	                                <p class="inputCaption">담당자 소속/직책</p>
+	                                <input type="text" name="person_position" id="person_position" placeholder="담당자 소속/직책을 입력하세요">
+	                            </div>
+	                        </div>
+	                        <div class="flexInputs">
+	                            <div class="inputBox lg">
+	                                <p class="inputCaption">담당자 연락처</p>
+	                                <input type="text" name="person_phone" id="person_phone" placeholder="담당자 연락처를 입력하세요">
+	                            </div>
+	                            <div class="inputBox lg">
+	                                <p class="inputCaption">담당자 이메일</p>
+	                                <input type="text" name="person_email" id="person_email" placeholder="담당자 이메일을 입력하세요">
+	                            </div>
+	                        </div>
+	                        <div class="inputBox per">
+	                            <p class="inputCaption">업종(복수선택 가능)</p>
+	                            <div class="checkContainer">
+	                                <div class="checkInput">
+	                                    <input type="checkbox" name="category" id="category1">
+	                                    <label for="category1">바이오의약</label>
+	                                </div>
+	                                <div class="checkInput">
+	                                    <input type="checkbox" name="category" id="category2">
+	                                    <label for="category2">체외진단</label>
+	                                </div>
+	                                <div class="checkInput">
+	                                    <input type="checkbox" name="category" id="category3">
+	                                    <label for="category3">건강기능식품 및 소재</label>
+	                                </div>
+	                                <div class="checkInput">
+	                                    <input type="checkbox" name="category" id="category4">
+	                                    <label for="category4">화장품 및 화장품 소재</label>
+	                                </div>
+	                                <div class="checkInput">
+	                                    <input type="checkbox" name="category" id="category5">
+	                                    <label for="category5">바이오소재(환경,농업)</label>
+	                                </div>
+	                                <div class="checkInput">
+	                                    <input type="checkbox" name="category" id="category6">
+	                                    <label for="category6">식품·로컬</label>
+	                                </div>
+	                                <div class="checkInput">
+	                                    <input type="checkbox" name="category" id="category7">
+	                                    <label for="category7">창작·공예</label>
+	                                </div>
+	                                <div class="checkInput">
+	                                    <input type="checkbox" name="category" id="category8">
+	                                    <label for="category8">IT · AI · 기술 · 관광 · 콘텐츠</label>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="inputBox per">
+	                            <p class="inputCaption">참가형태(복수선택 가능)</p>
+	                            <div class="checkContainer">
+	                                <div class="checkInput">
+	                                    <input type="checkbox" name="apply_form" id="apply_form1">
+	                                    <label for="apply_form1">기업전시 · 홍보(현장 판매 제품 없음)</label>
+	                                </div>
+	                                <div class="checkInput">
+	                                    <input type="checkbox" name="apply_form" id="apply_form2">
+	                                    <label for="apply_form2">기업전시 · 제품 판매(현장 판매 제품 있음)</label>
+	                                </div>
+	                                <div class="checkInput">
+	                                    <input type="checkbox" name="apply_form" id="apply_form3">
+	                                    <label for="apply_form3">IR 피칭</label>
+	                                </div>
+	                                <div class="checkInput">
+	                                    <input type="checkbox" name="apply_form" id="apply_form4">
+	                                    <label for="apply_form4">취업박람회(신청기업 대상 상세조사 예정)</label>
+	                                </div>
+	                                <div class="checkInput">
+	                                    <input type="checkbox" name="apply_form" id="apply_form5">
+	                                    <label for="apply_form5">라이브커머스</label>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="inputBox per">
+	                            <p class="inputCaption">필요 부스 개수</p>
+	                            <div class="checkContainer">
+	                                <div class="checkInput">
+	                                    <input type="radio" name="booth" id="booth1">
+	                                    <label for="booth1">1개</label>
+	                                </div>
+	                                <div class="checkInput">
+	                                    <input type="radio" name="booth" id="booth2">
+	                                    <label for="booth2">2개</label>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="inputBox per">
+	                            <p class="inputCaption">추가 문의사항</p>
+	                            <input type="text" name="inquiry" id="inquiry" placeholder="추가 문의사항이 있으시면 자유롭게 작성해주세요.">
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="wholeInputsWrapper">
+	                    <div class="checkInputBox">
+	                        <input type="checkbox" name="agree" id="agree" class="checkOnly">
+	                        <label for="agree">개인정보 이용에 동의합니다</label>
+	                    </div>
+	                </div>
+	                <div class="buttonContainer">
+	                    <a href="#lnk" class="wt cancelApply">신청취소</a>
+	                    <a href="#lnk" class="bl">신청하기</a>
+	                </div>
+	            </form>
+	        </div>
+	    </div>
+	    <div class="agreeModal">
+	        <div class="agreeInner">
+	            <button type="button"><img src="/user_img/close-modal.png" alt=""></button>
+	            <img src="/user_img/agree.png" alt="">
+	        </div>
+	    </div>
+	    <script>
+	        
+	        $('.openApply').click(function() {
+	            $('.applyWrapper').addClass('active');
+	        });
+	        $('.appTop > button, .cancelApply').click(function() {
+	            $('.applyWrapper').removeClass('active');
+	        });
+	
+	        $('#agree').click(function() {
+	            $('.agreeModal').addClass('active');
+	        });
+	
+	        // 파일 선택 시 파일명 표시 및 삭제 버튼 표시
+	        $('#file').change(function() {
+	            var fileName = $(this).val().split('\\').pop();
+	            $('.fileName').text(fileName);
+	            $('#deleteButton').show();
+	        });
+	
+	        // 삭제 버튼 클릭 시 파일 선택 초기화
+	        $('#deleteButton').click(function() {
+	            $('#file').val('');
+	            $('.fileName').text('');
+	            $(this).hide();
+	        });
+	
+	        // 모달 닫기 버튼 클릭 시 모달 닫기
+	        $('.agreeInner > button').click(function() {
+	            $('.agreeModal').removeClass('active');
+	        });
+	
+	        // 모달 외부 영역 클릭 시 모달 닫기
+	        $(document).mouseup(function(e) {
+	            var container = $(".agreeInner");
+	            if (!container.is(e.target) && container.has(e.target).length === 0) {
+	                $('.agreeModal').removeClass('active');
+	            }
+	        });
+	    </script>
     </body>
 </html>

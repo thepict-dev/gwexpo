@@ -1,0 +1,274 @@
+.appIntroContainer{
+    width: 100%;
+    height: 100vh;
+    background-image: url(/user_img/app-back.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.appIntroInner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 108px 0 351px 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.60) 0%, rgba(0, 0, 0, 0.00) 100%);
+}
+.appIntroInner h1{
+    width: 627px;
+    height: 151px;
+    background-image: url(/user_img/logo.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.appIntroInner > button{
+    display: inline-flex;
+    padding: 20px 30px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 72px;
+    background: linear-gradient(171deg, #2581FF 6.69%, #1E4AFF 93.08%);
+    box-shadow: 0px 0px 41.6px 0px #2580FF;
+    font-family: var(--fn-market);
+    color: #FFF;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.72px;
+    cursor: pointer;
+}
+
+@media all and (max-width : 1024px){
+    .appIntroInner{
+        justify-content: center;
+        row-gap: 50.4px;
+        padding: 0;
+    }
+    .appIntroInner h1{
+        width: 242px;
+        height: 267px;
+        background-image: url(/user_img/mb-logo.png);
+    }
+}
+
+.applyWrapper {
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.60);
+}
+.applyWrapper.active{
+    display: flex;
+}
+
+.applyContainer {
+    width: 90%;
+    max-width: 1059px;
+    max-height: 960px;
+    height: 70%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.appTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    padding: 0 40px;
+    background: var(--MAIN2, linear-gradient(171deg, #2581FF 6.69%, #1E4AFF 93.08%));
+    border-radius: 20px 20px 0 0;
+}
+.appTop > button{
+    cursor: pointer;
+}
+.appTop p {
+    color: var(--wh, #FFF);
+    font-family: var(--fn-suit);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: -1px;
+}
+@media all and (max-width : 768px){
+    .appTop {
+        height: auto;
+        padding: 10px 20px;
+    }
+    .appTop p {
+        width: 225px;
+        font-size: 16px;
+        line-height: 140%;
+    }
+
+}
+
+.appBottom {
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+    width: 100%;
+    height: calc(100% - 60px);
+    background-color: #fff;
+    overflow-y: auto;
+    border-radius: 0 0 20px 20px;
+    padding: 26px 40px;
+}
+.wholeInputsWrapper{
+    width: 100%;
+}
+.appTitle{
+    margin-bottom: 12px;
+    color: var(--bk, #000);
+    font-family: var(--fn-suit);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%; /* 18px */
+    letter-spacing: -0.9px;
+}
+
+@media all and (max-width : 768px){
+    .appBottom {
+        row-gap: 20px;
+        padding: 16px 20px;
+    }
+    .appTitle{
+        font-size: 16px;
+    }
+
+}
+
+.flexInputs{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+}
+.addInputs{
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    width: 100%;
+}
+.addInputs.file{
+    position: relative;
+}
+.addInputs input{
+    width: calc(100% - 97px);
+}
+#deleteButton{
+    position: absolute;
+    right: 105px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+.addInputs a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 89px;
+    height: 34px;
+    color: var(--600, #475569);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 100%; /* 14px */
+    border: 1px solid var(--200, #E2E8F0);
+}
+.flexInputs.file{
+    position: relative;
+    margin: 16px 0 0 0;
+}
+.fileName{
+    display: flex;
+    align-items: center;
+    width: calc(100% - 97px);
+    height: 40px;
+    padding: 10px 20px;
+    border: 1px solid var(--grey-grey-100, #DBDEE2);
+    background: var(--wh, #FFF);
+    color: var(--grey-500);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 100%; /* 18px */
+    margin: 12px 0;
+}
+#attach_file{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 89px;
+    height: 34px;
+    text-decoration-line: none;
+    border: 1px solid var(--200, #E2E8F0);
+    color: var(--600, #475569);
+    font-family: SUIT;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%; /* 14px */
+    cursor: pointer;
+}
+.flexInputs.file > button{
+    position: absolute;
+    right: 110px;
+    cursor: pointer;
+}
+.fileSub{
+    color: var(--grey-400);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 140%; /* 19.6px */
+    letter-spacing: -0.7px;
+}
+.fileSub span{
+    display: inline-block;
+    margin: 0 3px;
+}
+.fileSub.add{
+    margin-top: 12px;
+}
+
+.agreeModal{
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.60);
+}
+.agreeModal.active{
+    display: flex;
+}
+.agreeInner{
+    position: relative;
+    max-width: 815px;
+    max-height: 955px;
+    width: 90%;
+    height: 70%;
+    padding: 40px 10px;
+    background-color: #fff;
+}
+.agreeInner > button{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+}
+.agreeInner img{
+    width: 100%;
+}
