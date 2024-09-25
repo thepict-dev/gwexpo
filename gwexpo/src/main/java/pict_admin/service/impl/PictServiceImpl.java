@@ -216,6 +216,36 @@ public class PictServiceImpl extends EgovAbstractServiceImpl implements PictServ
 		
 	}
 
+	@Override
+	public void company_insert(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		pictMapper.company_insert(pictVO);
+	}
+
+	@Override
+	public List<PictVO> company_list(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		return pictMapper.company_list(pictVO);
+	}
+
+	@Override
+	public PictVO company_list_one(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		return pictMapper.company_list_one(pictVO);
+	}
+
+	@Override
+	public void company_update(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		pictMapper.company_update(pictVO);
+	}
+
+	@Override
+	public void company_delete(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		pictMapper.company_delete(pictVO);
+	}
+
 //	@Override
 //	public void attendance_update(PictVO pictVO) throws Exception {
 //		pictMapper.attendance_update(pictVO);

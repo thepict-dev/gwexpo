@@ -112,7 +112,79 @@ public class PictVO extends PictDefaultVO {
 	private String reg_date_for;
 	
 	
+	private String establishment_date;
+	private String biz_num;
+	private String ceo;
+	private String address;
+	private String file_url;
+	private String depart;
+	private String industry;
+	private String joins;
+	private String booth;
+	private String etc;
 	
+	
+	public String getEstablishment_date() {
+		return establishment_date;
+	}
+	public void setEstablishment_date(String establishment_date) {
+		this.establishment_date = establishment_date;
+	}
+	public String getBiz_num() {
+		return biz_num;
+	}
+	public void setBiz_num(String biz_num) {
+		this.biz_num = biz_num;
+	}
+	public String getCeo() {
+		return ceo;
+	}
+	public void setCeo(String ceo) {
+		this.ceo = ceo;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getFile_url() {
+		return file_url;
+	}
+	public void setFile_url(String file_url) {
+		this.file_url = file_url;
+	}
+	public String getDepart() {
+		return depart;
+	}
+	public void setDepart(String depart) {
+		this.depart = depart;
+	}
+	public String getIndustry() {
+		return industry;
+	}
+	public void setIndustry(String industry) {
+		this.industry = industry;
+	}
+	
+	public String getJoins() {
+		return joins;
+	}
+	public void setJoins(String joins) {
+		this.joins = joins;
+	}
+	public String getBooth() {
+		return booth;
+	}
+	public void setBooth(String booth) {
+		this.booth = booth;
+	}
+	public String getEtc() {
+		return etc;
+	}
+	public void setEtc(String etc) {
+		this.etc = etc;
+	}
 	public String getReg_date_for() {
 		return reg_date_for;
 	}

@@ -91,6 +91,16 @@ public interface PictService {
 
 	void board_delete(PictVO pictVO) throws Exception;
 
+	void company_insert(PictVO pictVO) throws Exception;
+
+	List<PictVO> company_list(PictVO pictVO) throws Exception;
+
+	PictVO company_list_one(PictVO pictVO) throws Exception;
+
+	void company_update(PictVO pictVO) throws Exception;
+
+	void company_delete(PictVO pictVO) throws Exception;
+
 	//void attendance_update(PictVO pictVO) throws Exception;
 
 

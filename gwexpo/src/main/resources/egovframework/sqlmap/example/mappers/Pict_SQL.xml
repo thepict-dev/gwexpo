@@ -227,6 +227,61 @@
 		delete from board_master_edu where idx = #{idx}
 	</delete>
 	
+	<insert id="company_insert" parameterType="pictVO">
+		INSERT INTO company_table
+			(
+			 	title,
+				establishment_date,
+				biz_num,
+				ceo,
+				address,
+				file_url,
+				name,
+				depart,
+				mobile,
+				email,
+				industry,
+				joins,
+				booth,
+				etc,
+				reg_date
+			)
+		VALUES (
+			 #{title}, #{establishment_date}, #{biz_num}, #{ceo}, #{address}, #{file_url}, #{name}, #{depart}, #{mobile}, #{email}, #{industry}, #{joins}, #{booth}, #{etc}, now()
+			  ) 
+	</insert>
+	
+	
+	<select id="company_list" resultType="pictVO">
+		select * from company_table
+		<if test="search_text != null and search_text != '' ">
+			where (
+				title LIKE CONCAT('%', #{search_text}, '%')
+			) 
+		</if>
+		order by reg_date desc
+	</select>
+	
+	<select id="company_list_one" resultType="pictVO">
+		select * from company_table
+		where idx = #{idx}
+	</select>
+	
+	<delete id="company_delete" parameterType="pictVO">
+		delete from company_table where idx = #{idx}
+	</delete>
+	
+	<update id="company_update" parameterType="pictVO">
+		update company_table
+		set title =#{title}, establishment_date=#{establishment_date}, biz_num=#{biz_num}, ceo=#{ceo}, address=#{address}
+		, name=#{name}, depart=#{depart}, mobile=#{mobile}, email=#{email}
+		, industry=#{industry}, joins=#{joins}, booth=#{booth}, etc=#{etc}
+		<if test="file_url != null and file_url != '' ">
+			, file_url =#{file_url}
+		</if>
+		, reg_date = now()
+		where idx = #{idx}
+	</update>
 	
 	
 </mapper>
