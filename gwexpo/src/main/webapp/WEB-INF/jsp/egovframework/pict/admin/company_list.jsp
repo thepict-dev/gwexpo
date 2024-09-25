@@ -36,13 +36,14 @@
 							        	<colgroup>
 							        		<col style="width:5%;">
 							        		<col style="width:10%;">
+							        		<col style="width:8%;">
+							        		<col style="width:10%;">
+							        		<col style="width:20%;">
+							        		<col style="width:7%;">
 							        		<col style="width:10%;">
 							        		<col style="width:10%;">
-							        		<col style="width:22%;">
 							        		<col style="width:10%;">
 							        		<col style="width:10%;">
-							        		<col style="width:10%;">
-							        		<col style="width:13%;">
 							        	</colgroup>
 							            <thead>
 							                <tr class="thead">
@@ -55,6 +56,7 @@
 							                    <th>담당자직책</th>
 							                    <th>담당자연락처</th>
 							                    <th>담당자이메일</th>
+							                    <th>첨부파일</th>
 							                </tr>
 							            </thead>
 							            <tbody>
@@ -70,6 +72,7 @@
 						                    		<td>${resultList.depart}</td>
 						                    		<td>${resultList.mobile}</td>
 							                    	<td>${resultList.email}</td>
+							                    	<td><a href="${resultList.file_url}" download>다운로드</a></td>
 								                </tr>
 							                </c:forEach>
 							            </tbody>
