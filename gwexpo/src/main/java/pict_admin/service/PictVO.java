@@ -122,8 +122,57 @@ public class PictVO extends PictDefaultVO {
 	private String joins;
 	private String booth;
 	private String etc;
+	private String group_by;
+	private String rnum;
+	private String maximum;
+	private String point;
+	private String company_id;
+	private String fairpath_id;
+	private String invest;
 	
 	
+	public String getInvest() {
+		return invest;
+	}
+	public void setInvest(String invest) {
+		this.invest = invest;
+	}
+	public String getPoint() {
+		return point;
+	}
+	public void setPoint(String point) {
+		this.point = point;
+	}
+	public String getCompany_id() {
+		return company_id;
+	}
+	public void setCompany_id(String company_id) {
+		this.company_id = company_id;
+	}
+	public String getFairpath_id() {
+		return fairpath_id;
+	}
+	public void setFairpath_id(String fairpath_id) {
+		this.fairpath_id = fairpath_id;
+	}
+	public String getGroup_by() {
+		return group_by;
+	}
+	public void setGroup_by(String group_by) {
+		this.group_by = group_by;
+	}
+	public String getRnum() {
+		return rnum;
+	}
+	public void setRnum(String rnum) {
+		this.rnum = rnum;
+	}
+	public String getMaximum() {
+		return maximum;
+	}
+	public void setMaximum(String maximum) {
+		this.maximum = maximum;
+	}
 	public String getEstablishment_date() {
 		return establishment_date;
 	}

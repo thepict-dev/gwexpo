@@ -101,7 +101,29 @@ public interface PictService {
 
 	void company_delete(PictVO pictVO) throws Exception;
 
-	//void attendance_update(PictVO pictVO) throws Exception;
+	//여기서부터 GSF옮긴 서비스
+	List<?> funding_list_company_api(PictVO pictVO) throws Exception;
+
+	PictVO total_invest(PictVO pictVO) throws Exception;
+
+	PictVO invest_user_info(PictVO pictVO) throws Exception;
+
+	PictVO maximum_price(PictVO pictVO) throws Exception;
+
+	void invest_insert(PictVO pictVO) throws Exception;
+
+	void user_invest_minus(PictVO pictVO) throws Exception;
+
+	List<?> funding_mypage_list(PictVO pictVO) throws Exception;
+
+	List<?> funding_list_user_star(PictVO pictVO) throws Exception;
+
+	PictVO user_list_one(PictVO pictVO) throws Exception;
+
+	List<?> funding_list_user(PictVO pictVO) throws Exception;
+
+	List<?> funding_list_company(PictVO pictVO) throws Exception;
+
 
 
 }

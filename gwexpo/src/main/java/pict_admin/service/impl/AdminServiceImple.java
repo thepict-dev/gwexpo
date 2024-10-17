@@ -118,6 +118,12 @@ public class AdminServiceImple extends EgovAbstractServiceImpl implements AdminS
 	public void user_delete(AdminVO adminVO) throws Exception {
 		adminMapper.user_delete(adminVO);
 	}
+
+	@Override
+	public AdminVO get_user_info_funding(AdminVO adminVO) throws Exception{
+		// TODO Auto-generated method stub
+		return adminMapper.get_user_info_funding(adminVO);
+	}
 	
 	
 	

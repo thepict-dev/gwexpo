@@ -33,9 +33,11 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.apache.commons.codec.binary.Base64;
@@ -470,6 +472,258 @@ public class pictController {
         response.getOutputStream().close();
 	}
 	
+	//펀딩관리
+	@RequestMapping(value = "/admin/funding_list_user_star.do")
+	public String funding_list_user_star(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request) throws Exception {
+		String session = (String)request.getSession().getAttribute("id");
+		if(session == null || session == "null") {
+			return "redirect:/pict_login.do";
+		}
+		pictVO.setUser_id(session);
+
+		List<?> board_list = pictService.funding_list_user_star(pictVO);
+		model.addAttribute("resultList", board_list);
+	
+		model.addAttribute("pictVO", pictVO);
+		
+		return "pict/admin/funding_list_user_star";
+	}
+	@RequestMapping(value = "/admin/funding_list_user.do")
+	public String funding_list_user(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request) throws Exception {
+		String session = (String)request.getSession().getAttribute("id");
+		if(session == null || session == "null") {
+			return "redirect:/pict_login.do";
+		}
+		pictVO.setUser_id(session);
+	
+		pictVO.setInvest("1");
+		List<?> company_list = pictService.company_list(pictVO);
+		List<?> board_list = pictService.funding_list_user(pictVO);
+		model.addAttribute("resultList", board_list);
+		model.addAttribute("resultList2", company_list);
+		model.addAttribute("pictVO", pictVO);
+		
+		return "pict/admin/funding_list_user";
+	}
+	@RequestMapping(value = "/admin/funding_list_company.do")
+	public String funding_list_company(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request) throws Exception {
+		String session = (String)request.getSession().getAttribute("id");
+		if(session == null || session == "null") {
+			return "redirect:/pict_login.do";
+		}
+		pictVO.setUser_id(session);
+	
+		List<?> board_list = pictService.funding_list_company(pictVO);
+		model.addAttribute("resultList", board_list);
+		model.addAttribute("pictVO", pictVO);
+		
+		return "pict/admin/funding_list_company";
+	}
+	
+	
+	
+	
+	//투자 랭크
+	@RequestMapping(value = "/invest_rank.do")
+	public String invest_rank(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request) throws Exception {
+
+		List<?> company_list = pictService.funding_list_company_api(pictVO);
+		
+		model.addAttribute("company_list", company_list);
+		return "pict/front/invest_rank";
+	}
+	//투자 로그인
+	@RequestMapping(value = "/invest_login.do")
+	public String invest_login(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request) throws Exception {
+		String session = (String)request.getSession().getAttribute("idx");
+		if(session != null && session != "null") {
+			return "redirect:/user_invest.do";
+		}
+		
+		String userAgent = request.getHeader("user-agent").toUpperCase();
+		//모바일이 아닌경우 재영 이거쓰면 됨
+		if(!(userAgent.indexOf("MOBI") > -1)) {
+			model.addAttribute("message", "투자 플랫폼은 모바일에서만 가능합니다.");
+			model.addAttribute("retType", ":location");
+			model.addAttribute("retUrl", "/");
+			return "pict/main/message";
+	    }
+		return "pict/front/invest_login";
+	}
+	//투자 로그인 처리
+	@RequestMapping(value = "/invest_login_action.do", method= RequestMethod.POST)
+	@ResponseBody
+	public String invest_login_action(@ModelAttribute("searchVO") AdminVO adminVO, ModelMap model, HttpServletRequest request, @RequestBody Map<String, Object> param) throws Exception {	
+		String name = param.get("name").toString();
+		String mobile = param.get("mobile").toString();
+		adminVO.setName(name);
+		adminVO.setMobile(mobile);
+		
+		adminVO = adminService.get_user_info_funding(adminVO);
+		if (adminVO != null && !adminVO.getName().equals("") && !adminVO.getMobile().equals("")) {
+			
+			if(name.equals(adminVO.getName()) && mobile.equals(adminVO.getMobile())) {
+				request.getSession().setAttribute("idx", adminVO.getIdx());
+				request.getSession().setAttribute("mobile", adminVO.getMobile());
+				request.getSession().setAttribute("name", adminVO.getName());
+
+				return "Y";
+				//return "redirect:/user_invest.do";
+				
+			}
+			else {
+				return "N";
+				//model.addAttribute("message", "입력하신 정보가 일치하지 않습니다.");
+				//model.addAttribute("retType", ":location");
+				//model.addAttribute("retUrl", "/invest_login.do");
+				//return "pict/main/message";
+			}
+		}
+		else {
+			return "N";
+			//model.addAttribute("message", "입력하신 정보가 일치하지 않습니다.");
+			//model.addAttribute("retType", ":location");
+			//model.addAttribute("retUrl", "/invest_login.do");
+			//return "pict/main/message";
+		}
+	}
+	@RequestMapping(value = "/user_invest.do")
+	public String user_invest(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request) throws Exception {
+		String session = (String)request.getSession().getAttribute("idx");
+		if(session == null || session == "null") {
+			return "redirect:/invest_login.do";
+		}
+		
+		String userAgent = request.getHeader("user-agent").toUpperCase();
+		//모바일이 아닌경우 재영 이거쓰면 됨
+		if(!(userAgent.indexOf("MOBI") > -1)) {
+			model.addAttribute("message", "투자 플랫폼은 모바일에서만 가능합니다.");
+			model.addAttribute("retType", ":location");
+			model.addAttribute("retUrl", "/");
+			return "pict/main/message";
+	    }
+		
+		pictVO.setInvest("1");
+		List<?> company_list = pictService.company_list(pictVO);
+		
+		PictVO vo = pictService.total_invest(pictVO);
+		
+		String name = (String)request.getSession().getAttribute("name");
+		String mobile = (String)request.getSession().getAttribute("mobile");
+		
+		pictVO.setName(name);
+		pictVO.setMobile(mobile);
+		pictVO = pictService.invest_user_info(pictVO);
+		//여기서 로그인 여부 체크 / 로그인 되어있으면 해당 사람의 잔액 표기
+		
+		PictVO vo2 = pictService.maximum_price(pictVO);
+		model.addAttribute("pictVO", pictVO);
+		model.addAttribute("vo", vo);
+		model.addAttribute("vo2", vo2);
+		model.addAttribute("company_list", company_list);
+		return "pict/front/user_invest";
+	}
+
+	@RequestMapping(value = "/user_invest_save.do", method= RequestMethod.POST)
+	@ResponseBody
+	public String user_invest_save(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request, @RequestBody Map<String, Object> param) throws Exception {
+		String session = (String)request.getSession().getAttribute("idx");
+		if(session == null || session == "null") {
+			return "redirect:/invest_login.do";
+		}
+		
+		String userAgent = request.getHeader("user-agent").toUpperCase();
+		//모바일이 아닌경우 재영 이거쓰면 됨
+		if(!(userAgent.indexOf("MOBI") > -1)) {
+			model.addAttribute("message", "투자 플랫폼은 모바일에서만 가능합니다.");
+			model.addAttribute("retType", ":location");
+			model.addAttribute("retUrl", "/");
+			return "pict/main/message";
+	    }
+		
+		
+		String company_id = param.get("company_id").toString();
+		String point = param.get("point").toString();
+		String idx = param.get("idx").toString();
+	
+		
+		PictVO vo = pictService.total_invest(pictVO);
+		PictVO vo2 = pictService.maximum_price(pictVO);
+		
+		if(vo != null && Double.parseDouble(vo.getPoint()) + Double.parseDouble(point) > Double.parseDouble(vo2.getMaximum())) {
+			return "N";
+			//model.addAttribute("message", "총 투자금액이 목표치에 도달하여 투자하실 수 없습니다.");
+			//model.addAttribute("retType", ":location");
+			//model.addAttribute("retUrl", "/");	//랭킹페이지로 이동
+			//return "pict/main/message";
+		}
+		else {
+			
+			
+			pictVO.setCompany_id(company_id);
+			pictVO.setPoint(point);
+			pictVO.setIdx(Integer.parseInt(idx));
+			
+			pictService.invest_insert(pictVO);
+			pictService.user_invest_minus(pictVO);
+			return "Y";
+			
+			//model.addAttribute("message", "정상적으로 투자되었습니다.");
+			//model.addAttribute("retType", ":location");
+			//model.addAttribute("retUrl", "/invest_rank.do");	//랭킹페이지로 이동
+			//return "pict/main/message";
+		}
+		
+	}
+	//투자 마이페이지
+	@RequestMapping(value = "/invest_mypage.do")
+	public String invest_mypage(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request) throws Exception {
+		String session = (String)request.getSession().getAttribute("idx");
+		if(session == null || session == "null") {
+			return "redirect:/invest_login.do";
+		}
+		String userAgent = request.getHeader("user-agent").toUpperCase();
+		//모바일이 아닌경우 재영 이거쓰면 됨
+		if(!(userAgent.indexOf("MOBI") > -1)) {
+			model.addAttribute("message", "투자 플랫폼은 모바일에서만 가능합니다.");
+			model.addAttribute("retType", ":location");
+			model.addAttribute("retUrl", "/");
+			return "pict/main/message";
+	    }
+		
+		
+		pictVO.setIdx(Integer.parseInt(session));
+		List<?> company_list = pictService.funding_mypage_list(pictVO);
+		model.addAttribute("listSize", company_list.size());
+		model.addAttribute("resultList", company_list);
+		return "pict/front/invest_mypage";
+	}
+	//투자 인증서
+	@RequestMapping(value = "/invest_certi.do")
+	public String invest_certi(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request) throws Exception {
+		String session = (String)request.getSession().getAttribute("idx");
+		if(session == null || session == "null") {
+			return "redirect:/invest_login.do";
+		}
+		String userAgent = request.getHeader("user-agent").toUpperCase();
+		//모바일이 아닌경우 재영 이거쓰면 됨
+		if(!(userAgent.indexOf("MOBI") > -1)) {
+			model.addAttribute("message", "투자 플랫폼은 모바일에서만 가능합니다.");
+			model.addAttribute("retType", ":location");
+			model.addAttribute("retUrl", "/");
+			return "pict/main/message";
+	    }
+		
+
+		
+		pictVO.setIdx(Integer.parseInt((String) request.getSession().getAttribute("idx")));
+		pictVO.setGroup_by("Y");
+		List<?> company_list = pictService.funding_list_user_star(pictVO);
+		model.addAttribute("resultList", company_list);
+		pictVO = pictService.user_list_one(pictVO);
+		model.addAttribute("pictVO", pictVO);
+		return "pict/front/invest_certi";
+	}
 
 	public String unscript(String data) {
         if (data == null || data.trim().equals("")) {
@@ -569,4 +823,124 @@ public class pictController {
 		return new String(Base64.encodeBase64(hashValue));
     }
     
+	
+	
+	/*
+	 * @RequestMapping(value = "/register_apply_save.do")
+	public String register_apply_save(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request) throws Exception {
+		
+		try {
+			pictVO.setMobile(pictVO.getMobile().replaceAll("-", ""));
+			
+			List<?> duple_list = pictService.duple_user(pictVO);
+			int duple_size = duple_list.size();
+			if(duple_size > 0) {
+				model.addAttribute("message", "이미 사전등록 하셨습니다.");
+				model.addAttribute("retType", ":location");
+				model.addAttribute("retUrl", "/");
+				return "pict/main/message";
+			}
+			else {
+				System.out.println(pictVO.getTarget_date()+"여귀~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+				String mobile = pictVO.getMobile().replaceAll("-", "");
+				URL url = new URL("https://api.fairpass.co.kr/fsApi/VisitorInsert");
+				HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+				
+				conn.setRequestMethod("POST"); // http 메서드
+				conn.setRequestProperty("Content-Type", "application/json"); // header Content-Type 정보
+				conn.setRequestProperty("ApiKey", " rioE2lpgWGInf2Gd7XF9cOCDvqXGUzKXYPrqBCW"); // header의 auth 정보
+				
+				conn.setDoInput(true); // 서버에 전달할 값이 있다면 true
+				conn.setDoOutput(true);// 서버에서 받을 값이 있다면 true
+				
+				
+				JSONObject obj_param = new JSONObject();
+				obj_param.put("EVENT_IDX", "1469");	//행사코드 고정
+				
+				String option = "";
+				if(pictVO.getClassify().equals("1")) option = "1645";	//1-일반참가자 - 1645 
+				else if(pictVO.getClassify().equals("2")) option = "1648";	//2-일반관람객(펀딩불가)- 1648
+				else if(pictVO.getClassify().equals("3")) option = "1646";	//3-참가기업 - 1646
+				else if(pictVO.getClassify().equals("4")) option = "1647";	//4-VC투자자 - 1647
+				else if(pictVO.getClassify().equals("5")) option = "1692";	//5-주최주관 - 1692
+				else if(pictVO.getClassify().equals("6")) option = "1693";	//6-STAFF - 1693
+				else if(pictVO.getClassify().equals("7")) option = "1694";	//7-PRESS - 1694
+				
+				obj_param.put("OPTION_IDX", option);
+				obj_param.put("NAME", pictVO.getName());
+				obj_param.put("TEL", pictVO.getMobile());
+				obj_param.put("EMAIL", pictVO.getEmail());
+				obj_param.put("GENDER", pictVO.getGender());
+				
+				//회사부서직급
+				obj_param.put("INFO3", pictVO.getCompany());
+				obj_param.put("INFO5", pictVO.getCompany_depart());
+				obj_param.put("INFO7", pictVO.getCompany_rank());
+				
+				//서버에 데이터 전달
+				BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
+				bw.write(obj_param.toString()); // 버퍼에 담기
+				bw.flush(); // 버퍼에 담긴 데이터 전달
+				bw.close();
+				
+				// 서버로부터 데이터 읽어오기
+				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+				StringBuilder sb = new StringBuilder();
+				String line = null;
+				
+				while((line = br.readLine()) != null) { // 읽을 수 있을 때 까지 반복
+					sb.append(line);
+				}
+				JSONObject obj = new JSONObject(sb.toString()); // json으로 변경 (역직렬화)
+				int state_code = obj.getInt("resultCode");
+				if(state_code != 0) {
+					model.addAttribute("message", "저장 중 오류가 발생하였습니다.");
+					model.addAttribute("retType", ":location");
+					model.addAttribute("retUrl", "/");
+					return "pict/main/message";
+				}
+				else {
+					pictVO.setFairpath_id(obj.getInt("VISITOR_IDX")+"");
+					
+					List<?> register_list = pictService.duple_user_list(pictVO);
+					PictVO vo = pictService.maximum_cnt(pictVO);
+					int size = register_list.size();
+					int standard_cnt = Integer.parseInt(vo.getMaximum());
+					
+					if(size < standard_cnt) {		//재영 수치
+						pictVO.setUse_at("Y");
+						pictVO.setPoint("30000");
+					}
+					else {
+						pictVO.setUse_at("N");
+						pictVO.setPoint("0");
+					}
+					if(!(pictVO.getClassify().equals("1"))) {	//재영 분류값
+						pictVO.setPoint("0");
+						pictVO.setUse_at("N");
+					
+					}
+					String str = "사전등록이 완료되었습니다.<br>참여해주셔서 감사합니다.";
+					pictService.user_insert(pictVO);
+
+					model.addAttribute("message", str);
+					model.addAttribute("mobile", mobile);
+					model.addAttribute("retType", ":location");
+					model.addAttribute("retUrl", "/");
+					return "pict/main/message_sms";
+				}
+			}
+			
+		}
+		catch(Exception e) {
+			System.out.println(e);
+			model.addAttribute("message", "저장 중 오류가 발생하였습니다.");
+			model.addAttribute("retType", ":location");
+			model.addAttribute("retUrl", "/");
+			return "pict/main/message";
+		}
+		
+		
+	}
+	 */
 }

@@ -36,6 +36,7 @@ public class AdminVO extends PictDefaultVO {
 	private static final long serialVersionUID = 1L;
 
 	private String id;
+	private String idx;
 	private String password;
 	private String name;
 	private String mobile;
@@ -60,6 +61,12 @@ public class AdminVO extends PictDefaultVO {
 	private String search_text;
 	
 	
+	public String getIdx() {
+		return idx;
+	}
+	public void setIdx(String idx) {
+		this.idx = idx;
+	}
 	public String getSearch_text() {
 		return search_text;
 	}

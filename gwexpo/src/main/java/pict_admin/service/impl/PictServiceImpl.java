@@ -246,11 +246,73 @@ public class PictServiceImpl extends EgovAbstractServiceImpl implements PictServ
 		pictMapper.company_delete(pictVO);
 	}
 
-//	@Override
-//	public void attendance_update(PictVO pictVO) throws Exception {
-//		pictMapper.attendance_update(pictVO);
-//		
-//	}
+	//GSF 추가
+	@Override
+	public List<?> funding_list_company_api(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		return pictMapper.funding_list_company_api(pictVO);
+	}
+
+	@Override
+	public PictVO total_invest(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		return pictMapper.total_invest(pictVO);
+	}
+
+	@Override
+	public PictVO invest_user_info(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		return pictMapper.invest_user_info(pictVO);
+	}
+
+	@Override
+	public PictVO maximum_price(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		return pictMapper.maximum_price(pictVO);
+	}
+
+	@Override
+	public void invest_insert(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		pictMapper.invest_insert(pictVO);
+	}
+
+	@Override
+	public void user_invest_minus(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		pictMapper.user_invest_minus(pictVO);
+	}
+
+	@Override
+	public List<?> funding_mypage_list(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		return pictMapper.funding_mypage_list(pictVO);
+	}
+
+	@Override
+	public List<?> funding_list_user_star(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		return pictMapper.funding_list_user_star(pictVO);
+	}
+
+	@Override
+	public PictVO user_list_one(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		return pictMapper.user_list_one(pictVO);
+	}
+
+	@Override
+	public List<?> funding_list_user(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		return pictMapper.funding_list_user(pictVO);
+	}
+
+	@Override
+	public List<?> funding_list_company(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		return pictMapper.funding_list_company(pictVO);
+	}
+
 
 
 	

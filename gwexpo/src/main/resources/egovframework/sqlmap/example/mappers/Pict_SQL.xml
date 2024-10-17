@@ -284,4 +284,99 @@
 	</update>
 	
 	
+	<!-- GSF 펀딩 추가 -->
+	
+	<select id="funding_list_company_api" resultType="pictVO">
+		select c.title, truncate(sum(i.point), 0) as point
+		from invest_table i 
+		left outer join user_table u on i.user_id = u.idx
+		left outer join company_table c on c.idx = i.company_id
+		group by i.company_id
+		order by point desc, title asc
+		<!-- limit 10 offset 0 -->
+	</select>
+	
+	<select id="total_invest" resultType="pictVO">
+		select sum(point) as point from invest_table
+	</select>
+	
+	<select id="invest_user_info" resultType="pictVO">
+		select * from user_table
+		where name = #{name} and mobile =#{mobile}
+	</select>
+	
+	<select id="maximum_price" resultType="pictVO">
+		select maximum from count_table where idx =2 limit 1
+	</select>
+	
+	<insert id="invest_insert" parameterType="pictVO">
+		INSERT INTO invest_table
+			(
+			 company_id, user_id, point, reg_date
+			)
+		VALUES (
+			 #{company_id}, #{idx}, #{point}, now()
+			  ) 
+	</insert>
+	
+	<update id="user_invest_minus" parameterType="pictVO">
+		update user_table
+		set point = point - #{point}
+		where idx = #{idx}
+	</update>
+	
+	<select id="funding_mypage_list" resultType="pictVO">
+		select
+		   t.*
+		from
+		(
+		   select 
+		      row_number() over(order by sum(i.point) desc, c.title asc) as rnum, c.idx, c.title, ifnull(sum(i.point), 0) as point
+		   from company_table c
+		    left outer join invest_table i on i.company_id = c.idx
+		    group by c.idx
+		) t
+		where t.idx in
+		(
+		   select a.company_id from invest_table a where a.user_id = #{idx} group by a.company_id
+		)
+		order by t.rnum asc;
+	</select>
+	
+	<select id="funding_list_user_star" resultType="pictVO">
+		select c.title, any_value(i.point) as point, u.name
+		from invest_table i 
+		left outer join user_table u on i.user_id = u.idx
+		left outer join company_table c on c.idx = i.company_id
+		where u.idx = #{idx}
+		<if test="group_by != null and group_by != '' ">
+			group by i.company_id
+			order by point desc 
+		</if>
+	</select>
+	
+	<select id="user_list_one" resultType="pictVO">
+		select * from user_table
+		where idx = #{idx}
+	</select>
+	
+	<!-- 회사별 사람들 투자 현황 -->
+	<select id="funding_list_user" resultType="pictVO">
+		select u.name, i.point
+		from invest_table i 
+		left outer join user_table u on i.user_id = u.idx
+		left outer join company_table c on c.idx = i.company_id
+		where i.company_id = #{company_id}
+	</select>
+	
+	<!-- 회사 총 투자현황 -->
+	<select id="funding_list_company" resultType="pictVO">
+		select c.title, truncate(sum(i.point), 0) as point
+		from invest_table i 
+		left outer join user_table u on i.user_id = u.idx
+		left outer join company_table c on c.idx = i.company_id
+		group by i.company_id
+		order by point desc
+	</select>
+	
 </mapper>

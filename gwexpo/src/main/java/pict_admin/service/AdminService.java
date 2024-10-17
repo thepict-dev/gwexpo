@@ -55,5 +55,7 @@ public interface AdminService {
 	void update_user(AdminVO adminVO)throws Exception;
 
 	void user_delete(AdminVO adminVO) throws Exception;
+
+	AdminVO get_user_info_funding(AdminVO adminVO) throws Exception;
 	
 }

@@ -73,7 +73,12 @@
 		WHERE ID=#{id}
 	</update>
 	
-	
+	<select id="get_user_info_funding" resultType="adminVO">
+		SELECT 
+			*
+		FROM user_table
+		WHERE name = #{name} and mobile = #{mobile}
+	</select>
 	
 	
 </mapper>
