@@ -11,15 +11,15 @@
 %>
 
 <div class="investHeader">
-    <a href="/"><img src="../../../../../../front_img/home.webp" alt="홈"></a>
+    <a href="/"><img src="/img/user_img/mb-logo.png" alt="홈"></a>
     <button class="navBtn">
-        <img src="../../../../../../front_img/menu.webp" alt="메뉴버튼">
+        <img src="/img/user_img/menu.png" alt="메뉴버튼">
     </button>
     <div class="investNav">
     	<div class="navMenu">
-    		<a href="/"><img src="../../../../../../front_img/home.webp" alt="홈"></a>
+    		<a href="/"><img src="/img/user_img/mb-logo.png" alt="홈"></a>
     		<button class="navBtn2">
-        		<img src="../../../../../../front_img/menu.webp" alt="메뉴버튼">
+        		<img src="/img/user_img/menu.png" alt="메뉴버튼">
     		</button>
     	</div>
     	<ul>

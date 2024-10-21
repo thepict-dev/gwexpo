@@ -44,6 +44,7 @@
 </main>
 <div class="investingFooter myPage">
 	<a href="/">
-		<img src="../../../../../../front_img/investing-f.webp" alt="하단로고">
+		<img src="/img/user_img/mb-logo.png" alt="하단로고">
 	</a>
 </div>
+<script src="/js/investing.js"></script>

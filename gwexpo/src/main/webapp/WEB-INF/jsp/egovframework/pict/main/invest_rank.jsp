@@ -10,17 +10,17 @@
 <div class="investHeader">
     <h1>
         <a href="/front_main.do">
-            <img src="../../../../../../front_img/mb-h-logo.webp" alt="로고">
+            <img src="/img/user_img/mb-logo.png" alt="로고">
         </a>
     </h1>
     <button class="navBtn">
-        <img src="../../../../../../front_img/menu.webp" alt="메뉴버튼">
+        <img src="/img/user_img/menu.png" alt="메뉴버튼">
     </button>
     <div class="investNav">
     	<div class="navMenu">
-    		<a href="#lnk"><img src="../../../../../../front_img/home.webp" alt="메뉴버튼"></a>
+    		<a href="#lnk"><img src="/img/user_img/mb-logo.png" alt="메뉴버튼"></a>
     		<button class="navBtn2">
-        		<img src="../../../../../../front_img/menu.webp" alt="메뉴버튼">
+        		<img src="/img/user_img/menu.png" alt="메뉴버튼">
     		</button>
     	</div>
     	<ul>
@@ -49,13 +49,13 @@
 						<tr class="rank">
 							<td class="rankiPrize">
 								<c:if test="${status.index == 0}">
-									<img src="../../../../../../front_img/1.webp" alt="">
+									<img src="/img/user_img/1.webp" alt="">
 								</c:if>
 								<c:if test="${status.index == 1}">
-									<img src="../../../../../../front_img/2.webp" alt="">
+									<img src="/img/user_img/2.webp" alt="">
 								</c:if>
 								<c:if test="${status.index == 2}">
-									<img src="../../../../../../front_img/3.webp" alt="">
+									<img src="/img/user_img/3.webp" alt="">
 								</c:if>
 							</td>
 							<td class="rankName">${company_list.title}</td>
@@ -72,16 +72,12 @@
     </div>
 </main>
 <div class="investingFooter">
-	<p>
-		크라우드 펀딩은 선착순으로<br>
-		사전등록한 인원만 참여 가능합니다.
-	</p>
 	<a href="/">
-		<img src="../../../../../../front_img/investing-f.webp" alt="하단로고">
+		<img src="/img/user_img/mb-logo.png" alt="하단로고">
 	</a>
 </div>
 <div class="alertModal01">
-	<button><img src="../../../../../../front_img/close.webp" alt="닫기"></button>
+	<button><img src="/img/user_img/close.png" alt="닫기"></button>
 	<div class="alertInner">
 		<p>인증에 실패했습니다.</p>
 		<p>성명과 전화번호를<br>다시 확인해주세요.</p>

@@ -1,0 +1,781 @@
+@charset "UTF-8";
+
+/* 투자헤더 */
+.investHeader{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	height: 85px;
+	padding: 0 30px;
+}
+.investHeader h1 a{
+	display: block;
+}
+.navBtn{
+	cursor: pointer;
+}
+.investNav{
+	display: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 9999;
+	width: 100%;
+	height: 234px;
+	background: linear-gradient(#002D59, #000B17);
+	border-radius: 0 0 30px 30px;
+}
+.navMenu{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	height: 85px;
+	padding: 0 30px;
+}
+.navMenu a{
+	display: block;
+	width: 165px;
+}
+.navMenu a img{
+	width: 100%;
+}
+.investNav ul{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+.investNav ul li{
+	width: 120px;
+	height: 40px;
+	text-align: center;
+	font-size: 20px;
+  	font-weight: 500;
+	letter-spacing: -0.8px;
+	color: #fff;
+}
+.investNav ul li:first-child{
+	border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+.investNav ul li:last-child{
+	margin-top: 20px;
+}
+.investHeader > a{
+	display: block;
+	width: 165px;
+}
+.investHeader > a img{
+	width: 100%;
+}
+/* 투자푸터 */
+.investingFooter{
+	width: 100%;
+	margin: 0 auto;
+}
+.investingFooter p{
+	padding: 13px 0 27px 0;
+	font-size: 14px;
+	font-weight: 500;
+	letter-spacing: -0.56px;
+	text-align: center;
+	color: #fff;
+	line-height: 1.5;
+}
+.investingFooter a{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 29px;
+}
+
+.investingFooter.invest p{
+	font-size: 18px;
+	font-weight: 500;
+	letter-spacing: -0.72px;
+}
+.investingFooter.invest p span{
+	color: #fff;
+}
+.investingFooter.myPage{
+	padding: 36px 0 40px 0;
+}
+
+/*투자 레이아웃*/
+.investContent{
+	max-width: 1024px;
+	width: 100%;
+	margin: 0 auto;
+}
+.investContent h2{
+	padding-top: 14px;
+	font-size: 24px;
+  	font-weight: bold;
+	text-align: center;
+	letter-spacing: -0.96px;
+	color: #fff;
+}
+.investTnner{
+	max-width: 1024px;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0 30px;
+}
+
+/* 투자현황 */
+.contents01.invest{
+	display: block;
+	width: 100%;
+}
+.rankTable{
+	width: 100%;
+	height: 700px;
+	color: #fff;
+}
+.rankLists{
+	width: 100%;
+	max-height : 500px;
+	overflow: hidden;
+	position : relative;
+}
+
+.rank {
+    height : 50px;
+}
+.rankLists tr{
+    display: flex;
+    align-items: center;
+    clear: both;
+    position: absolute;
+	-moz-transition-duration: 1s;
+	-webkit-transition-duration: 1s;
+	-ms-transition-duration: 1s;
+	width : 100%;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	vertical-align: middle;
+}
+.rankLists tr td{
+	font-size: 15px;
+	font-weight: 500;
+}
+.rankiPrize{
+	width: 18%;
+	text-align: right;
+	vertical-align: middle;
+}
+.rankiPrize.ect{
+}
+.rankName{
+	width: 41%;
+	padding-left: 20px;
+	text-align: left;
+	vertical-align: middle;
+}
+.rankPrice{
+	width: 41%;
+	text-align: center;
+	vertical-align: middle;
+}
+table tr:first-child.active td{
+	background: var(--color-blue);
+	font-size: 22px;
+	font-weight: 500;
+}
+
+.prizes{
+	width: 18%;
+	text-align: right;
+}
+.prizes li{
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	width: 100%;
+	height: 50px;
+	font-size: 15px;
+	color: #666;
+	font-weight: 500;
+	letter-spacing: -0.6px;
+}
+.prizes li span{
+	width: 34px;
+	text-align: center;
+}
+.bottomBtns{
+	width: 90%;
+	margin: 0 auto;
+}
+.btn01{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 50px;
+	margin-bottom: 17px;
+	border-radius: 15px;
+  	background-color: #fff;
+  	color: #000c19;
+  	letter-spacing: -0.8px;
+  	font-size: 20px;
+  	font-weight: 500;
+}
+.btn02{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 50px;
+	border-radius: 15px;
+	border: solid 1px #fff;
+	letter-spacing: -0.8px;
+  	font-size: 20px;
+  	font-weight: 500;
+  	color: #fff;
+}
+
+/* 본인인증 */
+.investTnner > p{
+	margin-bottom: 76px;
+	font-size: 27px;
+	font-weight: bold;
+	line-height: 1.41;
+	letter-spacing: -1.08px;
+	color: #fff;
+}
+.form{
+	width: 100%;
+}
+.form input{
+	width: 100%;
+	padding: 13.4px 8.3px;
+	background: transparent;
+	border: 0;
+	border-bottom: 2px solid #fff;
+	font-size: 21px;
+	letter-spacing: -0.84px;
+	color: #fff;
+}
+.form input::placeholder{
+	font-size: 21px;
+	font-family: var(--fn-sans);
+}
+.form input:focus{
+	outline: none;
+}
+.investTnner .bottomBtns{
+	margin-top: 277px;
+}
+
+
+/* 기업 셀렉트, 투자하기*/
+.form.invest p{
+	padding: 26px 0 15px 0;
+	font-size: 26px;
+	font-weight: bold;
+	text-align: center;
+	color: #fff;
+	letter-spacing: -1.04px;
+}
+.smtit{
+	display: block;
+	width: 100%;
+	padding-right: 19.6px;
+	font-size: 14px;
+	color: rgba(255, 255, 255, 0.5);
+	text-align: right;
+}
+#point{
+	padding: 13.4px 17.6px;
+	text-align: right;
+	font-size: 30px;
+  	font-weight: bold;
+}
+#point::placeholder{
+	font-size: 30px;
+    font-weight: bold;
+	text-align: right;
+}
+.wonInput{
+	position: relative;
+	width: 100%;
+}
+.won{
+	position: absolute;
+	top: 30px;
+	left: 19px;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	font-size: 30px;
+	font-weight: bold;
+	color: #fff;
+}
+.companySelect{
+	width: 100%;
+	display:none;
+}
+.selectPlace{
+	margin: 0 auto;
+}
+.select2{
+	width: 100%;
+}
+.select2-container{
+    width: 100%;
+}
+.select2-container .select2-selection--single .select2-selection__rendered{
+	font-size: 26px;
+	font-weight: bold;
+	letter-spacing: -1.04px;
+	color: fff;
+	margin: 0 auto;
+}
+.select2-container--default .select2-selection--single {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 71px;
+    background-color: transparent;
+    border-radius: 20px;
+  	border: solid 2px #fff;
+}
+.select2-dropdown{
+    border: 1px solid #dddfe1;
+}
+.select2-search--dropdown{
+    height: 61.1px;
+    padding: 18px 18px 80px 18px;
+    font-size: 16px;
+}
+.select2-search--dropdown .select2-search__field{
+    height: 100%;
+    padding: 0 10px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+.select2-container--default .select2-search--dropdown .select2-search__field{
+    border: 1px solid #dddfe1;
+
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow b{
+    display: none;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+	display: block;
+    height: 71px;
+    width: 50px;
+    background: url(/img/user_img/search.png) no-repeat right 22px center;
+    background-size: 30px;
+}
+.select2-results__option {
+    padding: 10px;
+}
+.select2-container--open .select2-dropdown--below{
+	background: linear-gradient(#002D59, #000B17);
+	border-radius: 0 0 20px 20px;
+  	border: solid 2px #fff;
+	border-top: 0;
+}
+.select2-container--default .select2-search--dropdown .select2-search__field{
+	height: 61px;
+	margin: 0 auto;
+	background: rgba(0, 199, 251, 0.14);
+	border: 0;
+}
+.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+    background-color: transparent;
+}
+.select2-container--default .select2-results__option--selected {
+    background-color: transparent;
+}
+.select2-search__field{
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: -0.72px;
+    color: #fff;
+    font-family: var(--fn-sans);
+}
+.select2-search__field::placeholder{
+	padding-top: 3px;
+	font-size: 20px;
+	font-weight: bold;
+	letter-spacing: -0.8px;
+	text-align: center;
+	font-family: var(--fn-sans);
+	color: rgba(255, 255, 255, 0.5);
+}
+.select2-results__option{
+	padding: 15px 0;
+	color: #fff;
+	font-size: 18px;
+	font-weight: 500;
+	letter-spacing: -0.72px;
+	text-align: center;
+}
+.select2-results__option::first-child{
+	color: rgba(255, 255, 255, 0.5);
+}
+.select2-container--default .select2-results>.select2-results__options{
+	max-height: unset;
+	height: 296px;
+}
+.select2-container--default .select2-results>.select2-results__options::-webkit-scrollbar{
+	display: none;
+}
+
+/* 마이페이지 */
+.investTnner.myPage{
+	padding: 0 0;
+}
+.myTop{
+	width: 100%;
+	padding-bottom: 9px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.myTop p{
+	padding-bottom: 20px;
+	font-size: 24px;
+	font-weight: bold;
+	letter-spacing: -0.96px;
+	text-align: center;
+	color: #fff;
+}
+.myTop p:last-child{
+	font-size: 14px;
+	font-weight: normal;
+	letter-spacing: -0.56px;
+	color: rgba(255, 255, 255, 0.8);
+	text-align: center;
+	line-height: 1.3;
+}
+.myList{
+	width: 100%;
+	height: calc(100% - 207px);
+	padding: 10px 40px;
+}
+.myList ul{
+	width: 100%;
+	height: calc(100% - 73px);
+	overflow-y: overlay;
+}
+.myList ul::-webkit-scrollbar{
+	display: none;
+}
+.myList ul li{
+	display: grid;
+	grid-template-columns: 13% 70% 17%;
+	width: 100%;
+    padding: 14px 0;
+}
+.myNum{
+	display: flex;
+	align-items: center;
+	font-size: 22px;
+	font-weight: bold;
+	letter-spacing: -0.88px;
+	color: #fff;
+}
+.myNames{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.myNames p{
+	padding-bottom: 5px;
+	font-size: 20px;
+	font-weight: bold;
+	letter-spacing: -0.8px;
+	color: #fff;
+}
+.myNames span{
+	font-size: 14px;
+	letter-spacing: -0.56px;
+	color: #fff;
+}
+.mydrade{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 48px;
+	height: 48px;
+	border: solid 1px #fff;
+	border-radius: 50%;
+	font-size: 16px;
+	font-weight: 500;
+	letter-spacing: -0.64px;
+	color: #fff;
+}
+.bottomBtns.myPage{
+	position: absolute;
+    bottom: 32px;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+	padding-top: 118px;
+	background: linear-gradient(to bottom, rgba(0, 22, 44, 0) 8%, rgba(0, 26, 52, 0.56) 24%, #000b17 80%)
+}
+.bottomBtns.myPage .btn01{
+	width: 90%;
+	margin: 0 auto;
+}
+.emptyPage{
+	display: flex;
+	justify-content: center;
+	padding-top: 198px;
+	padding-bottom: 198px;
+}
+.emptyPage p{
+	font-size: 18px;
+	letter-spacing: -0.72px;
+	color: rgba(255, 255, 255, 0.8);
+}
+
+/* 인증서 */
+.investTnner.certi{
+}
+.investTnner.certi > p{
+	padding-bottom: 0;
+	margin-bottom: 40px;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: -0.96px;
+    text-align: center;
+    color: #fff;
+}
+.certiImg{
+	position: relative;
+	width: 100%;
+	height: 70%;
+	background-color: #fff;
+	padding: 10px;
+}
+.certiInner{
+	width: 100%;
+	height: 100%;
+	border: 1px solid #bbb;
+}
+.certi3{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+.certi1{
+	position: absolute;
+	left: 50%;
+	top: 8%;
+	display: block;
+	width: 40%;
+	transform: translateX(-50%);
+}
+.certiTitle{
+	position: absolute;
+	left: 50%;
+	top: 21%;
+	display: block;
+	width: 25%;
+	transform: translateX(-50%);	
+}
+.line{
+	position: absolute;
+	left: 50%;
+	top: 29%;
+	display: block;
+	width: 50%;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	transform: translateX(-50%);	
+}
+.certi2{
+	position: absolute;
+	left: 50%;
+	bottom: 19%;
+	display: block;
+	width: 22%;
+	transform: translateX(-50%);
+}
+.certi4{
+	position: absolute;
+	right: 10%;
+	bottom: 9%;
+    z-index: 10;
+	display: block;
+	width: 25%;
+}
+.certi1 img, .certi2 img, .certi4 img, .certiTitle img{
+	width: 100%;
+}
+.certiTxt{
+	color: #333;
+}
+.txt1{
+	position: absolute;
+	left: 50%;
+	top: 32%;
+	transform: translateX(-50%);
+	font-size: 2vw;
+    line-height: 1.5;
+}
+.txt1 span:first-child{
+    display: inline-block;
+    margin-right: 3px;
+    padding: 0 14%;
+    border-bottom: 1px solid #000;
+}
+.txt1 span:last-child{
+    display: inline-block;
+    margin-left: 3px;
+}
+.txt2{
+	position: absolute;
+	left: 50%;
+	top: 64%;
+	transform: translateX(-50%);
+	font-size: 2vw;
+}
+.txt3{
+	position: absolute;
+	left: 50%;
+	top: 69%;
+	transform: translateX(-50%);
+	font-size: 1vw;
+	font-weight: bold;
+}
+.txt3 span:last-child{
+    display: inline-block;
+    margin-left: 3px;
+}
+.certiComp{
+	position: absolute;
+	left: 50%;
+	top: 40%;
+	transform: translateX(-50%);
+	font-size: 2vw;
+}
+.certiComp li{
+	text-align: center;
+	line-height: 1.3;
+}
+.bottomBtns.certi{
+    width: 90%;
+    margin: 60px auto 0;
+}
+.bottomBtns.certi .btn01 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+    border-radius: 15px;
+    background-color: #fff;
+    color: #000c19;
+    letter-spacing: -0.8px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+/* 얼럿창 */
+.alertModal01{
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
+}
+.alertModal02{
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
+}
+.alertModal03{
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
+}
+.alertModal01 > button, .alertModal02 > button, .alertModal03 > button{
+	position: absolute;
+	top: 153px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.alertInner{
+	position: absolute;
+	top: 208px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 327px;
+	padding: 35px 18px 22px 18px;
+	border-radius: 20px;
+	border: solid 1px #707070;
+	background-color: #fff;
+}
+.alertInner p{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: 22px;
+	font-weight: 500;
+	letter-spacing: -0.72px;
+    color: #000c19;
+}
+.alertInner p:first-child{
+	padding-bottom: 20px;
+}
+.alertInner p:nth-child(2){
+	padding-bottom: 34px;
+	line-height: 1.64;
+}
+.alertInner .button{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 58px;
+	border-radius: 15px;
+    background-color: #fff;
+    font-size: 18px;
+	font-weight: 500;
+	letter-spacing: -0.72px;
+	color: #000c19;
+	font-family: var(--fn-sans);
+}
+.alertInner.myPage p{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: 22px;
+	font-weight: 500;
+	line-height: 1.64;
+  	letter-spacing: -0.88px;
+    color: #000c19;
+    text-align: center;
+}
+.alertInner.myPage p:first-child{
+	padding-bottom: 20px;
+}
+.alertInner.myPage p:nth-child(2){
+	padding-bottom: 34px;
+	font-size: 14px;
+	color: #707070;
+	letter-spacing: -0.56px;
+}
+.alertInner.myPage .button{
+	color: #fff;
+}
+
+.companySelect option:first-child{
+	color: rgba(255, 255, 255, 0.5);
+}

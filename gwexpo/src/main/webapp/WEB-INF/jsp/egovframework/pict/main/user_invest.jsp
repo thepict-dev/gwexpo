@@ -17,11 +17,11 @@
 					<option value="${company_list.idx}">${company_list.title}</option>
 				</c:forEach>
 			</select>
-			<p style="margin-bottom: 116px;">얼마를 투자하시겠어요?</p>
+			<p style="margin-bottom: 116px;">얼마나 투자하시겠어요?</p>
 			<div class="wonInput">
-				<span class="smtit" id="money">남은금액</span>
+				<span class="smtit" id="money">남은 포인트</span>
 				<input type="number" placeholder="${pictVO.point}" id="point" name="point"/>
-				<span class="won">￦</span>
+				<span class="won"></span>
 			</div>
 			<div class="bottomBtns">
 				<a href="#lnk" onclick="button1_click()" class="btn01">투자할게요</a>
@@ -32,24 +32,25 @@
 </main>
 <div class="investingFooter invest">
 	<p>
-		<span>내가 투자한 금액은 회수할 수 없으니</span><br>
+		<span>내가 투자한 포인트는 회수할 수 없으니</span><br>
 		신중하게 투자해주세요
 	</p>
 	<a href="/">
-		<img src="../../../../../../front_img/investing-f.webp" alt="하단로고">
+		<img src="/img/user_img/mb-logo.png" alt="하단로고">
 	</a>
 </div>
 <div class="alertModal02" id="fund_pop">
-	<button onclick="btn_close()"><img src="../../../../../../front_img/close.webp" alt="닫기"></button>
+	<button onclick="btn_close()"><img src="/img/user_img/close.png" alt="닫기"></button>
 	<div class="alertInner">
 		<p style="font-size: 22px; font-weight: 500; text-align: center; line-height: 1.64; letter-spacing: -0.88px; display: none" id="suc_p">감사합니다! 기업에게<br>성공적으로 투자했어요! 😆</p>
 		<p style="font-size: 22px; font-weight: 500; text-align: center; line-height: 1.64; letter-spacing: -0.88px; display: none" id="suc_c">총 투자금액이 목표치에 도달하여<br>투자하실 수 없습니다.</p>
 		<p style="font-size: 22px; font-weight: 500; text-align: center; line-height: 1.64; letter-spacing: -0.88px; display: none" id="suc_e">투자에 실패하였습니다.<br>관리자에게 문의해주세요.</p>
 		
-		<button class="button" style="color: #fff;" onclick="btn_close()">확인</button>
+		<button class="button" style="color: #000; border: 1px solid #000;" onclick="btn_close()">확인</button>
 	</div>
 </div>
 <input type="hidden" id="fund" value=""/>
+<script src="/js/investing.js"></script>
 <script>
 
 	$("#point").bind("keyup",function(){

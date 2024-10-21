@@ -58,13 +58,37 @@ function fn_login() {
 	}
 </script>
 
+
 <div class="investHeader">
-    <a href="/"><img src="../../../../../../front_img/home.webp" alt="메뉴버튼"></a>
+    <h1>
+        <a href="/front_main.do">
+            <img src="/img/user_img/mb-logo.png" alt="로고">
+        </a>
+    </h1>
+    <button class="navBtn">
+        <img src="/img/user_img/menu.png" alt="메뉴버튼">
+    </button>
+    <div class="investNav">
+    	<div class="navMenu">
+    		<a href="#lnk"><img src="../../../../../../front_img/home.webp" alt="메뉴버튼"></a>
+    		<button class="navBtn2">
+        		<img src="../../../../../../front_img/menu.webp" alt="메뉴버튼">
+    		</button>
+    	</div>
+    	<ul>
+    		<li>
+    			<a href="/invest_mypage.do">마이페이지</a>
+    		</li>
+    		<li>
+    			<a href="/invest_certi.do">투자 인증서</a>
+    		</li>
+    	</ul>
+    </div>
 </div>
 <main>
     <div class="investContent">
         <div class="investTnner">
-        	<p>사전등록 하셨군요!<br>정보를 알려주세요</p>
+        	<p>크라우드 펀딩을 위한<br>로그인을 해주세요.</p>
 	        <form action="#" id="loginForm" name="loginForm" method="post" class="form">
 	        	<input type="text" placeholder="이름" onkeypress="if(event.keyCode == 13){fn_login();}" autocomplete="off" id="name" name="name">
 	        	<input type="number" placeholder="연락처" style="margin-top: 33px;" onkeypress="if(event.keyCode == 13){fn_login();}" autocomplete="off" id="mobile" name="mobile">
@@ -77,12 +101,8 @@ function fn_login() {
 </main>
 
 <div class="investingFooter">
-	<p>
-		크라우드 펀딩은 선착순으로<br>
-		사전등록한 인원만 참여 가능합니다.
-	</p>
 	<a href="/">
-		<img src="../../../../../../front_img/investing-f.webp" alt="하단로고">
+		<img src="/img/user_img/mb-logo.png" alt="하단로고">
 	</a>
 </div>
 <div class="alertModal01" id="login_fail">
