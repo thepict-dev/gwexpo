@@ -38,6 +38,44 @@ $('.siteMap > button.pc').click(function(){
     $('.side button').find('img:first-child').show().next().hide();
 });
 
+$('.openApply').click(function() {
+    $('.applyWrapper').addClass('active');
+});
+$('.appTop > button, .cancelApply').click(function() {
+    $('.applyWrapper').removeClass('active');
+});
+
+$('#agree').click(function() {
+    $('.agreeModal').addClass('active');
+});
+
+// 파일 선택 시 파일명 표시 및 삭제 버튼 표시
+$('#file').change(function() {
+    var fileName = $(this).val().split('\\').pop();
+    $('.fileName').text(fileName);
+    $('#deleteButton').show();
+});
+
+// 삭제 버튼 클릭 시 파일 선택 초기화
+$('#deleteButton').click(function() {
+    $('#file').val('');
+    $('.fileName').text('');
+    $(this).hide();
+});
+
+// 모달 닫기 버튼 클릭 시 모달 닫기
+$('.agreeInner > button').click(function() {
+    $('.agreeModal').removeClass('active');
+});
+
+// 모달 외부 영역 클릭 시 모달 닫기
+$(document).mouseup(function(e) {
+    var container = $(".agreeInner");
+    if (!container.is(e.target) && container.has(e.target).length === 0) {
+        $('.agreeModal').removeClass('active');
+    }
+});
+
 // const items = document.querySelectorAll('.projectLists li');
 // let ticking = false;
 

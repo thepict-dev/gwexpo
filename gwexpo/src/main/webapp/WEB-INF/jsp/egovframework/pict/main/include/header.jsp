@@ -50,7 +50,7 @@
                 </li>
             </ul>
             <div class="side">
-                <a href="#lnk">참가신청</a>
+                <a href="#lnk" class="openApply">참가신청</a>
                 <button type="button">
                     <img src="/img/user_img/menu.png" alt="">
                     <img src="/img//user_img/close.png" alt="" style="display: none; width: 34px;">
