@@ -219,34 +219,26 @@
 	<insert id="user_insert" parameterType="pictVO">
 		INSERT INTO user_table
 			(
-			 target_date, name, gender, mobile, email, intro_root, classify, company, company_addr, company_depart, use_at, point, register, reg_date, company_rank, fairpath_id, marketing, secret, third_party
+			 name, gender, mobile, email, classify, company, company_depart, company_rank, point, fairpath_id, reg_date
 			)
 		VALUES (
-			 #{target_date}, #{name}, #{gender}, #{mobile}, #{email}, #{intro_root}, #{classify}, #{company}, #{company_addr}, #{company_depart}, #{use_at}, #{point}, #{register} ,now(), #{company_rank}, #{fairpath_id}, #{marketing}, #{secret}, #{third_party}
+			 #{name}, #{gender}, #{mobile}, #{email}, #{classify}, #{company}, #{company_depart}, #{company_rank}, #{point}, #{fairpath_id}, now()
 			  ) 
 	</insert>
 	
 	<update id="user_update" parameterType="pictVO">
 		update user_table
-		set target_date =#{target_date}, 
+		set 
 		name =#{name},
 		gender =#{gender},
 		mobile =#{mobile},
 		email =#{email},
-		intro_root =#{intro_root},
 		classify =#{classify},
 		company =#{company},
-		company_addr =#{company_addr},
 		company_depart =#{company_depart},
 		company_rank =#{company_rank},
-		use_at =#{use_at},
-		register =#{register},
 		fairpath_id =#{fairpath_id},
-		
 		reg_date = now()
-		<if test="point != null and point != '' ">
-			, point =#{point}
-		</if>
 		where idx = #{idx}
 	</update>
 	

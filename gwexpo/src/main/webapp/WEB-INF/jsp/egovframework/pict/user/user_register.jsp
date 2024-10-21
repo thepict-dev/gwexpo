@@ -24,11 +24,31 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="write-box">
-
+									<div class="write-item">
+										<label for="title" class="title">등록분류</label>
+										<div class="input-box">
+											<select id="classify" name="classify" class="input opt-max-width-300">
+												<option value="1" <c:if test="${pictVO.classify eq '1'}"> selected</c:if> >일반참가자</option>
+												<option value="2" <c:if test="${pictVO.classify eq '2'}"> selected</c:if> >기업참가자</option>
+												<option value="3" <c:if test="${pictVO.classify eq '3'}"> selected</c:if> >VIP</option>
+												<option value="4" <c:if test="${pictVO.classify eq '4'}"> selected</c:if> >주최(강원도)</option>
+												<option value="5" <c:if test="${pictVO.classify eq '5'}"> selected</c:if> >주최(춘천시)</option>
+												<option value="6" <c:if test="${pictVO.classify eq '6'}"> selected</c:if> >주관(춘천바이오산업진흥원)</option>
+												<option value="7" <c:if test="${pictVO.classify eq '7'}"> selected</c:if> >STAFF</option>
+												<option value="8" <c:if test="${pictVO.classify eq '8'}"> selected</c:if> >PRESS</option>
+											</select>
+										</div>
+									</div>
 									<div class="write-item" style="margin-right:20px">
 										<label for="title" class="title">이름</label>
 										<div class="input-box">
 											<input type="text" id="name" name="name" value="${pictVO.name}" class="input opt-max-width-200">
+										</div>
+									</div>
+									<div class="write-item">
+										<label for="title" class="title">휴대전화번호</label>
+										<div class="input-box">
+											<input type="text" id="mobile" name="mobile" value="${pictVO.mobile}" class="input opt-max-width-300">
 										</div>
 									</div>
 									<div class="write-item">
@@ -41,12 +61,6 @@
 										</div>
 									</div>
 									<div class="write-item">
-										<label for="title" class="title">휴대전화번호</label>
-										<div class="input-box">
-											<input type="text" id="mobile" name="mobile" value="${pictVO.mobile}" class="input opt-max-width-300">
-										</div>
-									</div>
-									<div class="write-item">
 										<label for="title" class="title">이메일</label>
 										<div class="input-box">
 											<input type="text" id="email" name="email" value="${pictVO.email}" class="input opt-max-width-400">
@@ -54,38 +68,12 @@
 									</div>
 
 									<div class="write-item">
-										<label for="title" class="title">등록분류</label>
-										<div class="input-box">
-											<select id="classify" name="classify" class="input opt-max-width-300">
-												<option value="1" <c:if test="${pictVO.classify eq '1'}"> selected</c:if> >일반관람객</option>
-												<option value="2" <c:if test="${pictVO.classify eq '2'}"> selected</c:if> >일반관람객(펀딩불가)</option>
-												<option value="3" <c:if test="${pictVO.classify eq '3'}"> selected</c:if> >참가기업</option>
-												<option value="4" <c:if test="${pictVO.classify eq '4'}"> selected</c:if> >VC투자자</option>
-												<option value="5" <c:if test="${pictVO.classify eq '5'}"> selected</c:if> >주최/주관</option>
-												<option value="6" <c:if test="${pictVO.classify eq '6'}"> selected</c:if> >STAFF</option>
-												<option value="7" <c:if test="${pictVO.classify eq '7'}"> selected</c:if> >PRESS</option>
-											</select>
-										</div>
-									</div>
-									<div class="write-item">
 										<label for="title" class="title">기업명</label>
 										<div class="input-box">
 											<input type="text" id="company" name="company" value="${pictVO.company}" class="input opt-max-width-400">
 										</div>
 									</div>
-									<div class="write-item">
-										<label for="title" class="title">기업소재지</label>
-										<div class="input-box">
-											<select id="company_addr" name="company_addr" class="input opt-max-width-300">
-												<option value="1" <c:if test="${pictVO.company_addr eq '1'}"> selected</c:if> >서울/경기/수도권</option>
-												<option value="2" <c:if test="${pictVO.company_addr eq '2'}"> selected</c:if> >강원도</option>
-												<option value="3" <c:if test="${pictVO.company_addr eq '3'}"> selected</c:if> >충청도</option>
-												<option value="4" <c:if test="${pictVO.company_addr eq '4'}"> selected</c:if> >경상도</option>
-												<option value="5" <c:if test="${pictVO.company_addr eq '5'}"> selected</c:if> >전라도</option>
-												<option value="6" <c:if test="${pictVO.company_addr eq '6'}"> selected</c:if> >기타</option>
-											</select>
-										</div>
-									</div>
+	
 									<div class="write-item">
 										<label for="title" class="title">부서/직위</label>
 										<div class="input-box">

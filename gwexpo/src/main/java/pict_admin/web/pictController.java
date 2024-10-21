@@ -772,15 +772,15 @@ public class pictController {
 				obj_param.put("VISITOR_IDX", pictVO.getFairpath_id());
 				
 				String option = "5261";
-				/*
-				if(pictVO.getClassify().equals("1")) option = "1645";	//1-일반참가자 - 1645 
-				else if(pictVO.getClassify().equals("2")) option = "1648";	//2-일반관람객(펀딩불가)- 1648
-				else if(pictVO.getClassify().equals("3")) option = "1646";	//3-참가기업 - 1646
-				else if(pictVO.getClassify().equals("4")) option = "1647";	//4-VC투자자 - 1647
-				else if(pictVO.getClassify().equals("5")) option = "1692";	//5-주최주관 - 1692
-				else if(pictVO.getClassify().equals("6")) option = "1693";	//6-STAFF - 1693
-				else if(pictVO.getClassify().equals("7")) option = "1694";	//7-PRESS - 1694
-				*/
+				if(pictVO.getClassify().equals("1")) option = "5261";	
+				else if(pictVO.getClassify().equals("2")) option = "5268";
+				else if(pictVO.getClassify().equals("3")) option = "5269";
+				else if(pictVO.getClassify().equals("4")) option = "5270";
+				else if(pictVO.getClassify().equals("5")) option = "5271";
+				else if(pictVO.getClassify().equals("6")) option = "5272";
+				else if(pictVO.getClassify().equals("7")) option = "5273";
+				else if(pictVO.getClassify().equals("8")) option = "5274";
+				
 				System.out.println(option);
 				obj_param.put("OPTION_IDX", option);
 				obj_param.put("NAME", pictVO.getName());
@@ -851,15 +851,15 @@ public class pictController {
 				obj_param.put("EVENT_IDX", "2495");	//행사코드 고정
 				
 				String option = "5261";
-				/*
-				if(pictVO.getClassify().equals("1")) option = "1645";	//1-일반참가자 - 1645 
-				else if(pictVO.getClassify().equals("2")) option = "1648";	//2-일반관람객(펀딩불가)- 1648
-				else if(pictVO.getClassify().equals("3")) option = "1646";	//3-참가기업 - 1646
-				else if(pictVO.getClassify().equals("4")) option = "1647";	//4-VC투자자 - 1647
-				else if(pictVO.getClassify().equals("5")) option = "1692";	//5-주최주관 - 1692
-				else if(pictVO.getClassify().equals("6")) option = "1693";	//6-STAFF - 1693
-				else if(pictVO.getClassify().equals("7")) option = "1694";	//7-PRESS - 1694
-				*/
+				if(pictVO.getClassify().equals("1")) option = "5261";	
+				else if(pictVO.getClassify().equals("2")) option = "5268";
+				else if(pictVO.getClassify().equals("3")) option = "5269";
+				else if(pictVO.getClassify().equals("4")) option = "5270";
+				else if(pictVO.getClassify().equals("5")) option = "5271";
+				else if(pictVO.getClassify().equals("6")) option = "5272";
+				else if(pictVO.getClassify().equals("7")) option = "5273";
+				else if(pictVO.getClassify().equals("8")) option = "5274";
+				
 				System.out.println(option);
 				obj_param.put("OPTION_IDX", option);
 				obj_param.put("NAME", pictVO.getName());
