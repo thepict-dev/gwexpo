@@ -20,7 +20,7 @@
     width: 90%;
     max-width: 1059px;
     max-height: 960px;
-    height: 70%;
+    height: fit-content;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
@@ -93,6 +93,9 @@
         font-size: 16px;
     }
 
+	.applyContainer {
+	    max-height: 600px;
+	}
 }
 
 .flexInputs{
@@ -191,6 +194,7 @@
     position: fixed;
     left: 0;
     top: 0;
+    z-index: 1000;
     display: none;
     justify-content: center;
     align-items: center;
@@ -486,4 +490,20 @@ input.checkOnly[type=checkbox]:checked + label {
     ::-webkit-scrollbar {
         display: none;
     }
+}
+
+#classify{
+   	width: 300px;
+    padding: 12px 8px;
+    color: #000;
+    font-family: var(--fn-suit);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 100%;
+    border: 0;
+    border: 1px solid var(--purple-100);
+    box-sizing: border-box;
+}
+#classify:focus{
+	outline: none;
 }
