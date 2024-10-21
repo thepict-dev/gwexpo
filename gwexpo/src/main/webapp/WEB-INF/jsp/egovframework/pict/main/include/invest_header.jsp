@@ -11,7 +11,7 @@
 %>
 
 <div class="investHeader">
-    <a href="/"><img src="/img/user_img/mb-logo.png" alt="홈"></a>
+    <a href="/invest_login.do"><img src="/img/user_img/mb-logo.png" alt="홈"></a>
     <button class="navBtn">
         <img src="/img/user_img/menu.png" alt="메뉴버튼">
     </button>

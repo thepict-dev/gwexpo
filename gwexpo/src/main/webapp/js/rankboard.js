@@ -104,15 +104,15 @@ function getNewData(){
 
         if (i === 0) {
 			rank.$item.find(".rankiPrize").html(`
-            	<td class='rankiPrize'><img src='../../../../../../front_img/1.webp' alt=''></td>
+            	<td class='rankiPrize'><img src='/img/user_img/1.webp' alt=''></td>
             `);
 		} else if (i === 1) {
 			rank.$item.find(".rankiPrize").html(`
-            	<td class='rankiPrize'><img src='../../../../../../front_img/2.webp' alt=''></td>
+            	<td class='rankiPrize'><img src='/img/user_img/2.webp' alt=''></td>
             `);
 		} else if (i === 2) {
 			rank.$item.find(".rankiPrize").html(`
-            	<td class='rankiPrize'><img src='../../../../../../front_img/3.webp' alt=''></td>
+            	<td class='rankiPrize'><img src='/img/user_img/3.webp' alt=''></td>
             `);
 		} else {
 			rank.$item.find(".rankiPrize").html(`
@@ -155,7 +155,7 @@ function resetBoard() {
 
 	        var $item = $(
 	            "<tr class='rank'>" +
-	                "<td class='rankiPrize 1st'><img src='../../../../../../front_img/1.webp' alt=''></td>" +
+	                "<td class='rankiPrize 1st'><img src='/img/user_img/1.webp' alt=''></td>" +
 	                "<td class='rankName'>" + rankLists[i].title + "</td>" +
 	                "<td class='rankPrice'>" + rankLists[i].point.toLocaleString() + "</td>" +
 	            "</tr>"
@@ -166,7 +166,7 @@ function resetBoard() {
 		} else if (i === 1) {
 	        var $item = $(
 	            "<tr class='rank'>" +
-	                "<td class='rankiPrize 1st'><img src='../../../../../../front_img/2.webp' alt=''></td>" +
+	                "<td class='rankiPrize 1st'><img src='/img/user_img/2.webp' alt=''></td>" +
 	                "<td class='rankName'>" + rankLists[i].title + "</td>" +
 	                "<td class='rankPrice'>" + rankLists[i].point.toLocaleString() + "</td>" +
 	            "</tr>"
@@ -177,7 +177,7 @@ function resetBoard() {
 		} else if (i === 2) {
 	        var $item = $(
 	            "<tr class='rank'>" +
-	                "<td class='rankiPrize 1st'><img src='../../../../../../front_img/3.webp' alt=''></td>" +
+	                "<td class='rankiPrize 1st'><img src='/img/user_img/3.webp' alt=''></td>" +
 	                "<td class='rankName'>" + rankLists[i].title + "</td>" +
 	                "<td class='rankPrice'>" + rankLists[i].point.toLocaleString() + "</td>" +
 	            "</tr>"

@@ -287,23 +287,12 @@ public class apiController {
 		response.setCharacterEncoding("utf-8");
 		response.setHeader("Access-Control-Allow-Methods", "GET");
 		
-		String idx = request.getParameter("idx");
-		pictVO.setIdx(Integer.parseInt(idx));
-		List<PictVO> attendance_list = pictService.lecture_attendance_api(pictVO);
-		
+		List<PictVO> company_list_api = pictService.funding_list_company_api(pictVO);
 		ArrayList<Map<String, Object>> list = new ArrayList();
-		for(PictVO a : attendance_list){
+		for(PictVO a : company_list_api){
 			Map<String, Object> map = new HashMap<>();
-			map.put("idx" , a.getIdx()); 
-			map.put("title" , a.getTitle());
-			map.put("professor" , a.getProfessor());
-			map.put("name" , a.getName());
-			map.put("in_date" , a.getIn_date());
-			map.put("out_date" , a.getOut_date());
-			map.put("std_num" , a.getStd_num());
-			map.put("timediff" , a.getTimediff());
-			map.put("category_cnt" , a.getCategory_cnt());
-			map.put("whole_timediff" , a.getWhole_timediff());
+			map.put("title" , a.getTitle()); 
+			map.put("point" , a.getPoint());
 			
 			list.add(map);
 		}

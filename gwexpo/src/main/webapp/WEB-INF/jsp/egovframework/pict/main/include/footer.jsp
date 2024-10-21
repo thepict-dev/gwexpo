@@ -14,7 +14,9 @@
             </ul>
             <p class="copy">COPYRIGHT (C) CHUNCHEON BIOINDUSTRY FOUNDATION. ALL RIGHTS RESERVED</p>
         </div>
+        <!-- 
         <a href="" target="_blank" title="새창열기">개인정보 처리방침</a>
+         -->
     </div>
 </footer>
 

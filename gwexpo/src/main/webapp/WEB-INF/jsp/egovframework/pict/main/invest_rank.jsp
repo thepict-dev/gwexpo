@@ -9,7 +9,7 @@
 
 <div class="investHeader">
     <h1>
-        <a href="/front_main.do">
+        <a href="/invest_login.do">
             <img src="/img/user_img/mb-logo.png" alt="로고">
         </a>
     </h1>
@@ -84,4 +84,4 @@
 		<a href="#lnk" class="button">다시 인증하기</a>
 	</div>
 </div>
-<!-- <script type="text/javascript" src="../../../../../../js/rankboard.js"></script> -->
+<script type="text/javascript" src="../../../../../../js/rankboard.js"></script>

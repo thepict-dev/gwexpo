@@ -108,7 +108,7 @@ public interface PictMapper {
 
 	
 	//GSF 추가
-	List<?> funding_list_company_api(PictVO pictVO) throws Exception;
+	List<PictVO> funding_list_company_api(PictVO pictVO) throws Exception;
 
 	PictVO total_invest(PictVO pictVO) throws Exception;
 

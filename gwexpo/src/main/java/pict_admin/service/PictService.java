@@ -102,7 +102,7 @@ public interface PictService {
 	void company_delete(PictVO pictVO) throws Exception;
 
 	//여기서부터 GSF옮긴 서비스
-	List<?> funding_list_company_api(PictVO pictVO) throws Exception;
+	List<PictVO> funding_list_company_api(PictVO pictVO) throws Exception;
 
 	PictVO total_invest(PictVO pictVO) throws Exception;
 

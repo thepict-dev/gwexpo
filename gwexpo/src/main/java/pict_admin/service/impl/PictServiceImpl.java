@@ -248,7 +248,7 @@ public class PictServiceImpl extends EgovAbstractServiceImpl implements PictServ
 
 	//GSF 추가
 	@Override
-	public List<?> funding_list_company_api(PictVO pictVO) throws Exception {
+	public List<PictVO> funding_list_company_api(PictVO pictVO) throws Exception {
 		// TODO Auto-generated method stub
 		return pictMapper.funding_list_company_api(pictVO);
 	}

@@ -61,7 +61,7 @@ function fn_login() {
 
 <div class="investHeader">
     <h1>
-        <a href="/front_main.do">
+        <a href="/invest_login.do">
             <img src="/img/user_img/mb-logo.png" alt="로고">
         </a>
     </h1>
@@ -91,7 +91,7 @@ function fn_login() {
         	<p>크라우드 펀딩을 위한<br>로그인을 해주세요.</p>
 	        <form action="#" id="loginForm" name="loginForm" method="post" class="form">
 	        	<input type="text" placeholder="이름" onkeypress="if(event.keyCode == 13){fn_login();}" autocomplete="off" id="name" name="name">
-	        	<input type="number" placeholder="연락처" style="margin-top: 33px;" onkeypress="if(event.keyCode == 13){fn_login();}" autocomplete="off" id="mobile" name="mobile">
+	        	<input type="text" placeholder="연락처" style="margin-top: 33px;" onkeypress="if(event.keyCode == 13){fn_login();}" autocomplete="off" id="mobile" name="mobile">
 	        </form>
 	        <div class="bottomBtns">
 	        	<a href="#lnk" onclick="javascript:fn_login();" class="btn01">사전등록 인증하기</a>

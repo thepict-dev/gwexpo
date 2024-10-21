@@ -22,9 +22,8 @@
 	     -->
     	<%@include file="./include/header.jsp" %>
    	    <main>
-   			<!-- 
 	        <div class="fundingBanner">
-	            <a href="">
+	            <a href="/invest_login.do">
 	                <p>
 	                    <span>혁신적인 기업에게 투표하세요</span>
 	                    크라우드 펀딩 OPEN
@@ -32,7 +31,6 @@
 	                <img src="/img/user_img/cube-none.png" alt="">
 	            </a>
 	        </div>
-	     	-->
 	        <div class="IntroSection">
 	            <p>강원 바이오의 <span>새 울림</span></p>
 	            <div class="IntroSecTitle">

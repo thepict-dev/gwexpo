@@ -17,14 +17,14 @@
 				<span class="line"></span>
 				<span class="certi2"><img src="/img/user_img/certi2.webp" alt=""></span>
 				<span class="certi4"><img src="/img/user_img/certi4.webp" alt=""></span>
-				<p class="txt1" style="white-space: nowrap"><span>${pictVO.name}</span>님은<br>${fn:substring(pictVO.target_date,0,4)}년 ${fn:substring(pictVO.target_date,5,7)}월<span>${fn:substring(pictVO.target_date,8,11)}</span>일</p>
+				<p class="txt1" style="white-space: nowrap"><span>${pictVO.name}</span>님은<br>2024년 11월<span>06</span>일</p>
 				<ul class="certiComp">
 					<c:forEach var="resultList" items="${resultList}" varStatus="status">
 						<li>${resultList.title}</li>
 					</c:forEach>
 				</ul>
 				<p class="txt2">기업에게 투자하였습니다.</p>
-				<p class="txt3">${fn:substring(pictVO.target_date,0,4)}년 ${fn:substring(pictVO.target_date,5,7)}월<span>${fn:substring(pictVO.target_date,8,11)}</span>일</p>
+				<p class="txt3">2024년 11월<span>06</span>일</p>
 			</div>
 			<img src="/img/user_img/certi3.webp" class="certi3" alt="">
 		</div>
