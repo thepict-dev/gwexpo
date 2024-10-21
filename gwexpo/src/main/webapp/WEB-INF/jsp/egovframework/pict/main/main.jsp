@@ -10,6 +10,7 @@
     	<c:param name="pageTitle" value="2024강원바이오엑스포&제2회창업엑스포"/>
     </c:import>
     <body>
+    <!-- 
 	    <div class="IntroContainer">
 	        <p>강원 바이오의 <span>새 울림</span></p>
 	        <div class="imgTitle">
@@ -18,6 +19,7 @@
 	            <span>어울림</span>
 	        </div>
 	    </div>
+	     -->
     	<%@include file="./include/header.jsp" %>
    	    <main>
    			<!-- 
@@ -150,6 +152,7 @@
 	    </main>
     	<%@include file="./include/footer.jsp" %>
 	    <script>
+	    	/*
 	        const introContainer = document.querySelector('.IntroContainer');
 	        const mainText = introContainer.querySelector('p');
 	        const cubeImg = introContainer.querySelector('.imgTitle img');
@@ -174,6 +177,7 @@
 	        }
 	
 	        startAnimation();
+	        */
 	    </script>
     </body>
 </html>
