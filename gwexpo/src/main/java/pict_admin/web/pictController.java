@@ -78,9 +78,10 @@ public class pictController {
 	@Resource(name = "adminService")
 	private AdminService adminService;
 	
-	
+	//사용자 
+	//메인
 	@RequestMapping(value = "/main.do")
-	public String main(@ModelAttribute("searchVO") AdminVO adminVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+	public String main(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
 		String userAgent = request.getHeader("user-agent");
 		boolean mobile1 = userAgent.matches( ".*(iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson).*");
 		boolean mobile2 = userAgent.matches(".*(LG|SAMSUNG|Samsung).*"); 
@@ -94,6 +95,94 @@ public class pictController {
 		
 		return "pict/main/main";
 	}
+	//개요
+	@RequestMapping(value = "/outline.do")
+	public String outline(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+
+		return "pict/main/outline";
+	}
+	//안내도
+	@RequestMapping(value = "/map.do")
+	public String map(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+
+		return "pict/main/map";
+	}
+	//일정
+	@RequestMapping(value = "/schedule.do")
+	public String schedule(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+
+		return "pict/main/schedule";
+	}
+	//오시는길
+	@RequestMapping(value = "/location.do")
+	public String location(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+
+		return "pict/main/location";
+	}
+
+	//전시관 배치도
+	@RequestMapping(value = "/exhibition.do")
+	public String exhibition(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+
+		return "pict/main/exhibition";
+	}
+	//참가 기업 안내
+	@RequestMapping(value = "/company.do")
+	public String company(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+
+		return "pict/main/company";
+	}
+	//로컬브랜드페스타
+	@RequestMapping(value = "/local.do")
+	public String local(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+
+		return "pict/main/local";
+	}
+	
+	//개막식
+	@RequestMapping(value = "/opening.do")
+	public String opening(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+
+		return "pict/main/opening";
+	}
+	//펀딩
+	@RequestMapping(value = "/funding_intro.do")
+	public String funding_intro(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+
+		return "pict/main/funding_intro";
+	}
+	//특별강연
+	@RequestMapping(value = "/lecture.do")
+	public String lecture(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+
+		return "pict/main/lecture";
+	}
+	//기업 프로그램
+	@RequestMapping(value = "/company_program.do")
+	public String company_program(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+
+		return "pict/main/company_program";
+	}
+	//기업 프로그램
+	@RequestMapping(value = "/exp_program.do")
+	public String exp_program(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+
+		return "pict/main/exp_program";
+	}
+
+	//공지
+	@RequestMapping(value = "/notice.do")
+	public String notice(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+
+		return "pict/main/notice";
+	}
+	//공지 뷰
+	@RequestMapping(value = "/notice_view.do")
+	public String notice_view(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+
+		return "pict/main/notice_view";
+	}
+    
 	
 	
 	@RequestMapping(value = "/company_register.do", method = RequestMethod.POST)

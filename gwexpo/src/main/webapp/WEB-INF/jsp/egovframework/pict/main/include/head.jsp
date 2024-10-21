@@ -16,8 +16,13 @@
 <!--     <meta property="og:image" content="../../../../../images/pict/og-image.png">     -->
 
     <title>${param.pageTitle}</title>
-    <link rel="stylesheet" href="/css/user_css/reset.css">
-    <link rel="stylesheet" href="/css/user_css/common.css">
+    <link rel="stylesheet" href="/css/user_css/reset.css" type="text/css">
+    <link rel="stylesheet" href="/css/user_css/common.css" type="text/css">
+    <link rel="stylesheet" href="/css/user_css/header.css" type="text/css">
+    <link rel="stylesheet" href="/css/user_css/footer.css" type="text/css">
+    <link rel="stylesheet" href="/css/user_css/main.css" type="text/css">
+    <link rel="stylesheet" href="/css/user_css/sub.css" type="text/css">
     <link rel="stylesheet" href="/css/user_css/apply.css">
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <script src="/js/script.js" defer></script>
 </head>
