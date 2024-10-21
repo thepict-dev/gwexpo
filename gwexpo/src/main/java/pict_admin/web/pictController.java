@@ -785,14 +785,13 @@ public class pictController {
 				obj_param.put("OPTION_IDX", option);
 				obj_param.put("NAME", pictVO.getName());
 				obj_param.put("TEL", pictVO.getMobile());
-				obj_param.put("EMAIL", pictVO.getEmail());
 				obj_param.put("GENDER", pictVO.getGender());
 				
 				//회사부서직급
 				obj_param.put("INFO3", pictVO.getCompany());
 				obj_param.put("INFO5", pictVO.getCompany_depart());
 				obj_param.put("INFO7", pictVO.getCompany_rank());
-				
+				obj_param.put("INFO9", pictVO.getEmail());
 				//서버에 데이터 전달
 				BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
 				bw.write(obj_param.toString()); // 버퍼에 담기
@@ -864,13 +863,13 @@ public class pictController {
 				obj_param.put("OPTION_IDX", option);
 				obj_param.put("NAME", pictVO.getName());
 				obj_param.put("TEL", pictVO.getMobile());
-				obj_param.put("EMAIL", pictVO.getEmail());
 				obj_param.put("GENDER", pictVO.getGender());
 				
 				//회사부서직급
 				obj_param.put("INFO3", pictVO.getCompany());
 				obj_param.put("INFO5", pictVO.getCompany_depart());
 				obj_param.put("INFO7", pictVO.getCompany_rank());
+				obj_param.put("INFO9", pictVO.getEmail());
 				
 				//서버에 데이터 전달
 				BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
@@ -1020,13 +1019,13 @@ public class pictController {
 			obj_param.put("OPTION_IDX", option);
 			obj_param.put("NAME", name);
 			obj_param.put("TEL", mobile);
-			obj_param.put("EMAIL", email);
 			obj_param.put("GENDER", gender);
 			
 			//회사부서직급
 			obj_param.put("INFO3", company);
 			obj_param.put("INFO5", company_depart);
 			obj_param.put("INFO7", company_rank);
+			obj_param.put("INFO9", email);
 			
 			//서버에 데이터 전달
 			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
