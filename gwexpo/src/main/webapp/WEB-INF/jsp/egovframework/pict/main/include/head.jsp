@@ -31,4 +31,13 @@
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="/js/script.js" defer></script>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PRDBT8L789"></script>
+    <script>
+	    window.dataLayer = window.dataLayer || [];
+	    function gtag(){dataLayer.push(arguments);}
+	    gtag('js', new Date());
+	
+	    gtag('config', 'G-PRDBT8L789');
+    </script>
 </head>
