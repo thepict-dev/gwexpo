@@ -987,7 +987,7 @@ public class pictController {
 		List<?> company_list = pictService.funding_list_company_api(pictVO);
 		
 		model.addAttribute("company_list", company_list);
-		return "pict/front/invest_rank";
+		return "pict/main/invest_rank";
 	}
 	//투자 로그인
 	@RequestMapping(value = "/invest_login.do")
@@ -997,15 +997,8 @@ public class pictController {
 			return "redirect:/user_invest.do";
 		}
 		
-		String userAgent = request.getHeader("user-agent").toUpperCase();
-		//모바일이 아닌경우 재영 이거쓰면 됨
-		if(!(userAgent.indexOf("MOBI") > -1)) {
-			model.addAttribute("message", "투자 플랫폼은 모바일에서만 가능합니다.");
-			model.addAttribute("retType", ":location");
-			model.addAttribute("retUrl", "/");
-			return "pict/main/message";
-	    }
-		return "pict/front/invest_login";
+
+		return "pict/main/invest_login";
 	}
 	//투자 로그인 처리
 	@RequestMapping(value = "/invest_login_action.do", method= RequestMethod.POST)
@@ -1051,15 +1044,6 @@ public class pictController {
 			return "redirect:/invest_login.do";
 		}
 		
-		String userAgent = request.getHeader("user-agent").toUpperCase();
-		//모바일이 아닌경우 재영 이거쓰면 됨
-		if(!(userAgent.indexOf("MOBI") > -1)) {
-			model.addAttribute("message", "투자 플랫폼은 모바일에서만 가능합니다.");
-			model.addAttribute("retType", ":location");
-			model.addAttribute("retUrl", "/");
-			return "pict/main/message";
-	    }
-		
 		pictVO.setInvest("1");
 		List<?> company_list = pictService.company_list(pictVO);
 		
@@ -1078,7 +1062,7 @@ public class pictController {
 		model.addAttribute("vo", vo);
 		model.addAttribute("vo2", vo2);
 		model.addAttribute("company_list", company_list);
-		return "pict/front/user_invest";
+		return "pict/main/user_invest";
 	}
 
 	@RequestMapping(value = "/user_invest_save.do", method= RequestMethod.POST)
@@ -1088,48 +1072,19 @@ public class pictController {
 		if(session == null || session == "null") {
 			return "redirect:/invest_login.do";
 		}
-		
-		String userAgent = request.getHeader("user-agent").toUpperCase();
-		//모바일이 아닌경우 재영 이거쓰면 됨
-		if(!(userAgent.indexOf("MOBI") > -1)) {
-			model.addAttribute("message", "투자 플랫폼은 모바일에서만 가능합니다.");
-			model.addAttribute("retType", ":location");
-			model.addAttribute("retUrl", "/");
-			return "pict/main/message";
-	    }
-		
-		
+
 		String company_id = param.get("company_id").toString();
 		String point = param.get("point").toString();
 		String idx = param.get("idx").toString();
 	
+		pictVO.setCompany_id(company_id);
+		pictVO.setPoint(point);
+		pictVO.setIdx(Integer.parseInt(idx));
 		
-		PictVO vo = pictService.total_invest(pictVO);
-		PictVO vo2 = pictService.maximum_price(pictVO);
-		
-		if(vo != null && Double.parseDouble(vo.getPoint()) + Double.parseDouble(point) > Double.parseDouble(vo2.getMaximum())) {
-			return "N";
-			//model.addAttribute("message", "총 투자금액이 목표치에 도달하여 투자하실 수 없습니다.");
-			//model.addAttribute("retType", ":location");
-			//model.addAttribute("retUrl", "/");	//랭킹페이지로 이동
-			//return "pict/main/message";
-		}
-		else {
-			
-			
-			pictVO.setCompany_id(company_id);
-			pictVO.setPoint(point);
-			pictVO.setIdx(Integer.parseInt(idx));
-			
-			pictService.invest_insert(pictVO);
-			pictService.user_invest_minus(pictVO);
-			return "Y";
-			
-			//model.addAttribute("message", "정상적으로 투자되었습니다.");
-			//model.addAttribute("retType", ":location");
-			//model.addAttribute("retUrl", "/invest_rank.do");	//랭킹페이지로 이동
-			//return "pict/main/message";
-		}
+		pictService.invest_insert(pictVO);
+		pictService.user_invest_minus(pictVO);
+		return "Y";
+	
 		
 	}
 	//투자 마이페이지
@@ -1139,21 +1094,12 @@ public class pictController {
 		if(session == null || session == "null") {
 			return "redirect:/invest_login.do";
 		}
-		String userAgent = request.getHeader("user-agent").toUpperCase();
-		//모바일이 아닌경우 재영 이거쓰면 됨
-		if(!(userAgent.indexOf("MOBI") > -1)) {
-			model.addAttribute("message", "투자 플랫폼은 모바일에서만 가능합니다.");
-			model.addAttribute("retType", ":location");
-			model.addAttribute("retUrl", "/");
-			return "pict/main/message";
-	    }
-		
 		
 		pictVO.setIdx(Integer.parseInt(session));
 		List<?> company_list = pictService.funding_mypage_list(pictVO);
 		model.addAttribute("listSize", company_list.size());
 		model.addAttribute("resultList", company_list);
-		return "pict/front/invest_mypage";
+		return "pict/main/invest_mypage";
 	}
 	//투자 인증서
 	@RequestMapping(value = "/invest_certi.do")
@@ -1162,15 +1108,6 @@ public class pictController {
 		if(session == null || session == "null") {
 			return "redirect:/invest_login.do";
 		}
-		String userAgent = request.getHeader("user-agent").toUpperCase();
-		//모바일이 아닌경우 재영 이거쓰면 됨
-		if(!(userAgent.indexOf("MOBI") > -1)) {
-			model.addAttribute("message", "투자 플랫폼은 모바일에서만 가능합니다.");
-			model.addAttribute("retType", ":location");
-			model.addAttribute("retUrl", "/");
-			return "pict/main/message";
-	    }
-		
 
 		
 		pictVO.setIdx(Integer.parseInt((String) request.getSession().getAttribute("idx")));
@@ -1179,7 +1116,7 @@ public class pictController {
 		model.addAttribute("resultList", company_list);
 		pictVO = pictService.user_list_one(pictVO);
 		model.addAttribute("pictVO", pictVO);
-		return "pict/front/invest_certi";
+		return "pict/main/invest_certi";
 	}
 
 	public String unscript(String data) {
