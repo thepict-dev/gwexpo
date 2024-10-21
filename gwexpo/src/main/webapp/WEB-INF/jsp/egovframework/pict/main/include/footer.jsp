@@ -46,11 +46,11 @@
                     </div>
                     <div class="flexInputs">
                         <div class="inputBox lg">
-                            <p class="inputCaption">이름</p>
+                            <p class="inputCaption">이름*</p>
                             <input type="text" name="name" id="name" placeholder="이름을 입력하세요">
                         </div>
 	                    <div class="inputBox">
-	                        <p class="inputCaption">성별</p>
+	                        <p class="inputCaption">성별*</p>
 	                        <div class="checkContainer">
 	                            <div class="checkInput">
 	                                <input type="radio" name="gender" id="1" value="1">
@@ -65,7 +65,7 @@
                     </div>
                     <div class="flexInputs">
                         <div class="inputBox lg">
-                            <p class="inputCaption">연락처</p>
+                            <p class="inputCaption">연락처*</p>
                             <input type="text" name="mobile" id="mobile" placeholder="연락처를 입력하세요">
                         </div>
                         <div class="inputBox lg">
@@ -130,6 +130,11 @@
 		if(name == '' || name == null || name == undefined){
 			alert('이름을 입력해주세요.');
 			$('#name').focus();
+			return false;
+		}
+		if(gender == '' || gender == null || gender == undefined){
+			alert('성별을 선택해주세요.');
+			$('#gender').focus();
 			return false;
 		}
 		if(mobile == '' || mobile == null || mobile == undefined){
