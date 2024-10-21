@@ -1,62 +1,62 @@
 @font-face {
 	font-family: 'SUIT';
 	font-weight: 100;
-	src: local('SUIT Thin'), url('../suit/SUIT-Thin.woff2') format('woff2');
+	src: local('SUIT Thin'), url('/font/suit/SUIT-Thin.woff2') format('woff2');
 	font-display: swap;
 }
 
 @font-face {
 	font-family: 'SUIT';
 	font-weight: 200;
-	src: local('SUIT ExtraLight'), url('../suit/SUIT-ExtraLight.woff2') format('woff2');
+	src: local('SUIT ExtraLight'), url('/font/suit/SUIT-ExtraLight.woff2') format('woff2');
 	font-display: swap;
 }
 
 @font-face {
 	font-family: 'SUIT';
 	font-weight: 300;
-	src: local('SUIT Light'), url('../suit/SUIT-Light.woff2') format('woff2');
+	src: local('SUIT Light'), url('/font/suit/SUIT-Light.woff2') format('woff2');
 	font-display: swap;
 }
 
 @font-face {
 	font-family: 'SUIT';
 	font-weight: 400;
-	src: local('SUIT Regular'), url('../suit/SUIT-Regular.woff2') format('woff2');
+	src: local('SUIT Regular'), url('/font/suit/SUIT-Regular.woff2') format('woff2');
 	font-display: swap;
 }
 
 @font-face {
 	font-family: 'SUIT';
 	font-weight: 500;
-	src: local('SUIT Medium'), url('../suit/SUIT-Medium.woff2') format('woff2');
+	src: local('SUIT Medium'), url('/font/suit/SUIT-Medium.woff2') format('woff2');
 	font-display: swap;
 }
 
 @font-face {
 	font-family: 'SUIT';
 	font-weight: 600;
-	src: local('SUIT SemiBold'), url('../suit/SUIT-SemiBold.woff2') format('woff2');
+	src: local('SUIT SemiBold'), url('/font/suit/SUIT-SemiBold.woff2') format('woff2');
 	font-display: swap;
 }
 
 @font-face {
 	font-family: 'SUIT';
 	font-weight: 700;
-	src: local('SUIT Bold'), url('../suit/SUIT-Bold.woff2') format('woff2');
+	src: local('SUIT Bold'), url('/font/suit/SUIT-Bold.woff2') format('woff2');
 	font-display: swap;
 }
 
 @font-face {
 	font-family: 'SUIT';
 	font-weight: 800;
-	src: local('SUIT ExtraBold'), url('../suit/SUIT-ExtraBold.woff2') format('woff2');
+	src: local('SUIT ExtraBold'), url('/font/suit/SUIT-ExtraBold.woff2') format('woff2');
 	font-display: swap;
 }
 
 @font-face {
 	font-family: 'SUIT';
 	font-weight: 900;
-	src: local('SUIT Heavy'), url('../suit/SUIT-Heavy.woff2') format('woff2');
+	src: local('SUIT Heavy'), url('/font/suit/SUIT-Heavy.woff2') format('woff2');
 	font-display: swap;
 }

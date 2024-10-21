@@ -23,39 +23,47 @@
 	                    <div class="proImg">
 	                        <div class="back"></div>
 	                        <img src="/img/user_img/test.webp" alt="">
-	                        <p>기업의 주요 상품 판매를 촉진하기 위한 라이브 커머스를 진행합니다.</p>
+	                        <p>기업의 주요 상품 판매를<br>촉진하기 위한 라이브 커머스를 진행합니다.</p>
 	                    </div>
 	                </li>
 	                <li>
-	                    <p>라이브커머스</p>
+	                    <p>Shorts Shop</p>
 	                    <div class="proImg">
 	                        <div class="back"></div>
 	                        <img src="/img/user_img/test.webp" alt="">
-	                        <p>기업의 주요 상품 판매를 촉진하기 위한 라이브 커머스를 진행합니다.</p>
+	                        <p>크리에이터에게 제품을 제공하고, <br>쇼츠 리뷰를 통해 바이럴 마케팅을 진행합니다.</p>
 	                    </div>
 	                </li>
 	                <li>
-	                    <p>라이브커머스</p>
+	                    <p>IR 데모데이</p>
 	                    <div class="proImg">
 	                        <div class="back"></div>
 	                        <img src="/img/user_img/test.webp" alt="">
-	                        <p>기업의 주요 상품 판매를 촉진하기 위한 라이브 커머스를 진행합니다.</p>
+	                        <p>각 분야의 전문가와 투자자를 초청하여, 직접적인 투자 유치와 전문 피드백을 받을 수 있는 기회를 제공합니다.</p>
 	                    </div>
 	                </li>
 	                <li>
-	                    <p>라이브커머스</p>
+	                    <p>이미지 메이킹</p>
 	                    <div class="proImg">
 	                        <div class="back"></div>
 	                        <img src="/img/user_img/test.webp" alt="">
-	                        <p>기업의 주요 상품 판매를 촉진하기 위한 라이브 커머스를 진행합니다.</p>
+	                        <p>원하는 이미지를 효과적으로 연출할 수 있도록 돕는 데일리 메이크업 체험 프로그램을 제공합니다.</p>
 	                    </div>
 	                </li>
 	                <li>
-	                    <p>라이브커머스</p>
+	                    <p>퍼스널 컬러</p>
 	                    <div class="proImg">
 	                        <div class="back"></div>
 	                        <img src="/img/user_img/test.webp" alt="">
-	                        <p>기업의 주요 상품 판매를 촉진하기 위한 라이브 커머스를 진행합니다.</p>
+	                        <p>색채학을 활용해 개인에게 가장 잘 어울리는 컬러를<br>찾아드리는 맞춤형 컬러 컨설팅을 제공합니다.</p>
+	                    </div>
+	                </li>
+	                <li>
+	                    <p>기업 대상 법률 자문</p>
+	                    <div class="proImg">
+	                        <div class="back"></div>
+	                        <img src="/img/user_img/test.webp" alt="">
+	                        <p>기업 운영 과정에서 발생할 수 있는<br>법적 문제에 대한 자문을 제공합니다.</p>
 	                    </div>
 	                </li>
 	            </ul>
