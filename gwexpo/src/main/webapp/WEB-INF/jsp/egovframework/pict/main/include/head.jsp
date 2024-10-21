@@ -16,6 +16,7 @@
 <!--     <meta property="og:image" content="../../../../../images/pict/og-image.png">     -->
 
     <title>${param.pageTitle}</title>
+    <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/user_css/reset.css" type="text/css">
     <link rel="stylesheet" href="/css/user_css/common.css" type="text/css">
     <link rel="stylesheet" href="/css/user_css/header.css" type="text/css">

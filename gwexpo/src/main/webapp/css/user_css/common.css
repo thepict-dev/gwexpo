@@ -21,10 +21,10 @@
     --blue-900: #10206B;
 }
 *{
-    font-family: 'SUIT';
+	font-family: 'SUIT', sans-serif;
 }
 body{
-    font-family: 'SUIT';
+    font-family: 'SUIT', sans-serif;
     color: #fff;
     background-color: #000;
 }
@@ -33,7 +33,7 @@ body.no-scroll {
 }
 
 button{
-    font-family: var(--fn-suit);
+    font-family: 'SUIT', sans-serif;
 }
 
 .blind {
