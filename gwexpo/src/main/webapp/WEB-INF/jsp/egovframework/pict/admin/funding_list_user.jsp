@@ -78,6 +78,10 @@
 				$("#search_fm").attr("action", "/admin/funding_list_user.do");
 				$("#search_fm").submit();
 			}
+			$('#company_id').change(function() {
+				$("#search_fm").attr("action", "/admin/funding_list_user.do");
+				$("#search_fm").submit();
+			})
 		</script>
             
 		<script src="../../../../../js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
