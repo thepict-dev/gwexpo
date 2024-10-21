@@ -7,7 +7,7 @@
 <header>
     <div class="headerInner">
         <h1>
-            <a href="#lnk">
+            <a href="/">
                 <img src="/img/user_img/logo.png" alt="" class="pc">
                 <img src="/img/user_img/mb-logo.png" alt="" class="mb">
             </a>
