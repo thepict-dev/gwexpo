@@ -11,6 +11,10 @@
     </c:import>
     <body>
    	<%@include file="./include/header.jsp" %>
+   	<div class="subTop">
+        <p>행사안내</p>
+        <h2>행사 개요</h2>
+    </div>
 	<div class="subContainer">
         <div class="subInner sm">
             <div class="outlineContainer">
