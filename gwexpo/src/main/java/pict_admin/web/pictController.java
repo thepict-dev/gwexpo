@@ -898,6 +898,7 @@ public class pictController {
 				}
 				else {
 					pictVO.setFairpath_id(obj.getInt("VISITOR_IDX")+"");
+					pictVO.setPoint("30000");
 					pictService.user_insert(pictVO);
 					model.addAttribute("message", "정상적으로 저장되었습니다.");
 					model.addAttribute("retType", ":location");
@@ -978,6 +979,97 @@ public class pictController {
 		
 	}	
 	
+	//사용자 사전등록 및 현장등록
+	//투자 로그인 처리
+	@RequestMapping(value = "/user_register.do", method= RequestMethod.POST)
+	@ResponseBody
+	public String user_register(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request, @RequestBody Map<String, Object> param) throws Exception {	
+		String classify = param.get("classify").toString();
+		String name = param.get("name").toString();
+		String gender = param.get("gender").toString();
+		String mobile = param.get("mobile").toString();
+		String email = param.get("email").toString();
+		String company = param.get("company").toString();
+		String company_depart = param.get("company_depart").toString();
+		String company_rank = param.get("company_rank").toString();
+		try {
+			URL url = new URL("https://api.fairpass.co.kr/fsApi/VisitorInsert");
+			HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+			
+			conn.setRequestMethod("POST"); // http 메서드
+			conn.setRequestProperty("Content-Type", "application/json"); // header Content-Type 정보
+			conn.setRequestProperty("ApiKey", " rioE2lpgWGInf2Gd7XF9cOCDvqXGUzKXYPrqBCW"); // header의 auth 정보
+			
+			conn.setDoInput(true); // 서버에 전달할 값이 있다면 true
+			conn.setDoOutput(true);// 서버에서 받을 값이 있다면 true
+			
+			JSONObject obj_param = new JSONObject();
+			obj_param.put("EVENT_IDX", "2495");	//행사코드 고정
+			
+			String option = "5261";
+			if(classify.equals("1")) option = "5261";	
+			else if(classify.equals("2")) option = "5268";
+			else if(classify.equals("3")) option = "5269";
+			else if(classify.equals("4")) option = "5270";
+			else if(classify.equals("5")) option = "5271";
+			else if(classify.equals("6")) option = "5272";
+			else if(classify.equals("7")) option = "5273";
+			else if(classify.equals("8")) option = "5274";
+			
+			System.out.println(option);
+			obj_param.put("OPTION_IDX", option);
+			obj_param.put("NAME", name);
+			obj_param.put("TEL", mobile);
+			obj_param.put("EMAIL", email);
+			obj_param.put("GENDER", gender);
+			
+			//회사부서직급
+			obj_param.put("INFO3", company);
+			obj_param.put("INFO5", company_depart);
+			obj_param.put("INFO7", company_rank);
+			
+			//서버에 데이터 전달
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
+			bw.write(obj_param.toString()); // 버퍼에 담기
+			bw.flush(); // 버퍼에 담긴 데이터 전달
+			bw.close();
+			
+			// 서버로부터 데이터 읽어오기
+			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			StringBuilder sb = new StringBuilder();
+			String line = null;
+			
+			while((line = br.readLine()) != null) { // 읽을 수 있을 때 까지 반복
+				sb.append(line);
+			}
+			JSONObject obj = new JSONObject(sb.toString()); // json으로 변경 (역직렬화)
+			System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+			System.out.println(obj);
+			int state_code = obj.getInt("resultCode");
+			if(state_code != 0) {
+				return "N";
+			}
+			else {
+				pictVO.setFairpath_id(obj.getInt("VISITOR_IDX")+"");
+				pictVO.setPoint("30000");
+				pictVO.setName(name);
+				pictVO.setGender(gender);
+				pictVO.setMobile(mobile);
+				pictVO.setEmail(email);
+				pictVO.setClassify(classify);
+				pictVO.setCompany(company);
+				pictVO.setCompany_rank(company_rank);
+				pictVO.setCompany_depart(company_depart);
+				
+				pictService.user_insert(pictVO);
+				return "Y";
+			}
+		}
+		catch(Exception e) {
+			System.out.println(e);
+			return "N";
+		}
+	}
 	
 	
 	//투자 랭크

@@ -19,7 +19,7 @@
 </footer>
 
 
-<div class="applyWrapper active">
+<div class="applyWrapper">
     <div class="applyContainer">
         <div class="appTop">
             <p>참가등록</p>
@@ -53,11 +53,11 @@
 	                        <p class="inputCaption">성별</p>
 	                        <div class="checkContainer">
 	                            <div class="checkInput">
-	                                <input type="radio" name="gender" id="1">
+	                                <input type="radio" name="gender" id="1" value="1">
 	                                <label for="1">남</label>
 	                            </div>
 	                            <div class="checkInput">
-	                                <input type="radio" name="gender" id="2">
+	                                <input type="radio" name="gender" id="2" value="2">
 	                                <label for="2">여</label>
 	                            </div>
 	                        </div>
@@ -99,7 +99,7 @@
             </div>
             <div class="buttonContainer">
                 <a href="#lnk" class="wt cancelApply">신청취소</a>
-                <a href="#lnk" class="bl">등록하기</a>
+                <a href="#lnk" class="bl" onclick="button1_click()">등록하기</a>
             </div>
         </form>
     </div>
@@ -110,3 +110,79 @@
         <img src="/user_img/agree.png" alt="">
     </div>
 </div>
+<script>
+	function button1_click() {
+		var classify = $('#classify').val()
+		var name = $('#name').val()
+		var gender = $("input[name='gender']:checked").val();
+		var mobile = $('#mobile').val()
+		var email = $('#email').val()
+		var company = $('#company').val()
+		var company_depart = $('#company_depart').val()
+		var company_rank = $('#company_rank').val()
+		var agree = $('#agree').is(':checked');
+		
+		if(classify == '' || classify == null || classify == undefined){
+			alert('참가유형을 선택해주세요.');
+			$('#classify').focus();
+			return false;
+		}
+		if(name == '' || name == null || name == undefined){
+			alert('이름을 입력해주세요.');
+			$('#name').focus();
+			return false;
+		}
+		if(mobile == '' || mobile == null || mobile == undefined){
+			alert('연락처를 입력해주세요.');
+			$('#mobile').focus();
+			return false;
+		}
+		if(!agree){
+			alert('개인정보 이용에 동의해주세요.');
+			$('#agree').focus();
+			return false;
+		}
+		
+		
+		
+		var text = "입력하신 정보로 현장등록을 진행하시겠습니까?";
+		var param = {
+			classify :classify,
+			name :name,
+			gender :gender,
+			mobile :mobile,
+			email :email,
+			company :company,
+			company_depart :company_depart,
+			company_rank :company_rank
+		}
+		if (confirm(text)) {
+			$.ajax({
+				url : "/user_register.do"
+				, type : "POST"
+				, data : JSON.stringify(param)
+				, contentType : "application/json"
+				, dataType : "json"
+				, async : false
+				, success : function(data, status, xhr) {
+					if(data == 'Y'){
+						alert("정상적으로 등록되었습니다.")
+						window.location.href="/"
+					}
+					else{
+						alert("등록 중 오류가 발생했습니다.")
+						window.location.href="/"
+					}
+				}
+				, error : function(xhr, status, error) {
+					alert("등록 중 오류가 발생했습니다.")
+				}
+			});
+		}
+		
+		//if (confirm(text)) {
+			//$("#register").attr("action", "/user_invest_save.do");
+			//$("#register").submit();
+		//}
+	}
+</script>
