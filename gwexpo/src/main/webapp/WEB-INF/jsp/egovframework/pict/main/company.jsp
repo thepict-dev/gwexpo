@@ -50,5 +50,37 @@
 	        </div>
 	    </div>
 	   	<%@include file="./include/footer.jsp" %>
+	   	<script>
+
+			  //탭
+			  function moveSlider($clickedTab) {
+			      var leftOffset = $clickedTab.position().left;
+			      $('.tabNav .slider').css({
+			          'left': leftOffset + 'px',
+			          'width': $clickedTab.outerWidth() + 'px'
+			      });
+			  }
+		
+			  moveSlider($('.tabNav li.active'));
+		
+			  $('.tabNav li').click(function() {
+			      var tab_id = $(this).index();
+		
+			      $('.tabNav li').removeClass('active');
+			      $('.tabInner').removeClass('active').hide();
+		
+			      $(this).addClass('active');
+			      $('.tabInner').eq(tab_id).addClass('active').fadeIn(500);
+		
+			      // 슬라이더 이동
+			      moveSlider($(this));
+		
+			      // 네비 움찔...
+			      $(this).css('transform', 'scale(0.95)');
+			      setTimeout(() => {
+			          $(this).css('transform', 'scale(1)');
+			      }, 200);
+			  });
+	   	</script>
     </body>
 </html>
