@@ -75,7 +75,7 @@
 		</form>
 		<script>
 			function search(){
-				$("#search_fm").attr("action", "/fund/funding_list_user.do");
+				$("#search_fm").attr("action", "/admin/funding_list_user.do");
 				$("#search_fm").submit();
 			}
 		</script>

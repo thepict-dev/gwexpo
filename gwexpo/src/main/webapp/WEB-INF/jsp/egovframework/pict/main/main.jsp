@@ -42,39 +42,33 @@
 	            </div>
 	        </div>
 	        <div class="hexContainer">
-	            <h2 class="subTitles pc">
-	                바이오 혁신과 창업 기회를 한자리에서 만나는
-	                <span>새로운 인사이트의 장을 선사합니다</span>
-	            </h2>
-	            <h2 class="subTitles mb">
-	                바이오 혁신과 창업 기회를<br>한자리에서 만나는
-	                <span>새로운 인사이트의<br>장을 선사합니다</span>
-	            </h2>
+	            <h2 class="subTitles pc">바이오 혁신과 창업 기회를 한자리에서 만나는<span>새로운 인사이트의 장을 선사합니다</span></h2>
+	            <h2 class="subTitles mb">바이오 혁신과 창업 기회를<br>한자리에서 만나는<span>새로운 인사이트의<br>장을 선사합니다</span></h2>
 	            <div class="hexContents">
 	                <div class="hexTop">
-	                    <a href="" class="hex">
+	                    <a href="/company_program.do" class="hex">
 	                        <img src="/img/user_img/hex1.png" alt="" class="hexImg1">
 	                        <img src="/img/user_img/hex1-2.png" alt="" class="hexImg2">
 	                        <p>체험 프로그램 <img src="/img/user_img/link.png" alt=""></p>
 	                    </a>
-	                    <a href="" class="hex">
+	                    <a href="/company_program.do" class="hex">
 	                        <img src="/img/user_img/hex2.png" alt="" class="hexImg1">
 	                        <img src="/img/user_img/hex2-2.png" alt="" class="hexImg2">
 	                        <p>기업대상법률자문 <img src="/img/user_img/link.png" alt=""></p>
 	                    </a>
-	                    <a href="" class="hex">
+	                    <a href="/company_program.do" class="hex">
 	                        <img src="/img/user_img/hex3.png" alt="" class="hexImg1">
 	                        <img src="/img/user_img/hex3-2.png" alt="" class="hexImg2">
 	                        <p>IR 데모데이 <img src="/img/user_img/link.png" alt=""></p>
 	                    </a>
 	                </div>
 	                <div class="hexBottom">
-	                    <a href="" class="hex">
+	                    <a href="/exp_program.do" class="hex">
 	                        <img src="/img/user_img/hex4.png" alt="" class="hexImg1">
 	                        <img src="/img/user_img/hex4-2.png" alt="" class="hexImg2">
 	                        <p>크라우드펀딩 <img src="/img/user_img/link.png" alt=""></p>
 	                    </a>
-	                    <a href="" class="hex">
+	                    <a href="/exp_program.do" class="hex">
 	                        <img src="/img/user_img/hex5.png" alt="" class="hexImg1">
 	                        <img src="/img/user_img/hex5-2.png" alt="" class="hexImg2">
 	                        <p>메이커스페이스 <img src="/img/user_img/link.png" alt=""></p>
@@ -83,14 +77,8 @@
 	            </div>
 	        </div>
 	        <div class="companyContainer">
-	            <h2 class="subTitles pc">
-	                미래 산업을 이끌어갈
-	                <span>혁신적 바이오·창업 선도 기업들을 소개합니다</span>
-	            </h2>
-	            <h2 class="subTitles mb">
-	                미래 산업을 이끌어갈
-	                <span>혁신적 바이오·창업<br>선도 기업들을 소개합니다</span>
-	            </h2>
+	            <h2 class="subTitles pc">미래 산업을 이끌어갈<span>혁신적 바이오·창업 선도 기업들을 소개합니다</span></h2>
+	            <h2 class="subTitles mb">미래 산업을 이끌어갈<span>혁신적 바이오·창업<br>선도 기업들을 소개합니다</span></h2>
 	            <ul class="companies">
 	                <li><img src="/img/user_img/company-logo.png" alt=""></li>
 	                <li><img src="/img/user_img/company-logo.png" alt=""></li>
@@ -107,46 +95,28 @@
 	            </ul>
 	        </div>
 	        <div class="noticeContainer">
-	            <h2 class="subTitles notice pc">
-	                엑스포와 관련된 주요 정보 내용을 제공합니다
-	                <span>최신 소식을 확인하세요</span>
-	            </h2>
-	            <h2 class="subTitles notice mb">
-	                엑스포와 관련된<br>주요 정보 내용을 제공합니다
-	                <span>최신 소식을 확인하세요</span>
-	            </h2>
+	            <h2 class="subTitles notice pc">엑스포와 관련된 주요 정보 내용을 제공합니다<span>최신 소식을 확인하세요</span></h2>
+	            <h2 class="subTitles notice mb">엑스포와 관련된<br>주요 정보 내용을 제공합니다<span>최신 소식을 확인하세요</span></h2>
 	            <div class="noticeButton">
-	                <a href="">공지사항 보러가기<span><img src="/img/user_img/add.png" alt=""></span></a>
+	                <a href="/notice.do">공지사항 보러가기<span><img src="/img/user_img/add.png" alt=""></span></a>
 	            </div>
 	            <ul class="noticeLists">
-	                <li>
-	                    <a href="/notice_view.do">
-	                        <span><img src="/img/user_img/test.webp" alt=""></span>
-	                        <p class="ntTitle">참가 기업 안내 및 주요 일정 공지</p>
-	                        <p class="ntDate">2024. 10. 21. 10:23</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="/notice_view.do">
-	                        <span><img src="/img/user_img/test.webp" alt=""></span>
-	                        <p class="ntTitle">참가 기업 안내 및 주요 일정 공지</p>
-	                        <p class="ntDate">2024. 10. 21. 10:23</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="/notice_view.do">
-	                        <span><img src="/img/user_img/test.webp" alt=""></span>
-	                        <p class="ntTitle">참가 기업 안내 및 주요 일정 공지</p>
-	                        <p class="ntDate">2024. 10. 21. 10:23</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="/notice_view.do">
-	                        <span><img src="/img/user_img/test.webp" alt=""></span>
-	                        <p class="ntTitle">참가 기업 안내 및 주요 일정 공지</p>
-	                        <p class="ntDate">2024. 10. 21. 10:23</p>
-	                    </a>
-	                </li>
+	            	<c:forEach var="board_list" items="${board_list}" varStatus="status">
+		                <li>
+		                    <a href="/notice_view.do?${board_list.idx}">
+		                        <span>
+		                        	<c:if test="${board_list.img_url ne '' && board_list.img_url ne null && board_list.img_url ne undefined}">
+		                        		<img src="${board_list.img_url}" alt="">
+		                        	</c:if>
+		                        	<c:if test="${board_list.img_url eq '' || board_list.img_url eq null || board_list.img_url eq undefined}">
+		                        		<img src="/img/user_img/test.webp" alt="">
+	                        		</c:if>
+	                        	</span>
+		                        <p class="ntTitle">${board_list.title}</p>
+		                        <p class="ntDate">${board_list.reg_date}</p>
+		                    </a>
+		                </li>
+	                </c:forEach>
 	            </ul>
 	        </div>
 	    </main>

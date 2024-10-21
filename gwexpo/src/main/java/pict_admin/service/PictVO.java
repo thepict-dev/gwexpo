@@ -129,8 +129,79 @@ public class PictVO extends PictDefaultVO {
 	private String company_id;
 	private String fairpath_id;
 	private String invest;
+	private String classify;
+	private String gender;
+	
+	private String company;
+	private String company_addr;
+	private String company_depart;
+	private String company_rank;
+	private String img_url;
+	private String file_url1;
+	private String file_url2;
+	private String file_url3;
 	
 	
+	public String getImg_url() {
+		return img_url;
+	}
+	public void setImg_url(String img_url) {
+		this.img_url = img_url;
+	}
+	public String getFile_url1() {
+		return file_url1;
+	}
+	public void setFile_url1(String file_url1) {
+		this.file_url1 = file_url1;
+	}
+	public String getFile_url2() {
+		return file_url2;
+	}
+	public void setFile_url2(String file_url2) {
+		this.file_url2 = file_url2;
+	}
+	public String getFile_url3() {
+		return file_url3;
+	}
+	public void setFile_url3(String file_url3) {
+		this.file_url3 = file_url3;
+	}
+	public String getCompany() {
+		return company;
+	}
+	public void setCompany(String company) {
+		this.company = company;
+	}
+	public String getCompany_addr() {
+		return company_addr;
+	}
+	public void setCompany_addr(String company_addr) {
+		this.company_addr = company_addr;
+	}
+	public String getCompany_depart() {
+		return company_depart;
+	}
+	public void setCompany_depart(String company_depart) {
+		this.company_depart = company_depart;
+	}
+	public String getCompany_rank() {
+		return company_rank;
+	}
+	public void setCompany_rank(String company_rank) {
+		this.company_rank = company_rank;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getClassify() {
+		return classify;
+	}
+	public void setClassify(String classify) {
+		this.classify = classify;
+	}
 	public String getInvest() {
 		return invest;
 	}

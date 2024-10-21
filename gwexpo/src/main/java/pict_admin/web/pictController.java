@@ -5,14 +5,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
 
-
+import org.json.JSONObject;
 import java.security.MessageDigest;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -50,7 +52,6 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -82,16 +83,11 @@ public class pictController {
 	//메인
 	@RequestMapping(value = "/main.do")
 	public String main(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
-		String userAgent = request.getHeader("user-agent");
-		boolean mobile1 = userAgent.matches( ".*(iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson).*");
-		boolean mobile2 = userAgent.matches(".*(LG|SAMSUNG|Samsung).*"); 
-		if (mobile1 || mobile2) {
-		    //여기 모바일일 경우
-			model.addAttribute("intype", "mobile");
-		}
-		else {
-			model.addAttribute("intype", "pc");
-		}
+		List<PictVO> company_list = pictService.company_list(pictVO);
+		model.addAttribute("company_list", company_list);
+		
+		List<?> board_list = pictService.board_list(pictVO);
+		model.addAttribute("board_list", board_list);
 		
 		return "pict/main/main";
 	}
@@ -308,7 +304,7 @@ public class pictController {
 		return "pict/admin/company_list";
 	}
 	@RequestMapping(value = "/admin/company_register.do")
-	public String user_register(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request) throws Exception {
+	public String company_register(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request) throws Exception {
 		if(pictVO.getIdx() != 0) {
 			//수정
 			pictVO = pictService.company_list_one(pictVO);
@@ -359,7 +355,7 @@ public class pictController {
 		
 	}
 	@RequestMapping(value = "/admin/company_delete.do")
-	public String user_delete(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request) throws Exception {
+	public String company_delete(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request) throws Exception {
 		
 		pictService.company_delete(pictVO);
 		model.addAttribute("message", "정상적으로 삭제되었습니다.");
@@ -609,6 +605,378 @@ public class pictController {
 		return "pict/admin/funding_list_company";
 	}
 	
+	
+	//공지사항
+    @RequestMapping(value = "/board/board_list.do")
+	public String reference_list(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request) throws Exception {
+		String session = (String)request.getSession().getAttribute("id");
+		if(session == null || session == "null") {
+			return "redirect:/pict_login.do";
+		}
+		pictVO.setUser_id(session);
+	
+		List<?> reference_list = pictService.board_list(pictVO);
+		model.addAttribute("resultList", reference_list);
+		model.addAttribute("size", reference_list.size());
+		model.addAttribute("pictVO", pictVO);
+		
+		return "pict/board/board_list";
+	}
+	@RequestMapping(value = "/board/board_register.do")
+	public String reference_register(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request) throws Exception {
+		String session = (String)request.getSession().getAttribute("id");
+		if(session == null || session == "null") {
+			return "redirect:/pict_login.do";
+		}
+		pictVO.setUser_id(session);
+		if(pictVO.getIdx() != 0) {
+			//수정
+			pictVO = pictService.board_list_one(pictVO);
+			pictVO.setSaveType("update");
+			
+		}
+		else {
+			pictVO.setSaveType("insert");
+		}
+		
+		model.addAttribute("pictVO", pictVO);
+		return "pict/board/board_register";
+	}
+	@RequestMapping(value = "/board/board_save.do", method = RequestMethod.POST)
+	public String reference_save(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, MultipartHttpServletRequest request,
+			@RequestParam("attach_file1") MultipartFile attach_file1,
+			@RequestParam("attach_file2") MultipartFile attach_file2,
+			@RequestParam("attach_file3") MultipartFile attach_file3,
+			@RequestParam("attach_file4") MultipartFile attach_file4) throws Exception {
+		String sessions = (String)request.getSession().getAttribute("id");
+		
+		if(sessions == null || sessions == "null") {
+			return "redirect:/pict_login.do";
+		}
+		if(attach_file1.getSize() != 0) {	//애드벌룬
+			String uploadPath = fileUpload(request, attach_file1, (String)request.getSession().getAttribute("id"));
+			String filepath = "/user1/upload_file/gwexpo/";
+			String filename = uploadPath.split("#####")[1];
+			pictVO.setImg_url(filepath+filename);
+		}
+		if(attach_file2.getSize() != 0) {	//애드벌룬
+			String uploadPath = fileUpload(request, attach_file2, (String)request.getSession().getAttribute("id"));
+			String filepath = "/user1/upload_file/gwexpo/";
+			String filename = uploadPath.split("#####")[1];
+			pictVO.setFile_url1(filepath+filename);
+		}
+		if(attach_file3.getSize() != 0) {	//애드벌룬
+			String uploadPath = fileUpload(request, attach_file3, (String)request.getSession().getAttribute("id"));
+			String filepath = "/user1/upload_file/gwexpo/";
+			String filename = uploadPath.split("#####")[1];
+			pictVO.setFile_url2(filepath+filename);
+		}
+		if(attach_file4.getSize() != 0) {	//애드벌룬
+			String uploadPath = fileUpload(request, attach_file4, (String)request.getSession().getAttribute("id"));
+			String filepath = "/user1/upload_file/gwexpo/";
+			String filename = uploadPath.split("#####")[1];
+			pictVO.setFile_url3(filepath+filename);
+		}
+
+		if(pictVO.getSaveType() != null && pictVO.getSaveType().equals("update")) {
+			pictService.board_update(pictVO);
+			model.addAttribute("message", "정상적으로 수정되었습니다.");
+			model.addAttribute("retType", ":location");
+			model.addAttribute("retUrl", "/board/board_list.do");
+			return "pict/main/message";
+		}
+		else {
+			pictService.board_insert(pictVO);
+			model.addAttribute("message", "정상적으로 저장되었습니다.");
+			model.addAttribute("retType", ":location");
+			model.addAttribute("retUrl", "/board/board_list.do");
+			return "pict/main/message";	
+		}
+		
+	}	
+	@RequestMapping(value = "/board/board_delete.do")
+	public String board_delete(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request) throws Exception {
+		String session = (String)request.getSession().getAttribute("id");
+		if(session == null || session == "null") {
+			return "redirect:/pict_login.do";
+		}
+		
+		pictService.board_delete(pictVO);
+		
+		model.addAttribute("message", "정상적으로 삭제되었습니다.");
+		model.addAttribute("retType", ":location");
+		model.addAttribute("retUrl", "/board/board_list.do");
+		return "pict/main/message";
+		
+	}
+	
+	
+	//참가자관리
+	@RequestMapping(value = "/user/user_list.do")
+	public String user_list(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request) throws Exception {
+		String session = (String)request.getSession().getAttribute("id");
+		if(session == null || session == "null") {
+			return "redirect:/pict_login.do";
+		}
+		pictVO.setUser_id(session);
+	
+		List<?> board_list = pictService.user_list(pictVO);
+		model.addAttribute("resultList", board_list);
+		model.addAttribute("pictVO", pictVO);
+		
+		return "pict/user/user_list";
+	}
+	@RequestMapping(value = "/user/user_register.do")
+	public String user_register(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request) throws Exception {
+		String session = (String)request.getSession().getAttribute("id");
+		if(session == null || session == "null") {
+			return "redirect:/pict_login.do";
+		}
+		pictVO.setUser_id(session);
+		
+		
+		if(pictVO.getIdx() != 0) {
+			//수정
+			pictVO = pictService.user_list_one(pictVO);
+			pictVO.setSaveType("update");
+		}
+		else {
+			pictVO.setSaveType("insert");
+			//인설트
+		}
+		model.addAttribute("pictVO", pictVO);
+			
+		return "pict/user/user_register";
+	}
+	@RequestMapping(value = "/user/user_save.do", method = RequestMethod.POST)
+	public String user_save(@ModelAttribute("pictVO") PictVO pictVO, ModelMap model, MultipartHttpServletRequest request) throws Exception {
+		String session = (String)request.getSession().getAttribute("id");
+		if(session == null || session == "null") {
+			return "redirect:/pict_login.do";
+		}
+		if(pictVO.getSaveType() != null && pictVO.getSaveType().equals("update")) {
+			
+			try {
+				URL url = new URL("https://api.fairpass.co.kr/fsApi/VisitorUpdate");
+				HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+				
+				conn.setRequestMethod("POST"); // http 메서드
+				conn.setRequestProperty("Content-Type", "application/json"); // header Content-Type 정보
+				conn.setRequestProperty("ApiKey", " rioE2lpgWGInf2Gd7XF9cOCDvqXGUzKXYPrqBCW"); // header의 auth 정보
+				
+				conn.setDoInput(true); // 서버에 전달할 값이 있다면 true
+				conn.setDoOutput(true);// 서버에서 받을 값이 있다면 true
+				
+				JSONObject obj_param = new JSONObject();
+				obj_param.put("EVENT_IDX", "2495");	//행사코드 고정
+				obj_param.put("VISITOR_IDX", pictVO.getFairpath_id());
+				
+				String option = "5261";
+				/*
+				if(pictVO.getClassify().equals("1")) option = "1645";	//1-일반참가자 - 1645 
+				else if(pictVO.getClassify().equals("2")) option = "1648";	//2-일반관람객(펀딩불가)- 1648
+				else if(pictVO.getClassify().equals("3")) option = "1646";	//3-참가기업 - 1646
+				else if(pictVO.getClassify().equals("4")) option = "1647";	//4-VC투자자 - 1647
+				else if(pictVO.getClassify().equals("5")) option = "1692";	//5-주최주관 - 1692
+				else if(pictVO.getClassify().equals("6")) option = "1693";	//6-STAFF - 1693
+				else if(pictVO.getClassify().equals("7")) option = "1694";	//7-PRESS - 1694
+				*/
+				System.out.println(option);
+				obj_param.put("OPTION_IDX", option);
+				obj_param.put("NAME", pictVO.getName());
+				obj_param.put("TEL", pictVO.getMobile());
+				obj_param.put("EMAIL", pictVO.getEmail());
+				obj_param.put("GENDER", pictVO.getGender());
+				
+				//회사부서직급
+				obj_param.put("INFO3", pictVO.getCompany());
+				obj_param.put("INFO5", pictVO.getCompany_depart());
+				obj_param.put("INFO7", pictVO.getCompany_rank());
+				
+				//서버에 데이터 전달
+				BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
+				bw.write(obj_param.toString()); // 버퍼에 담기
+				bw.flush(); // 버퍼에 담긴 데이터 전달
+				bw.close();
+				
+				// 서버로부터 데이터 읽어오기
+				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+				StringBuilder sb = new StringBuilder();
+				String line = null;
+				
+				while((line = br.readLine()) != null) { // 읽을 수 있을 때 까지 반복
+					sb.append(line);
+				}
+				JSONObject obj = new JSONObject(sb.toString()); // json으로 변경 (역직렬화)
+				int state_code = obj.getInt("resultCode");
+				if(state_code != 0) {
+					model.addAttribute("message", "저장 중 오류가 발생하였습니다.");
+					model.addAttribute("retType", ":location");
+					model.addAttribute("retUrl", "/user/user_list.do");
+					return "pict/main/message";
+				}
+				else {
+					
+					pictService.user_update(pictVO);
+					model.addAttribute("message", "정상적으로 수정되었습니다.");
+					model.addAttribute("retType", ":location");
+					model.addAttribute("retUrl", "/user/user_list.do");
+					return "pict/main/message";
+				}
+			}
+			catch(Exception e) {
+				System.out.println(e);
+				model.addAttribute("message", "저장 중 오류가 발생하였습니다.");
+				model.addAttribute("retType", ":location");
+				model.addAttribute("retUrl", "/user/user_list.do");
+				return "pict/main/message";
+			}
+			
+			
+			
+		}
+		else {
+			try {
+				URL url = new URL("https://api.fairpass.co.kr/fsApi/VisitorInsert");
+				HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+				
+				conn.setRequestMethod("POST"); // http 메서드
+				conn.setRequestProperty("Content-Type", "application/json"); // header Content-Type 정보
+				conn.setRequestProperty("ApiKey", " rioE2lpgWGInf2Gd7XF9cOCDvqXGUzKXYPrqBCW"); // header의 auth 정보
+				
+				conn.setDoInput(true); // 서버에 전달할 값이 있다면 true
+				conn.setDoOutput(true);// 서버에서 받을 값이 있다면 true
+				
+				JSONObject obj_param = new JSONObject();
+				obj_param.put("EVENT_IDX", "2495");	//행사코드 고정
+				
+				String option = "5261";
+				/*
+				if(pictVO.getClassify().equals("1")) option = "1645";	//1-일반참가자 - 1645 
+				else if(pictVO.getClassify().equals("2")) option = "1648";	//2-일반관람객(펀딩불가)- 1648
+				else if(pictVO.getClassify().equals("3")) option = "1646";	//3-참가기업 - 1646
+				else if(pictVO.getClassify().equals("4")) option = "1647";	//4-VC투자자 - 1647
+				else if(pictVO.getClassify().equals("5")) option = "1692";	//5-주최주관 - 1692
+				else if(pictVO.getClassify().equals("6")) option = "1693";	//6-STAFF - 1693
+				else if(pictVO.getClassify().equals("7")) option = "1694";	//7-PRESS - 1694
+				*/
+				System.out.println(option);
+				obj_param.put("OPTION_IDX", option);
+				obj_param.put("NAME", pictVO.getName());
+				obj_param.put("TEL", pictVO.getMobile());
+				obj_param.put("EMAIL", pictVO.getEmail());
+				obj_param.put("GENDER", pictVO.getGender());
+				
+				//회사부서직급
+				obj_param.put("INFO3", pictVO.getCompany());
+				obj_param.put("INFO5", pictVO.getCompany_depart());
+				obj_param.put("INFO7", pictVO.getCompany_rank());
+				
+				//서버에 데이터 전달
+				BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
+				bw.write(obj_param.toString()); // 버퍼에 담기
+				bw.flush(); // 버퍼에 담긴 데이터 전달
+				bw.close();
+				
+				// 서버로부터 데이터 읽어오기
+				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+				StringBuilder sb = new StringBuilder();
+				String line = null;
+				
+				while((line = br.readLine()) != null) { // 읽을 수 있을 때 까지 반복
+					sb.append(line);
+				}
+				JSONObject obj = new JSONObject(sb.toString()); // json으로 변경 (역직렬화)
+				System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+				System.out.println(obj);
+				int state_code = obj.getInt("resultCode");
+				if(state_code != 0) {
+					model.addAttribute("message", "저장 중 오류가 발생하였습니다.");
+					model.addAttribute("retType", ":location");
+					model.addAttribute("retUrl", "/user/user_list.do");
+					return "pict/main/message";
+				}
+				else {
+					pictVO.setFairpath_id(obj.getInt("VISITOR_IDX")+"");
+					pictService.user_insert(pictVO);
+					model.addAttribute("message", "정상적으로 저장되었습니다.");
+					model.addAttribute("retType", ":location");
+					model.addAttribute("retUrl", "/user/user_list.do");
+					return "pict/main/message";
+				}
+			}
+			catch(Exception e) {
+				System.out.println(e);
+				model.addAttribute("message", "저장 중 오류가 발생하였습니다.");
+				model.addAttribute("retType", ":location");
+				model.addAttribute("retUrl", "/user/user_list.do");
+				return "pict/main/message";
+			}
+		}
+		
+	}	
+	@RequestMapping(value = "/user/user_delete.do", method = RequestMethod.POST)
+	public String user_delete(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request) throws Exception {
+		String session = (String)request.getSession().getAttribute("id");
+		if(session == null || session == "null") {
+			return "redirect:/pict_login.do";
+		}
+		
+		try {
+			URL url = new URL("https://api.fairpass.co.kr/fsApi/VisitorDelete");
+			HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+			
+			conn.setRequestMethod("POST"); // http 메서드
+			conn.setRequestProperty("Content-Type", "application/json"); // header Content-Type 정보
+			conn.setRequestProperty("ApiKey", " rioE2lpgWGInf2Gd7XF9cOCDvqXGUzKXYPrqBCW"); // header의 auth 정보
+			
+			conn.setDoInput(true); // 서버에 전달할 값이 있다면 true
+			conn.setDoOutput(true);// 서버에서 받을 값이 있다면 true
+			
+			JSONObject obj_param = new JSONObject();
+			obj_param.put("EVENT_IDX", "2495");	//행사코드 고정
+			obj_param.put("VISITOR_IDX", pictVO.getFairpath_id());
+
+			//서버에 데이터 전달
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
+			bw.write(obj_param.toString()); // 버퍼에 담기
+			bw.flush(); // 버퍼에 담긴 데이터 전달
+			bw.close();
+			
+			// 서버로부터 데이터 읽어오기
+			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			StringBuilder sb = new StringBuilder();
+			String line = null;
+			
+			while((line = br.readLine()) != null) { // 읽을 수 있을 때 까지 반복
+				sb.append(line);
+			}
+			
+			JSONObject obj = new JSONObject(sb.toString()); // json으로 변경 (역직렬화)
+			int state_code = obj.getInt("resultCode");
+			if(state_code != 0) {
+				model.addAttribute("message", "삭제 중 오류가 발생하였습니다.");
+				model.addAttribute("retType", ":location");
+				model.addAttribute("retUrl", "/user/user_list.do");
+				return "pict/main/message";
+			}
+			else {
+				pictService.user_delete(pictVO);
+				model.addAttribute("message", "정상적으로 삭제되었습니다.");
+				model.addAttribute("retType", ":location");
+				model.addAttribute("retUrl", "/user/user_list.do");
+				return "pict/main/message";
+			}
+		}
+		catch(Exception e) {
+			System.out.println(e);
+			model.addAttribute("message", "삭제 중 오류가 발생하였습니다.");
+			model.addAttribute("retType", ":location");
+			model.addAttribute("retUrl", "/user/user_list.do");
+			return "pict/main/message";
+		}
+		
+	}	
 	
 	
 	
@@ -913,123 +1281,4 @@ public class pictController {
     }
     
 	
-	
-	/*
-	 * @RequestMapping(value = "/register_apply_save.do")
-	public String register_apply_save(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request) throws Exception {
-		
-		try {
-			pictVO.setMobile(pictVO.getMobile().replaceAll("-", ""));
-			
-			List<?> duple_list = pictService.duple_user(pictVO);
-			int duple_size = duple_list.size();
-			if(duple_size > 0) {
-				model.addAttribute("message", "이미 사전등록 하셨습니다.");
-				model.addAttribute("retType", ":location");
-				model.addAttribute("retUrl", "/");
-				return "pict/main/message";
-			}
-			else {
-				System.out.println(pictVO.getTarget_date()+"여귀~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-				String mobile = pictVO.getMobile().replaceAll("-", "");
-				URL url = new URL("https://api.fairpass.co.kr/fsApi/VisitorInsert");
-				HttpURLConnection conn = (HttpURLConnection)url.openConnection();
-				
-				conn.setRequestMethod("POST"); // http 메서드
-				conn.setRequestProperty("Content-Type", "application/json"); // header Content-Type 정보
-				conn.setRequestProperty("ApiKey", " rioE2lpgWGInf2Gd7XF9cOCDvqXGUzKXYPrqBCW"); // header의 auth 정보
-				
-				conn.setDoInput(true); // 서버에 전달할 값이 있다면 true
-				conn.setDoOutput(true);// 서버에서 받을 값이 있다면 true
-				
-				
-				JSONObject obj_param = new JSONObject();
-				obj_param.put("EVENT_IDX", "1469");	//행사코드 고정
-				
-				String option = "";
-				if(pictVO.getClassify().equals("1")) option = "1645";	//1-일반참가자 - 1645 
-				else if(pictVO.getClassify().equals("2")) option = "1648";	//2-일반관람객(펀딩불가)- 1648
-				else if(pictVO.getClassify().equals("3")) option = "1646";	//3-참가기업 - 1646
-				else if(pictVO.getClassify().equals("4")) option = "1647";	//4-VC투자자 - 1647
-				else if(pictVO.getClassify().equals("5")) option = "1692";	//5-주최주관 - 1692
-				else if(pictVO.getClassify().equals("6")) option = "1693";	//6-STAFF - 1693
-				else if(pictVO.getClassify().equals("7")) option = "1694";	//7-PRESS - 1694
-				
-				obj_param.put("OPTION_IDX", option);
-				obj_param.put("NAME", pictVO.getName());
-				obj_param.put("TEL", pictVO.getMobile());
-				obj_param.put("EMAIL", pictVO.getEmail());
-				obj_param.put("GENDER", pictVO.getGender());
-				
-				//회사부서직급
-				obj_param.put("INFO3", pictVO.getCompany());
-				obj_param.put("INFO5", pictVO.getCompany_depart());
-				obj_param.put("INFO7", pictVO.getCompany_rank());
-				
-				//서버에 데이터 전달
-				BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
-				bw.write(obj_param.toString()); // 버퍼에 담기
-				bw.flush(); // 버퍼에 담긴 데이터 전달
-				bw.close();
-				
-				// 서버로부터 데이터 읽어오기
-				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-				StringBuilder sb = new StringBuilder();
-				String line = null;
-				
-				while((line = br.readLine()) != null) { // 읽을 수 있을 때 까지 반복
-					sb.append(line);
-				}
-				JSONObject obj = new JSONObject(sb.toString()); // json으로 변경 (역직렬화)
-				int state_code = obj.getInt("resultCode");
-				if(state_code != 0) {
-					model.addAttribute("message", "저장 중 오류가 발생하였습니다.");
-					model.addAttribute("retType", ":location");
-					model.addAttribute("retUrl", "/");
-					return "pict/main/message";
-				}
-				else {
-					pictVO.setFairpath_id(obj.getInt("VISITOR_IDX")+"");
-					
-					List<?> register_list = pictService.duple_user_list(pictVO);
-					PictVO vo = pictService.maximum_cnt(pictVO);
-					int size = register_list.size();
-					int standard_cnt = Integer.parseInt(vo.getMaximum());
-					
-					if(size < standard_cnt) {		//재영 수치
-						pictVO.setUse_at("Y");
-						pictVO.setPoint("30000");
-					}
-					else {
-						pictVO.setUse_at("N");
-						pictVO.setPoint("0");
-					}
-					if(!(pictVO.getClassify().equals("1"))) {	//재영 분류값
-						pictVO.setPoint("0");
-						pictVO.setUse_at("N");
-					
-					}
-					String str = "사전등록이 완료되었습니다.<br>참여해주셔서 감사합니다.";
-					pictService.user_insert(pictVO);
-
-					model.addAttribute("message", str);
-					model.addAttribute("mobile", mobile);
-					model.addAttribute("retType", ":location");
-					model.addAttribute("retUrl", "/");
-					return "pict/main/message_sms";
-				}
-			}
-			
-		}
-		catch(Exception e) {
-			System.out.println(e);
-			model.addAttribute("message", "저장 중 오류가 발생하였습니다.");
-			model.addAttribute("retType", ":location");
-			model.addAttribute("retUrl", "/");
-			return "pict/main/message";
-		}
-		
-		
-	}
-	 */
 }

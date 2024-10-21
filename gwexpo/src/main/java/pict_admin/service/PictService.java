@@ -124,6 +124,14 @@ public interface PictService {
 
 	List<?> funding_list_company(PictVO pictVO) throws Exception;
 
+	List<?> user_list(PictVO pictVO) throws Exception;
+
+	void user_update(PictVO pictVO) throws Exception;
+
+	void user_insert(PictVO pictVO) throws Exception;
+
+	void user_delete(PictVO pictVO) throws Exception;
+
 
 
 }

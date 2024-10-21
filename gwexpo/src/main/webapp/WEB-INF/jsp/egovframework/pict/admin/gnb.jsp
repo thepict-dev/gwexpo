@@ -12,6 +12,12 @@
 <c:set var="company_list" value="${fn:indexOf(url, 'company_list')}"/>
 <c:set var="company_register" value="${fn:indexOf(url, 'company_register')}"/>
 
+<c:set var="board_list" value="${fn:indexOf(url, 'board_list')}"/>
+<c:set var="board_register" value="${fn:indexOf(url, 'board_register')}"/>
+
+<c:set var="user_list" value="${fn:indexOf(url, 'user_list')}"/>
+<c:set var="user_register" value="${fn:indexOf(url, 'user_register')}"/>
+
 <c:set var="funding_list_user" value="${fn:indexOf(url, 'funding_list_user')}"/>
 <c:set var="funding_list_company" value="${fn:indexOf(url, 'funding_list_company')}"/>
 
@@ -19,6 +25,34 @@
 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
     <div class="sb-sidenav-menu">
         <div class="nav">
+        	<a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts2" aria-expanded="true" aria-controls="collapseLayouts2">
+				게시물관리
+            </a>
+            <div class="collapse <c:if test="${board_list ne -1 }">show</c:if>" id="collapseLayouts2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link <c:if test="${board_list ne -1}">active</c:if>" href="/board/board_list.do">게시물 리스트</a>
+                </nav>
+            </div>
+            <div class="collapse <c:if test="${board_register ne -1 }">show</c:if>" id="collapseLayouts2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link <c:if test="${board_register ne -1}">active</c:if>" href="/board/board_register.do">게시물 등록</a>
+                </nav>
+            </div>
+            
+            <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts3" aria-expanded="true" aria-controls="collapseLayouts3">
+				참가자관리
+            </a>
+            <div class="collapse <c:if test="${user_list ne -1 }">show</c:if>" id="collapseLayouts3" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link <c:if test="${user_list ne -1}">active</c:if>" href="/user/user_list.do">참가자 리스트</a>
+                </nav>
+            </div>
+            <div class="collapse <c:if test="${user_register ne -1 }">show</c:if>" id="collapseLayouts3" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link <c:if test="${user_register ne -1}">active</c:if>" href="/user/user_register.do">참가자 등록</a>
+                </nav>
+            </div>
+            
             <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts1" aria-expanded="true" aria-controls="collapseLayouts1">
 				행사관리
             </a>

@@ -1,194 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="pict_admin.service.impl.PictMapper">
-
- 	<resultMap id="lecture_list" type="pict_admin.service.PictVO">
-		<result property="idx" column="idx"/>
-		<result property="title" column="title"/>
-		<result property="name" column="name"/>
-		<result property="link_url" column="link_url"/>
-		<result property="reg_date" column="reg_date"/>
-		<result property="use_at" column="use_at"/>
-		
-		<result property="category" column="category"/>
-		<result property="category_id" column="category_id"/>
-		<result property="category_cnt" column="category_cnt"/>
-		<result property="week" column="week"/>
-		<result property="campus" column="campus"/>
-		<result property="campus_id" column="campus_id"/>
-		
-	</resultMap>
-	
-	
-	<resultMap id="lecture_attendance" type="pict_admin.service.PictVO">
-		<result property="idx" column="idx"/>
-		<result property="title" column="title"/>
-		<result property="lecture_id" column="lecture_id"/>
-		<result property="professor" column="professor"/>
-		<result property="name" column="name"/>
-		<result property="reg_date" column="reg_date"/>
-		<result property="in_date" column="in_date"/>
-		<result property="out_date" column="out_date"/>
-		<result property="timediff" column="timediff"/>
-		<result property="category_cnt" column="category_cnt"/>
-		<result property="whole_timediff" column="whole_timediff"/>
-		
-	</resultMap>
-	
-	<resultMap id="lecture_category_list" type="pict_admin.service.PictVO">
-		<result property="idx" column="idx"/>
-		<result property="category" column="category"/>
-		<result property="use_at" column="use_at"/>
-		<result property="name" column="name"/>
-		<result property="campus" column="campus"/>
-		<result property="professor_id" column="professor_id"/>
-		
-	</resultMap>
-	
-	<resultMap id="connection_user" type="pict_admin.service.PictVO">
-		<result property="id" column="id"/>
-		<result property="nick_name" column="nick_name"/>
-		<result property="mobile" column="mobile"/>
-		<result property="email" column="email"/>
-	</resultMap>
-	
-	
-	<select id="lecture_list" resultMap="lecture_list">
-		SELECT
-			l.idx, title, link_url, reg_date, l.use_at, l.campus_id, l.week, name
-				
-				<if test="active_ty != null and active_ty != '' and (active_ty == '1' or active_ty == 1) ">
-					and l.use_at = 'Y'
-				</if>
-				<if test="search_text != null and search_text != '' ">
-					and (
-						title  LIKE CONCAT('%', #{search_text}, '%') or
-						name  LIKE CONCAT('%', #{search_text}, '%')
-					) 
-				</if>
-			
-		FROM lecture_table l
-		where 1=1
-	  	
-		<if test="active_ty != null and active_ty != '' and (active_ty == '1' or active_ty == 1) ">
-			and l.use_at = 'Y'
-		</if>
-		
-		<if test="search_text != null and search_text != '' ">
-			and (
-				title  LIKE CONCAT('%', #{search_text}, '%') or
-				name  LIKE CONCAT('%', #{search_text}, '%')
-			) 
-		</if>
-
-		<if test="order_by != null and order_by != '' and order_by == 'title'">
-			order by title
-		</if>
-		<if test="order_by != null and order_by != '' and order_by == 'name'">
-			order by name
-		</if>
-		
-	</select>
-	
-	<select id="lecture_select_one" resultMap="lecture_list">
-		SELECT
-			l.idx, title, name, link_url, reg_date, l.use_at, l.campus_id, l.week
-		FROM lecture_table l
-		where l.idx = #{idx}
-	</select>
-	
-	
-	<insert id="lecture_insert" parameterType="pictVO">
-		INSERT INTO lecture_table
-			(
-			 title, link_url, reg_date, use_at, week, campus_id
-			)
-		VALUES (
-			 #{title}, #{link_url}, now(), 'N', #{week}, #{campus_id}
-			  )
-	</insert>
-	
-	<update id="lecture_update">
-		update lecture_table set
-			use_at = #{use_at}
-			<if test="in_date != null and in_date != ''">
-				,in_date = #{in_date}
-			</if>
-			<if test="out_date != null and out_date != ''">
-				,out_date =#{out_date}
-			</if>
-			<if test="title != null and title != ''">
-				,title = #{title}
-			</if>
-			<if test="link_url != null and link_url != ''">
-				,link_url = #{link_url}
-			</if>
-			<if test="campus_id != null and campus_id != ''">
-				,campus_id =#{campus_id}
-				
-			</if>
-			<if test="week != null and week != ''">
-				,week =#{week}
-			</if>
-			<if test="name != null and name != ''">
-				,name =#{name}
-			</if>
-			
-		where idx = #{idx}
-		
-	</update>
-	
-	<select id="lecture_attendance" resultMap="lecture_attendance">
-		select l.idx, l.title, l.name as professor, a.name, a.in_date, a.out_date, a.std_num, timestampdiff(MINUTE, a.in_date, a.out_date) as timediff,
-		(select count(std_num) from attendance_table at where at.std_num = a.std_num and at.lecture_id = #{idx}) as category_cnt,
-		(
-			select sum(timestampdiff(MINUTE, in_date, out_date)) from attendance_table tm 
-			where tm.lecture_id= #{idx}
-			and tm.std_num = a.std_num
-			group by std_num
-		) as whole_timediff
-		from lecture_table l    
-		join attendance_table a on a.lecture_id = l.idx
-		where l.idx = #{idx}
-	</select>
-	
-	<select id="lecture_attendance_api" resultMap="lecture_attendance">
-		select l.idx, l.title, l.name as professor, a.name, a.in_date, a.out_date, a.std_num, timestampdiff(MINUTE, a.in_date, a.out_date) as timediff,
-		(select count(std_num) from attendance_table at where at.std_num = a.std_num and at.lecture_id = #{idx}) as category_cnt,
-		(
-			select sum(timestampdiff(MINUTE, in_date, out_date)) from attendance_table tm 
-			where tm.lecture_id= #{idx}
-			and tm.std_num = a.std_num
-			group by std_num
-		) as whole_timediff
-		from lecture_table l    
-		join attendance_table a on a.lecture_id = l.idx
-		where l.idx = #{idx}
-	</select>
-	
-	
-	<select id="connection_user" resultMap="connection_user">
-		select id, nick_name, mobile, email
-		from user_table
-		where 1=1
-		<if test="search_text != null and search_text != '' ">
-			and (
-				id LIKE CONCAT('%', #{search_text}, '%') or
-				nick_name LIKE CONCAT('%', #{search_text}, '%') or
-				mobile LIKE CONCAT('%', #{search_text}, '%') or
-				email LIKE CONCAT('%', #{search_text}, '%')
-			) 
-		</if>
-	</select>
-	
-	
-	<delete id="connection_user_del" parameterType="pictVO">
-		 delete from user_table where id = #{id}
-	</delete>
-	
 	
 	<select id="board_list" resultType="pictVO">
-		select idx, title, text, date_format(reg_date, '%Y-%m-%d') as reg_date_for from board_master_edu
+		select * from board_table
 		<if test="search_text != null and search_text != '' ">
 			where (
 				title LIKE CONCAT('%', #{search_text}, '%')
@@ -198,33 +13,41 @@
 	</select>
 	
 	<select id="board_list_one" resultType="pictVO">
-		select * from board_master_edu
+		select * from board_table
 		where idx = #{idx}
 	</select>
 	
 	<insert id="board_insert" parameterType="pictVO">
-		INSERT INTO board_master_edu
+		INSERT INTO board_table
 			(
-			 title, text, reg_date
+			 title, text, img_url, file_url1, file_url2, file_url3, reg_date
 			)
 		VALUES (
-			 #{title}, #{text}, now()
+			 #{title}, #{text}, #{img_url}, #{file_url1}, #{file_url2}, #{file_url3}, now()
 			  ) 
 	</insert>
 	
 	<update id="board_update" parameterType="pictVO">
-		update board_master_edu
+		update board_table
 		set title =#{title}, text=#{text}, reg_date = now()
+		<if test="img_url != null and img_url != '' ">
+			, img_url = #{img_url}
+		</if>
+		
+		<if test="file_url1 != null and file_url1 != '' ">
+			, file_url1 = #{file_url1}
+		</if>
+		<if test="file_url2 != null and file_url2 != '' ">
+			, file_url2 = #{file_url2}
+		</if>
+		<if test="file_url3 != null and file_url3 != '' ">
+			, file_url3 = #{file_url3}
+		</if>
 		where idx = #{idx}
 	</update>
 	
-	<select id="lecture_userinfo_list" resultType="pictVO">
-		select * from user_info
-	</select>
-	
-	
 	<delete id="board_delete" parameterType="pictVO">
-		delete from board_master_edu where idx = #{idx}
+		delete from board_table where idx = #{idx}
 	</delete>
 	
 	<insert id="company_insert" parameterType="pictVO">
@@ -355,11 +178,6 @@
 		</if>
 	</select>
 	
-	<select id="user_list_one" resultType="pictVO">
-		select * from user_table
-		where idx = #{idx}
-	</select>
-	
 	<!-- 회사별 사람들 투자 현황 -->
 	<select id="funding_list_user" resultType="pictVO">
 		select u.name, i.point
@@ -378,5 +196,63 @@
 		group by i.company_id
 		order by point desc
 	</select>
+	
+	
+	
+	<!-- 참가자관리 -->
+	<select id="user_list" resultType="pictVO">
+		select *
+		from user_table where 1=1
+		<if test="search_text != null and search_text != '' ">
+			and (
+				name LIKE CONCAT('%', #{search_text}, '%') or
+				mobile LIKE CONCAT('%', #{search_text}, '%')
+			) 
+		</if>
+	</select>
+	
+	<select id="user_list_one" resultType="pictVO">
+		select * from user_table
+		where idx = #{idx}
+	</select>
+	
+	<insert id="user_insert" parameterType="pictVO">
+		INSERT INTO user_table
+			(
+			 target_date, name, gender, mobile, email, intro_root, classify, company, company_addr, company_depart, use_at, point, register, reg_date, company_rank, fairpath_id, marketing, secret, third_party
+			)
+		VALUES (
+			 #{target_date}, #{name}, #{gender}, #{mobile}, #{email}, #{intro_root}, #{classify}, #{company}, #{company_addr}, #{company_depart}, #{use_at}, #{point}, #{register} ,now(), #{company_rank}, #{fairpath_id}, #{marketing}, #{secret}, #{third_party}
+			  ) 
+	</insert>
+	
+	<update id="user_update" parameterType="pictVO">
+		update user_table
+		set target_date =#{target_date}, 
+		name =#{name},
+		gender =#{gender},
+		mobile =#{mobile},
+		email =#{email},
+		intro_root =#{intro_root},
+		classify =#{classify},
+		company =#{company},
+		company_addr =#{company_addr},
+		company_depart =#{company_depart},
+		company_rank =#{company_rank},
+		use_at =#{use_at},
+		register =#{register},
+		fairpath_id =#{fairpath_id},
+		
+		reg_date = now()
+		<if test="point != null and point != '' ">
+			, point =#{point}
+		</if>
+		where idx = #{idx}
+	</update>
+	
+	<delete id="user_delete" parameterType="pictVO">
+		delete from user_table where idx = #{idx}
+	</delete>
+	
 	
 </mapper>
