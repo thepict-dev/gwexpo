@@ -1,5 +1,4 @@
 :root {
-    --fn-suit: 'SUIT';
     --purple-50: #ECECED;
     --purple-100: #C4C3C6;
     --purple-200: #A8A6AA;
@@ -21,9 +20,11 @@
     --blue-800: #142A8C;
     --blue-900: #10206B;
 }
-
+*{
+    font-family: 'SUIT';
+}
 body{
-    font-family: var(--fn-suit);
+    font-family: 'SUIT';
     color: #fff;
     background-color: #000;
 }
