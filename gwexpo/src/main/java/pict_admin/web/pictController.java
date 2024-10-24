@@ -125,8 +125,11 @@ public class pictController {
 	//참가 기업 안내
 	@RequestMapping(value = "/company.do")
 	public String company(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
-
-		return "pict/main/company";
+	    
+	    List<PictVO> companyList = pictService.company_list(pictVO);
+	    model.addAttribute("companyList", companyList);
+	    
+	    return "pict/main/company";
 	}
 	//로컬브랜드페스타
 	@RequestMapping(value = "/local.do")
