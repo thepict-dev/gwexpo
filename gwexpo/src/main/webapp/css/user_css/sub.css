@@ -407,7 +407,7 @@
 
 .companyLists{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 374px));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 394px));
     gap: 20px;
     width: 100%;
 }

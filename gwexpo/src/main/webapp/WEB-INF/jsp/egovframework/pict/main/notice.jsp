@@ -12,8 +12,8 @@
     <body>
 	   	<%@include file="./include/header.jsp" %>
 	   	<div class="subTop">
-	        <p>프로그램</p>
-	        <h2>체험 프로그램</h2>
+	        <p>커뮤니티</p>
+	        <h2>공지사항</h2>
 	    </div>
 	    <div class="subContainer">
 	        <div class="subInner">
