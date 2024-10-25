@@ -83,6 +83,7 @@ public class pictController {
 	//메인
 	@RequestMapping(value = "/main.do")
 	public String main(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+		pictVO.setType("main");
 		List<PictVO> company_list = pictService.company_list(pictVO);
 		model.addAttribute("company_list", company_list);
 		

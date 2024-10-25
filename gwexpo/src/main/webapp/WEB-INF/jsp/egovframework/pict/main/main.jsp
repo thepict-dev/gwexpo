@@ -78,18 +78,10 @@
 	            <h2 class="subTitles pc">미래 산업을 이끌어갈<span>혁신적 바이오·창업 선도 기업들을 소개합니다</span></h2>
 	            <h2 class="subTitles mb">미래 산업을 이끌어갈<span>혁신적 바이오·창업<br>선도 기업들을 소개합니다</span></h2>
 	            <ul class="companies">
-	                <li><img src="/img/user_img/company-logo.png" alt=""></li>
-	                <li><img src="/img/user_img/company-logo.png" alt=""></li>
-	                <li><img src="/img/user_img/company-logo.png" alt=""></li>
-	                <li><img src="/img/user_img/company-logo.png" alt=""></li>
-	                <li><img src="/img/user_img/company-logo.png" alt=""></li>
-	                <li><img src="/img/user_img/company-logo.png" alt=""></li>
-	                <li><img src="/img/user_img/company-logo.png" alt=""></li>
-	                <li><img src="/img/user_img/company-logo.png" alt=""></li>
-	                <li><img src="/img/user_img/company-logo.png" alt=""></li>
-	                <li><img src="/img/user_img/company-logo.png" alt=""></li>
-	                <li><img src="/img/user_img/company-logo.png" alt=""></li>
-	                <li><img src="/img/user_img/company-logo.png" alt=""></li>
+	                <c:forEach var="company_list" items="${company_list}" varStatus="status">
+	                	<li><img src="https://www.gwexpo.co.kr${company_list.file_url}" alt=""></li>
+                	</c:forEach>
+	                
 	            </ul>
 	        </div>
 	        <div class="noticeContainer">

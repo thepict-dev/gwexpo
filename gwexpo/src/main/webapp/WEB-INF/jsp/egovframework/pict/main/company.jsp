@@ -3,6 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -24,7 +25,7 @@
                             <div class="logoImg">
                                 <c:choose>
                                     <c:when test="${not empty company.file_url}">
-                                        <img src="${company.file_url}" alt="${company.title}">
+                                        <img src="https://www.gwexpo.co.kr${company.file_url}" alt="${company.title}">
                                     </c:when>
                                     <c:otherwise>
                                         <img src="/img/user_img/company-logo.png" alt="기본 이미지">
@@ -32,7 +33,16 @@
                                 </c:choose>
                             </div>
                             <p>${company.title}</p>
-                            <span>${company.industry}</span>
+                            <span>
+                            	<c:if test="${fn:contains(company.industry, '1')}">바이오의약<br></c:if>
+                            	<c:if test="${fn:contains(company.industry, '2')}">체외진단<br></c:if>
+                            	<c:if test="${fn:contains(company.industry, '3')}">건강기능식품 및 소재<br></c:if>
+                            	<c:if test="${fn:contains(company.industry, '4')}">화장품 및 화장품 소재<br></c:if>
+                            	<c:if test="${fn:contains(company.industry, '5')}">바이오소재(환경,농업)<br></c:if>
+                            	<c:if test="${fn:contains(company.industry, '6')}">식품·로컬<br></c:if>
+                            	<c:if test="${fn:contains(company.industry, '7')}">창작·공예<br></c:if>
+                            	<c:if test="${fn:contains(company.industry, '8')}">IT · AI · 기술 · 관광 · 콘텐츠</c:if>
+                           	</span>
                         </li>
                     </c:forEach>
                 </ul>

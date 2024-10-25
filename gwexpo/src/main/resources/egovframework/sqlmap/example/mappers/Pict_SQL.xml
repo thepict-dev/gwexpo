@@ -82,7 +82,15 @@
 				title LIKE CONCAT('%', #{search_text}, '%')
 			) 
 		</if>
-		order by reg_date desc
+		<if test="type != null and type != '' and type =='main' ">
+			order by rand()
+			limit 12 offset 0
+		</if>
+		<if test="type == null or type == '' ">
+			order by idx asc
+		</if>
+		
+		
 	</select>
 	
 	<select id="company_list_one" resultType="pictVO">
