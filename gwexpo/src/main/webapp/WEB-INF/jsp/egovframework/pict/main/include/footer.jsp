@@ -99,7 +99,7 @@
                     <label for="agree">개인정보 이용에 동의합니다</label>
                 </div>
             </div>
-            <div class="buttonContainer">
+            <div class="appButtonContainer">
                 <a href="#lnk" class="wt cancelApply">신청취소</a>
                 <a href="#lnk" class="bl" onclick="button1_click()">등록하기</a>
             </div>

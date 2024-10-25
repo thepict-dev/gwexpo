@@ -235,14 +235,14 @@
 }
 
 /* button */
-.buttonContainer{
+.appButtonContainer{
     display: flex;
     justify-content: center;
     column-gap: 20px;
     width: 100%;
     padding: 20px 0;
 }
-.buttonContainer a{
+.appButtonContainer a{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -251,20 +251,20 @@
     font-size: 14px;
     letter-spacing: -0.7px;
 }
-.buttonContainer a.wt{
+.appButtonContainer a.wt{
     color: var(--purple-900);
     font-weight: 500;
     border: 1px solid var(--purple-100);
     background: var(--wh, #FFF);
 }
-.buttonContainer a.bl{
+.appButtonContainer a.bl{
     color: var(--wh, #FFF);         
     font-weight: 700;
     background: linear-gradient(171deg, #2581FF 6.69%, #1E4AFF 93.08%);
 }
 
 @media all and (max-width : 1024px){
-    .buttonContainer{
+    .appButtonContainer{
         padding: 0;
     }
 }
