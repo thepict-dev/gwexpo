@@ -173,13 +173,18 @@ public class pictController {
 	//공지
 	@RequestMapping(value = "/notice.do")
 	public String notice(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
-
+		List<?> board_list = pictService.board_list(pictVO);
+		model.addAttribute("resultList", board_list);
+		model.addAttribute("pictVO", pictVO);
+		
 		return "pict/main/notice";
 	}
 	//공지 뷰
 	@RequestMapping(value = "/notice_view.do")
 	public String notice_view(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
 
+		pictVO = pictService.board_list_one(pictVO);
+		model.addAttribute("pictVO", pictVO);
 		return "pict/main/notice_view";
 	}
     

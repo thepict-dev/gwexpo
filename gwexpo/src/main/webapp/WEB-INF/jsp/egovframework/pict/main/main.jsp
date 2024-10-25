@@ -93,7 +93,7 @@
 	            <ul class="noticeLists">
 	            	<c:forEach var="board_list" items="${board_list}" varStatus="status">
 		                <li>
-		                    <a href="/notice_view.do?${board_list.idx}">
+		                    <a href="/notice_view.do?idx=${board_list.idx}">
 		                        <span>
 		                        	<c:if test="${board_list.img_url ne '' && board_list.img_url ne null && board_list.img_url ne undefined}">
 		                        		<img src="${board_list.img_url}" alt="">

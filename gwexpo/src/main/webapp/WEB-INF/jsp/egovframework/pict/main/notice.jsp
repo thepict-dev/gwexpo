@@ -18,34 +18,22 @@
 	    <div class="subContainer">
 	        <div class="subInner">
 	            <ul class="noticeLists">
-	                <li>
-	                    <a href="">
-	                        <span><img src="/img/user_img/test.webp" alt=""></span>
-	                        <p class="ntTitle">참가 기업 안내 및 주요 일정 공지</p>
-	                        <p class="ntDate">2024. 10. 21. 10:23</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="">
-	                        <span><img src="/img/user_img/test.webp" alt=""></span>
-	                        <p class="ntTitle">참가 기업 안내 및 주요 일정 공지</p>
-	                        <p class="ntDate">2024. 10. 21. 10:23</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="">
-	                        <span><img src="/img/user_img/test.webp" alt=""></span>
-	                        <p class="ntTitle">참가 기업 안내 및 주요 일정 공지</p>
-	                        <p class="ntDate">2024. 10. 21. 10:23</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="">
-	                        <span><img src="/img/user_img/test.webp" alt=""></span>
-	                        <p class="ntTitle">참가 기업 안내 및 주요 일정 공지</p>
-	                        <p class="ntDate">2024. 10. 21. 10:23</p>
-	                    </a>
-	                </li>
+	            	<c:forEach var="resultList" items="${resultList}" varStatus="status">
+		                <li>
+		                    <a href="/notice_view.do?idx=${resultList.idx}">
+		                        <span>
+		                        	<c:if test="${resultList.img_url ne '' && resultList.img_url ne null && resultList.img_url ne undefined}">
+		                        		<img src="${resultList.img_url}" alt="">
+		                        	</c:if>
+		                        	<c:if test="${resultList.img_url eq '' || resultList.img_url eq null || resultList.img_url eq undefined}">
+		                        		<img src="/img/user_img/test.webp" alt="">
+	                        		</c:if>
+	                        	</span>
+		                        <p class="ntTitle">${resultList.title}</p>
+		                        <p class="ntDate">${resultList.reg_date}</p>
+		                    </a>
+		                </li>
+	                </c:forEach>
 	            </ul>
 	        </div>
 	    </div>

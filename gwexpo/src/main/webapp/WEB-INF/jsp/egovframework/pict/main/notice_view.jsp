@@ -3,6 +3,7 @@
 <%@ taglib prefix="form"   uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="ui"     uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -15,20 +16,21 @@
 	        <div class="subInner">
 	            <div class="viewContainer">
 	                <div class="viewTop">
-	                    <p class="viewTitle">제에에에에에에에에에에에에에에에에에에에에에에에에목</p>
-	                    <span class="viewDate">2024-08-01</span>
+	                    <p class="viewTitle">${pictVO.title}</p>
+	                    <span class="viewDate">${fn:substring(pictVO.reg_date,0,11) }</span>
 	                </div>
 	                <div class="viewBottom">
-	                    <p>dadsfaf</p>
+	                    <p>${pictVO.text}</p>
 	                </div>
-	                <div class="addFile">
-	                    <a href="#lnk" download>
-	                        <img src="/img/user_img/file.png" alt="">
-	                        파일이름ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
-	                    </a>
-	                </div>
+	                <c:if test="${pictVO.file_url1 ne '' && pictVO.file_url1 ne null && pictVO.file_url1 ne undefined}">
+		                <div class="addFile">
+		                    <a href="${pictVO.file_url1}" download>
+		                        <img src="/img/user_img/file.png" alt="">${fn:split(pictVO.file_url1,'/')[3]}
+		                    </a>
+		                </div>
+	                </c:if>
 	                <div class="fullButtonContainer">
-	                    <a href="#lnk" class="wt view">목록으로</a>
+	                    <a href="javascript:history.back()" class="wt view">목록으로</a>
 	                </div>
 	            </div>
 	        </div>
