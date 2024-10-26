@@ -113,79 +113,132 @@
     </div>
 </div>
 <script>
+
+	checkClassifyType();
+	
+	$('#classify').on('change', function() {
+	    checkClassifyType();
+	});
+	
+	function checkClassifyType() {
+	    var selectedType = $('#classify').val();
+	    
+	    // 일반참가자(value="1") 선택 시
+	    if(selectedType === "1") {
+	        $('#email').closest('.inputBox').hide();
+	        
+	        $('.inputBox input[name="company"]').closest('.flexInputs').hide();
+	        $('.inputBox input[name="company_depart"]').closest('.flexInputs').hide();
+	        
+	        $('#email').val('');
+	        $('#company').val('');
+	        $('#company_depart').val('');
+	        $('#company_rank').val('');
+	    } else {
+	        $('#email').closest('.inputBox').show();
+	        $('.inputBox input[name="company"]').closest('.flexInputs').show();
+	        $('.inputBox input[name="company_depart"]').closest('.flexInputs').show();
+	    }
+	}
+	
 	function button1_click() {
-		var classify = $('#classify').val()
-		var name = $('#name').val()
-		var gender = $("input[name='gender']:checked").val();
-		var mobile = $('#mobile').val()
-		var email = $('#email').val()
-		var company = $('#company').val()
-		var company_depart = $('#company_depart').val()
-		var company_rank = $('#company_rank').val()
-		var agree = $('#agree').is(':checked');
-		
-		if(classify == '' || classify == null || classify == undefined){
-			alert('참가유형을 선택해주세요.');
-			$('#classify').focus();
-			return false;
-		}
-		if(name == '' || name == null || name == undefined){
-			alert('이름을 입력해주세요.');
-			$('#name').focus();
-			return false;
-		}
-		if(gender == '' || gender == null || gender == undefined){
-			alert('성별을 선택해주세요.');
-			$('#gender').focus();
-			return false;
-		}
-		if(mobile == '' || mobile == null || mobile == undefined){
-			alert('연락처를 입력해주세요.');
-			$('#mobile').focus();
-			return false;
-		}
-		if(!agree){
-			alert('개인정보 이용에 동의해주세요.');
-			$('#agree').focus();
-			return false;
-		}
-		
-		
-		
-		var text = "입력하신 정보로 현장등록을 진행하시겠습니까?";
-		var param = {
-			classify :classify,
-			name :name,
-			gender :gender,
-			mobile :mobile,
-			email :email,
-			company :company,
-			company_depart :company_depart,
-			company_rank :company_rank
-		}
-		if (confirm(text)) {
-			$.ajax({
-				url : "/user_register.do"
-				, type : "POST"
-				, data : JSON.stringify(param)
-				, contentType : "application/json"
-				, dataType : "json"
-				, async : false
-				, success : function(data, status, xhr) {
-					if(data == 'Y'){
-						alert("정상적으로 등록되었습니다.")
-						window.location.href="/"
-					}
-					else{
-						alert("등록 중 오류가 발생했습니다.")
-						window.location.href="/"
-					}
-				}
-				, error : function(xhr, status, error) {
-					alert("등록 중 오류가 발생했습니다.")
-				}
-			});
-		}
+	    var classify = $('#classify').val()
+	    var name = $('#name').val()
+	    var gender = $("input[name='gender']:checked").val();
+	    var mobile = $('#mobile').val()
+	    var email = $('#email').val()
+	    var company = $('#company').val()
+	    var company_depart = $('#company_depart').val()
+	    var company_rank = $('#company_rank').val()
+	    var agree = $('#agree').is(':checked');
+	    
+	    // 공통
+	    if(classify == '' || classify == null || classify == undefined){
+	        alert('참가유형을 선택해주세요.');
+	        $('#classify').focus();
+	        return false;
+	    }
+	    if(name == '' || name == null || name == undefined){
+	        alert('이름을 입력해주세요.');
+	        $('#name').focus();
+	        return false;
+	    }
+	    if(gender == '' || gender == null || gender == undefined){
+	        alert('성별을 선택해주세요.');
+	        $('#gender').focus();
+	        return false;
+	    }
+	    if(mobile == '' || mobile == null || mobile == undefined){
+	        alert('연락처를 입력해주세요.');
+	        $('#mobile').focus();
+	        return false;
+	    }
+	    
+	    // 일반참가자가 아닌 경우
+	    if(classify !== "1") {
+	        if(email == '' || email == null || email == undefined){
+	            alert('이메일을 입력해주세요.');
+	            $('#email').focus();
+	            return false;
+	        }
+	        if(company == '' || company == null || company == undefined){
+	            alert('회사명을 입력해주세요.');
+	            $('#company').focus();
+	            return false;
+	        }
+	        if(company_depart == '' || company_depart == null || company_depart == undefined){
+	            alert('부서명을 입력해주세요.');
+	            $('#company_depart').focus();
+	            return false;
+	        }
+	        if(company_rank == '' || company_rank == null || company_rank == undefined){
+	            alert('직책을 입력해주세요.');
+	            $('#company_rank').focus();
+	            return false;
+	        }
+	    }
+	    
+	    if(!agree){
+	        alert('개인정보 이용에 동의해주세요.');
+	        $('#agree').focus();
+	        return false;
+	    }
+	    
+	    var text = "입력하신 정보로 현장등록을 진행하시겠습니까?";
+	    var param = {
+	        classify: classify,
+	        name: name,
+	        gender: gender,
+	        mobile: mobile,
+	        email: email,
+	        company: company,
+	        company_depart: company_depart,
+	        company_rank: company_rank
+	    }
+	    
+	    if (confirm(text)) {
+	        $.ajax({
+	            url: "/user_register.do",
+	            type: "POST",
+	            data: JSON.stringify(param),
+	            contentType: "application/json",
+	            dataType: "json",
+	            async: false,
+	            success: function(data, status, xhr) {
+	                if(data == 'Y'){
+	                    alert("정상적으로 등록되었습니다.")
+	                    window.location.href="/"
+	                }
+	                else{
+	                    alert("등록 중 오류가 발생했습니다.")
+	                    window.location.href="/"
+	                }
+	            },
+	            error: function(xhr, status, error) {
+	                alert("등록 중 오류가 발생했습니다.")
+	            }
+	        });
+	    }
 		
 		//if (confirm(text)) {
 			//$("#register").attr("action", "/user_invest_save.do");
