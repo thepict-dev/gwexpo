@@ -175,7 +175,7 @@
 	    }
 	    
 	    // 일반참가자가 아닌 경우
-	    if(classify !== "1") {
+	    if(classify != "1") {
 	        if(email == '' || email == null || email == undefined){
 	            alert('이메일을 입력해주세요.');
 	            $('#email').focus();
