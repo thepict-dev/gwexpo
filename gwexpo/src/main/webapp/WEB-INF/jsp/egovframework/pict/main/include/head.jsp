@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, height=device-height, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
     <meta name="naver-site-verification" content="b26dc6ffebc17c311652d0c6fca5fb12d08676ae" />
 	<meta name="description" content="2024 강원 바이오엑스포 & 제2회 춘천 창업엑스포">
-	<meta name="keywords" content="2024 강원 바이오엑스포, 제2회 춘천 창업엑스포, 강원 바이오엑스포, 춘천 창업엑스포, 바이오엑스포, 창업엑스포"> -->
+	<meta name="keywords" content="2024 강원 바이오엑스포, 제2회 춘천 창업엑스포, 강원 바이오엑스포, 춘천 창업엑스포, 바이오엑스포, 창업엑스포">
     <meta property="og:title" content="2024 강원 바이오엑스포 & 제2회 춘천 창업엑스포">
     <meta property="og:description" content="2024 강원 바이오엑스포 & 제2회 춘천 창업엑스포">
 	<meta property="og:type" content="website">
