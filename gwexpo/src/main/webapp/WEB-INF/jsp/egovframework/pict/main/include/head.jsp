@@ -7,14 +7,15 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, height=device-height, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-<!--     <meta name="description" content="대한민국상생 영수증 콘서트"> -->
-<!--     <meta name="keywords" content="영수증 콘서트, 영수증콘서트, 영수증, 콘서트, 대한민국, 상생, 대한민국상생 영수증콘서트, 대한민국 상생 영수증 콘서트"> -->
-<!--     <meta property="og:title" content="대한민국상생 영수증 콘서트"> -->
-<!--     <meta property="og:description" content="대한민국상생 영수증 콘서트"> -->
-<!--     <meta property="og:type" content="website"> -->
-<!--     <meta property="og:site_name" content="대한민국상생 영수증 콘서트"> -->
-<!--     <meta property="og:image" content="../../../../../images/pict/og-image.png">     -->
-
+    <meta name="naver-site-verification" content="b26dc6ffebc17c311652d0c6fca5fb12d08676ae" />
+	<meta name="description" content="2024 강원 바이오엑스포 & 제2회 춘천 창업엑스포">
+	<meta name="keywords" content="2024 강원 바이오엑스포, 제2회 춘천 창업엑스포, 강원 바이오엑스포, 춘천 창업엑스포, 바이오엑스포, 창업엑스포"> -->
+    <meta property="og:title" content="2024 강원 바이오엑스포 & 제2회 춘천 창업엑스포">
+    <meta property="og:description" content="2024 강원 바이오엑스포 & 제2회 춘천 창업엑스포">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="2024 강원 바이오엑스포 & 제2회 춘천 창업엑스포">
+	<meta property="og:image" content="/user_img/logo.png">
+	
     <title>${param.pageTitle}</title>
     <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
