@@ -233,10 +233,10 @@
 .tabInner.active{
     display: block;
 }
-.scheImg{
+.mapImg{
     width: 100%;
 }
-.scheImg > img{
+.mapImg > img{
     width: 100%;
 }
 

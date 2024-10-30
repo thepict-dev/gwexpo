@@ -15,12 +15,14 @@
         <p>행사 안내</p>
         <h2>행사장 안내도</h2>
     </div>
-    <div class="empty">
-        <img src="/img/user_img/empty.png" alt="">
-        <div class="emptyText">
-            <p>콘텐츠 <span>준비중입니다</span></p>
-            <p class="pc">빠른 시일내에 준비하여 찾아뵙겠습니다</p>
-            <p class="mb">빠른 시일내에<br>준비하여 찾아뵙겠습니다</p>
+    <div class="subContainer">
+        <div class="subInner sm">
+            <div class="mapImg">
+                <img src="/img/user_img/map.png" alt="">
+            </div>
+            <div class="buttonContainer">
+                <a href="/img/user_img/map.png" download="">행사장 배치도 다운로드<span><img src="/img/user_img/download.png" alt=""></span></a>
+            </div>
         </div>
     </div>
    	<%@include file="./include/footer.jsp" %>
