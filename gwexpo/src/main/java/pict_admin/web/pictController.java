@@ -906,7 +906,7 @@ public class pictController {
 				}
 				else {
 					pictVO.setFairpath_id(obj.getInt("VISITOR_IDX")+"");
-					pictVO.setPoint("30000");
+					pictVO.setPoint("10000000");
 					pictService.user_insert(pictVO);
 					model.addAttribute("message", "정상적으로 저장되었습니다.");
 					model.addAttribute("retType", ":location");
@@ -1059,7 +1059,7 @@ public class pictController {
 			}
 			else {
 				pictVO.setFairpath_id(obj.getInt("VISITOR_IDX")+"");
-				pictVO.setPoint("30000");
+				pictVO.setPoint("10000000");
 				pictVO.setName(name);
 				pictVO.setGender(gender);
 				pictVO.setMobile(mobile);

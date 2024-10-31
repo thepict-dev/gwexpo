@@ -102,8 +102,8 @@
 			$('#point').focus();
 			return false;
 		}
-		else if(point % 10000 != 0){
-			window.alert("투자 할 금액은 10,000원 단위로만 가능합니다.");
+		else if(point % 1000000 != 0){
+			window.alert("투자 할 금액은 1,000,000원 단위로만 가능합니다.");
 			$('#point').focus();
 			return false;
 		}
