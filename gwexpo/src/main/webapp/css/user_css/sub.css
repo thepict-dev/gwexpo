@@ -490,7 +490,7 @@
     width: 100%;
 }
 .lectureLists li{
-    width: calc(100% / 3);
+    width: calc(100% / 4);
 }
 .lecImg{
     position: relative;
@@ -506,6 +506,9 @@
     bottom: 0;
     width: 100%;
     opacity: 0;
+}
+.lecImg .col.fourth{
+	bottom: -9px;
 }
 .lecText{
     width: 100%;

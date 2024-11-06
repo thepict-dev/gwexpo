@@ -14,7 +14,9 @@
 	        <select class="companySelect" name="company_id" id="company_id" style="width: 100%;">
 				<option value="" class="selectPlace" style="color: rgba(255, 255, 255, 0.5);">기업을 선택하세요</option>
 				<c:forEach var="company_list" items="${company_list}" varStatus="status">
-					<option value="${company_list.idx}">${company_list.title}</option>
+					<c:if test="${company_list.idx < 18 || company_list.idx > 22}">
+						<option value="${company_list.idx}">${company_list.title}</option>
+					</c:if>
 				</c:forEach>
 			</select>
 			<p style="margin-bottom: 116px;">얼마나 투자하시겠어요?</p>

@@ -51,6 +51,17 @@
 	                        <span class="lecDesc"> 전 구글코리아 상무<br>미국 스탠퍼드대학교 대학원 졸업</span>
 	                    </div>
 	                </li>
+	                <li>
+	                    <div class="lecImg">
+	                        <img src="/img/user_img/lecture4-2.png" alt="" class="bk">
+	                        <img src="/img/user_img/lecture4-1.png" alt="" class="col fourth">
+	                    </div>
+	                    <div class="lecText">
+	                        <span class="lecCategory">유튜버</span>
+	                        <p>미키김</p>
+	                        <span class="lecDesc"></span>
+	                    </div>
+	                </li>
 	            </ul>
 	        </div>
 	    </div>
