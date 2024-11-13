@@ -42,13 +42,12 @@
 	                </li>
 	                <li>
 	                    <div class="lecImg">
-	                        <img src="/img/user_img/lecture3-1.png" alt="" class="bk">
-	                        <img src="/img/user_img/lecture3-2.png" alt="" class="col">
+	                        <img src="/img/user_img/lecture3-2.png" alt="" class="bk">
+	                        <img src="/img/user_img/lecture3-1.png" alt="" class="col">
 	                    </div>
 	                    <div class="lecText">
-	                        <span class="lecCategory">언바운드랩데브</span>
-	                        <p>조용민</p>
-	                        <span class="lecDesc"> 전 구글코리아 상무<br>미국 스탠퍼드대학교 대학원 졸업</span>
+	                        <span class="lecCategory">명지대 특임교수</span>
+	                        <p>박정호</p>
 	                    </div>
 	                </li>
 	                <li>

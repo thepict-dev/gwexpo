@@ -35,7 +35,7 @@
                     <a href="/opening.do">프로그램</a>
                     <ul class="sub">
                         <li><a href="/opening.do">개막식</a></li>
-                        <li><a href="/funding_intro.do">크라우드 펀딩</a></li>
+                        <li><a href="/invest_login.do">크라우드 펀딩</a></li>
                         <li><a href="/lecture.do">특별강연</a></li>
                         <li><a href="/company_program.do">기업 프로그램</a></li>
                         <li><a href="/exp_program.do">체험 프로그램</a></li>
@@ -82,7 +82,7 @@
                 <p>프로그램</p>
                 <ul class="menus">
                     <li><a href="/opening.do">개막식</a></li>
-                    <li><a href="/funding_intro.do">크라우드 펀딩</a></li>
+                    <li><a href="/invest_login.do">크라우드 펀딩</a></li>
                     <li><a href="/lecture.do">특별강연</a></li>
                     <li><a href="/company_program.do">기업 프로그램</a></li>
                     <li><a href="/exp_program.do">체험 프로그램</a></li>
